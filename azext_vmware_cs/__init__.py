@@ -12,12 +12,9 @@ class Vmware_csCommandsLoader(AzCommandsLoader):
 
     def __init__(self, cli_ctx=None):
         from azure.cli.core.commands import CliCommandType
-        from azext_vmware_cs._client_factory import cf_vmware_cs
-        vmware_cs_custom = CliCommandType(
-            operations_tmpl='azext_vmware_cs.custom#{}',
-            client_factory=cf_vmware_cs)
+        vmware_cs_custom = CliCommandType(operations_tmpl='azext_vmware_cs.custom#{}')
         super(Vmware_csCommandsLoader, self).__init__(cli_ctx=cli_ctx,
-                                                  custom_command_type=vmware_cs_custom)
+                                                      custom_command_type=vmware_cs_custom)
 
     def load_command_table(self, args):
         from azext_vmware_cs.commands import load_command_table

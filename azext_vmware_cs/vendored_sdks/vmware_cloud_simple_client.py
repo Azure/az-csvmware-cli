@@ -121,7 +121,7 @@ class VMwareCloudSimpleClient(SDKClient):
     """
 
     def __init__(
-            self, credentials, referer, region_id, subscription_id, base_url=None):
+            self, credentials, subscription_id, referer, region_id, base_url=None):
 
         self.config = VMwareCloudSimpleClientConfiguration(credentials, referer, region_id, subscription_id, base_url)
         super(VMwareCloudSimpleClient, self).__init__(self.config.credentials, self.config)
