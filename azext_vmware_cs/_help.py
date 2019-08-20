@@ -3,6 +3,9 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
+"""
+This file contains the help strings (summaries) for all commands and command groups.
+"""
 
 from knack.help_files import helps  # pylint: disable=unused-import
 from ._utils import get_vmware_provider

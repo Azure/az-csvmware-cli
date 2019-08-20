@@ -3,43 +3,52 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
+'''
+Helps in managing the global configuration for AVS, and also the configuration information for AVS by CloudSimple.
+'''
 
 from enum import Enum
 import os
 from azure.cli.core._config import GLOBAL_CONFIG_DIR
 
-VMWARE_CONFIG_FILENAME = 'vmware.config'
-VMWARE_CONFIG_FILE = os.path.join(GLOBAL_CONFIG_DIR, VMWARE_CONFIG_FILENAME)
-CONFIG_VMWARE = 'vmware'
-CONFIG_PROVIDER = 'provider'
-CONFIG_REGION = 'region'
-CONFIG_REGION_ID = 'region_id'
-DEFAULT_REGION = "eastus"
+# Information to manage global configuration for AVS (stored in config file in .Azure directory)
+GLOBAL_CONFIG_FILENAME = 'config'
+GLOBAL_CONFIG_FILE = os.path.join(GLOBAL_CONFIG_DIR, GLOBAL_CONFIG_FILENAME)
+GLOBAL_CONFIG_SECTION = 'vmware'
+CURRENT_PROVIDER_FIELD_NAME = 'current_provider'
 
-VMWARE_LOCAL_CONFIG_FILENAME = "local_config.config"
+# Information to manage configuration information for cloudsimple (stored in vmware_cs.config file in this directory)
+CONFIG_REGION_SECTION_NAME = 'region'
+CONFIG_REGION_FIELD_NAME = 'region_id'
+DEFAULT_REGION = "eastus"
+VMWARE_CS_CONFIG_FILENAME = "vmware_cs.config"
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
-VMWARE_LOCAL_CONFIG_FILE = os.path.join(CURRENT_DIRECTORY, VMWARE_LOCAL_CONFIG_FILENAME)
+VMWARE_CS_CONFIG_FILE = os.path.join(CURRENT_DIRECTORY, VMWARE_CS_CONFIG_FILENAME)
 
 
 def get_region_id():
+    """
+    Used to extract the region id from the vmware_cs.config file
+    """
     from knack.config import get_config_parser
 
     config = get_config_parser()
-    config.read(VMWARE_LOCAL_CONFIG_FILE)
+    config.read(VMWARE_CS_CONFIG_FILE)
 
-    if not config.has_section(CONFIG_REGION):
-        config.add_section(CONFIG_REGION)
-        config.set(CONFIG_REGION, CONFIG_REGION_ID, DEFAULT_REGION)
-        with open(VMWARE_LOCAL_CONFIG_FILE, 'w') as configfile:
+    if not config.has_section(CONFIG_REGION_SECTION_NAME):
+        config.add_section(CONFIG_REGION_SECTION_NAME)
+        config.set(CONFIG_REGION_SECTION_NAME, CONFIG_REGION_FIELD_NAME, DEFAULT_REGION)
+        with open(VMWARE_CS_CONFIG_FILE, 'w') as configfile:
             config.write(configfile)
 
-    return config.get(CONFIG_REGION, CONFIG_REGION_ID)
+    return config.get(CONFIG_REGION_SECTION_NAME, CONFIG_REGION_FIELD_NAME)
 
 
 REGION_ID = get_region_id()
 REFERER = "https://management.azure.com/"
 
 
+# Enum that lists the avialable providers for AVS
 class VmwareProviders(str, Enum):
     CS = "cs"
     VS = "vs"

@@ -3,12 +3,16 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
+
 from azure.cli.core import AzCommandsLoader
 
 from azext_vmware_cs._help import helps  # pylint: disable=unused-import
 
 
 class Vmware_csCommandsLoader(AzCommandsLoader):
+    """
+    Custom command loader (inherited from AzCommandsLoader class) which is used for loading the module.
+    """
 
     def __init__(self, cli_ctx=None):
         from azure.cli.core.commands import CliCommandType

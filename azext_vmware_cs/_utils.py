@@ -2,12 +2,17 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
-
+"""
+This file contains generic utility functions.
+"""
 
 import os
 
 
 def vm_cs_create_resource_id(subscription, namespace, location, resource_type, name, child_type=None, child_name=None):
+    """
+    Constructs the resource id from the given information (the arguments).
+    """
     resource_id = "/subscriptions/" + subscription + "/providers/" + \
                   namespace + "/locations/" + location + "/" + \
                   resource_type + "/" + name
@@ -19,16 +24,19 @@ def vm_cs_create_resource_id(subscription, namespace, location, resource_type, n
 
 
 def get_vmware_provider():
-    from ._config import (VMWARE_CONFIG_FILE, CONFIG_VMWARE, CONFIG_PROVIDER)
+    """
+    Used to get the current provider for AVS, from the global configuration file.
+    """
+    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME)
 
     from knack.config import get_config_parser
 
-    if not os.path.isfile(VMWARE_CONFIG_FILE):
+    if not os.path.isfile(GLOBAL_CONFIG_FILE):
         return None
 
     config = get_config_parser()
-    config.read(VMWARE_CONFIG_FILE)
+    config.read(GLOBAL_CONFIG_FILE)
 
-    if config.has_section(CONFIG_VMWARE):
-        return config.get(CONFIG_VMWARE, CONFIG_PROVIDER)
+    if config.has_section(GLOBAL_CONFIG_SECTION):
+        return config.get(GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME)
     return None

@@ -3,6 +3,9 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 # pylint: disable=line-too-long
+"""
+This file manages the arguments for all the commands. Names, help strings, types, validation, etc of argument is done over here.
+"""
 
 from azure.cli.core.commands.parameters import (resource_group_name_type,
                                                 get_location_type,
@@ -28,6 +31,9 @@ from ._config import VmwareProviders
 
 
 def load_arguments(self, _):
+    """
+    Load argument method of command loader.
+    """
 
     with self.argument_context('vmware') as c:
         c.argument('provider_name', options_list=['--name', '-n'],

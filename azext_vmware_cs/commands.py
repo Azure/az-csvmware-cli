@@ -2,8 +2,12 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
-
 # pylint: disable=line-too-long
+"""
+This file contains load_command_table method of command loader.
+Here the commands are registered so that they can used in the CLI.
+"""
+
 from azure.cli.core.commands import CliCommandType
 from azext_vmware_cs._client_factory import (cf_vmware_cs,
                                              cf_virtual_machine,
@@ -13,6 +17,9 @@ from ._config import VmwareProviders
 
 
 def load_command_table(self, _):
+    """
+    Load command table method of command loader.
+    """
 
     custom_tmpl = 'azext_vmware_cs.custom#{}'
     custom_type = CliCommandType(operations_tmpl=custom_tmpl)
