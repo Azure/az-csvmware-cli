@@ -17,7 +17,6 @@ def _check_integer(parameter, value):
     """
     try:
         int(value)
-        return True
     except ValueError:
         raise CLIError(parameter + ' should be an integer value.')
 
@@ -27,7 +26,7 @@ def ram_validator(namespace):
     Checks whether the ram input is a interger or not
     """
     if namespace.amount_of_ram:
-        _check_integer('Ram', namespace.amount_of_ram)
+        _check_integer('RAM', namespace.amount_of_ram)
 
 
 def cores_validator(namespace):
@@ -60,7 +59,7 @@ def private_cloud_name_or_id_validator(cmd, namespace):
                                                                namespace='Microsoft.VMwareCloudSimple',
                                                                location=namespace.location,
                                                                resource_type='privateClouds',
-                                                               name=namespace.private_cloud)
+                                                               resource_name=namespace.private_cloud)
     if not is_valid_resource_id(namespace.private_cloud):
         raise CLIError('Invalid private cloud.')
 
@@ -126,7 +125,7 @@ def template_name_or_id_validator(cmd, namespace):
                                                           namespace='Microsoft.VMwareCloudSimple',
                                                           location=namespace.location,
                                                           resource_type='privateClouds',
-                                                          name=private_cloud,
+                                                          resource_name=private_cloud,
                                                           child_type='virtualmachinetemplates',
                                                           child_name=namespace.template)
     if not is_valid_resource_id(namespace.template):
@@ -150,7 +149,7 @@ def resource_pool_name_or_id_validator(cmd, namespace):
                                                                namespace='Microsoft.VMwareCloudSimple',
                                                                location=namespace.location,
                                                                resource_type='privateClouds',
-                                                               name=private_cloud,
+                                                               resource_name=private_cloud,
                                                                child_type='resourcepools',
                                                                child_name=namespace.resource_pool)
     if not is_valid_resource_id(namespace.resource_pool):
@@ -178,7 +177,7 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
                                                    namespace='Microsoft.VMwareCloudSimple',
                                                    location=location,
                                                    resource_type='privateClouds',
-                                                   name=private_cloud,
+                                                   resource_name=private_cloud,
                                                    child_type='virtualnetworks',
                                                    child_name=virtual_network)
     if not is_valid_resource_id(virtual_network):

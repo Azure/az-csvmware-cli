@@ -44,19 +44,10 @@ def load_arguments(self, _):
 
         with self.argument_context('vmware') as c:
             c.argument('resource_group_name', arg_type=resource_group_name_type,
-                       # id_part='resource_group',
                        help='Azure resource group for this virtual machine.')
             c.argument('tags', arg_type=tags_type)
             c.argument('region_name', options_list=['--name', '-n'],
-                       help="Name of the region.")
-            c.argument('private_cloud', options_list=['--private-cloud', '-pc'],
-                       validator=private_cloud_only_name_validator,
-                       completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
-                       help="Name or ID of the CloudSimple private cloud.")
-            c.argument('resource_pool', options_list=['--resource-pool', '-rp'],
-                       validator=resource_pool_only_name_validator,
-                       completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud.")
+                       help="Location of your Azure resource.")
 
         with self.argument_context('vmware vm') as c:
             c.argument('location', options_list=['--location'],
@@ -64,7 +55,6 @@ def load_arguments(self, _):
                        validator=get_default_location_from_resource_group,
                        help='Location of the virtual machine.')
             c.argument('vm_name', options_list=['--name', '-n'],
-                       # id_part='name',
                        help="Name of the virtual machine.",
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
             c.argument('amount_of_ram', options_list=['--ram'],
@@ -90,14 +80,14 @@ def load_arguments(self, _):
             c.argument('private_cloud', options_list=['--private-cloud', '-pc'],
                        validator=private_cloud_name_or_id_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
-                       help="Name or ID of the private cloud.")
+                       help="Name or ID of the CloudSimple private cloud.")
             c.argument('virtual_network', options_list=['--virtual-network'],
                        help="Name or ID of the virtual network.")
             c.argument('adapter', options_list=['--adapter'],
                        arg_type=get_enum_type(NICType),
                        help="The adapter for the NIC.")
             c.argument('power_on_boot', options_list=['--power-on-boot'],
-                       help="Adding this argument will power on the NIC at boot time.")
+                       help="Will power on the NIC at boot time.")
             c.argument('controller', options_list=['--controller'],
                        help="The SCSI controller.")
             c.argument('independence_mode', options_list=['--mode'],
@@ -107,29 +97,39 @@ def load_arguments(self, _):
                        validator=disk_size_validator,
                        help="The amount of disk size in KB.")
 
-        with self.argument_context('vmware vm list-template') as c:
+        with self.argument_context('vmware vm-template') as c:
             c.argument('private_cloud', options_list=['--private-cloud', '-pc'],
                        validator=private_cloud_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
-                       help="Name or ID of the private cloud.")
+                       help="Name or ID of the CloudSimple private cloud.")
             c.argument('resource_pool', options_list=['--resource-pool', '-rp'],
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud.")
-            c.argument('template', options_list=['--template'],
+                       help="Name or ID of the VMware resource pool your CloudSimple Private Cloud.")
+            c.argument('template', options_list=['--name', '-n'],
                        validator=template_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualmachinetemplates'),
-                       help="Name or ID of the vSphere template from which this virtual machine will be created.")
+                       help="Name or ID of the vSphere virtual machine template.")
 
-        with self.argument_context('vmware list-virtual-networks') as c:
+        with self.argument_context('vmware virtual-network') as c:
             c.argument('private_cloud', options_list=['--private-cloud', '-pc'],
                        validator=private_cloud_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
-                       help="Name or ID of the private cloud.")
+                       help="Name or ID of the CloudSimple private cloud.")
             c.argument('resource_pool', options_list=['--resource-pool', '-rp'],
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
                        help="Name or ID of the resource pool used to derive vSphere cluster which contains virtual networks.")
-            c.argument('virtual_network', options_list=['--virtual-network'],
+            c.argument('virtual_network', options_list=['--name', '-n'],
                        validator=vnet_only_name_validator,
                        help="Name or ID of the virtual network (vsphereId).")
+
+        with self.argument_context('vmware resource-pool') as c:
+            c.argument('private_cloud', options_list=['--private-cloud', '-pc'],
+                       validator=private_cloud_only_name_validator,
+                       completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
+                       help="Name or ID of the CloudSimple private cloud.")
+            c.argument('resource_pool', options_list=['--name', '-n'],
+                       validator=resource_pool_only_name_validator,
+                       completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
+                       help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud.")

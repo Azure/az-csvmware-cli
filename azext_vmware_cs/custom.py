@@ -14,10 +14,14 @@ def set_provider(provider_name):
     """
     Set the Azure VMware Solution provider.
     """
-    import os
+    from ._utils import get_vmware_provider
+    vmware_provider = get_vmware_provider()
+
+    if vmware_provider == provider_name:
+        return
+
     from knack.config import get_config_parser
     from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME, VmwareProviders)
-    from azure.cli.core._config import GLOBAL_CONFIG_DIR
 
     config = get_config_parser()
     config.read(GLOBAL_CONFIG_FILE)
@@ -27,8 +31,6 @@ def set_provider(provider_name):
 
     config.set(GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME, provider_name)
 
-    if not os.path.isdir(GLOBAL_CONFIG_DIR):
-        os.makedirs(GLOBAL_CONFIG_DIR)
     with open(GLOBAL_CONFIG_FILE, 'w') as configfile:
         config.write(configfile)
 
@@ -38,12 +40,11 @@ def get_provider():
     Returns the Azure VMware Solution provider.
     """
     from ._utils import get_vmware_provider
-    from ._config import VmwareProviders
+    from ._config import CURRENT_PROVIDER_FIELD_NAME
     vmware_provider = get_vmware_provider()
 
-    if vmware_provider in VmwareProviders.__members__:
-        return VmwareProviders(vmware_provider)
-    return vmware_provider
+    provider = {CURRENT_PROVIDER_FIELD_NAME: vmware_provider}
+    return provider
 
 
 def list_private_cloud_by_region(client):
@@ -57,6 +58,10 @@ def set_region(client, region_name):
     """
     Set your current region (in the configuration information).
     """
+    from ._config import get_region_id
+    if get_region_id() == region_name:
+        return
+
     from knack.config import get_config_parser
     from ._config import (VMWARE_CS_CONFIG_FILE, CONFIG_REGION_SECTION_NAME, CONFIG_REGION_FIELD_NAME)
 
@@ -78,14 +83,16 @@ def get_region():
     """
     Returns your current set region.
     """
-    from ._config import get_region_id
-    return get_region_id()
+    from ._config import (get_region_id, CONFIG_REGION_FIELD_NAME)
+
+    region = {CONFIG_REGION_FIELD_NAME: get_region_id()}
+    return region
 
 
 def list_resource_pool_by_PC(client, private_cloud, resource_pool=None):
     """
-    Returns a list of resource pool templates in the specified private cloud.
-    If resource pool is specified, that resource pool would be returned.
+    Returns the list of resource pool in the specified private cloud.
+    If resource pool is specified, that resource pool details would be returned.
     """
     if resource_pool is None:
         return client.resource_pools_by_pc.list(private_cloud)
@@ -96,6 +103,9 @@ def list_virtual_networks(client, private_cloud, resource_pool=None, virtual_net
     """
     Returns a list of available virtual networks in a private cloud,
     either by its name (or id) or through resource pool.
+    If resource_pool is passed, will return list of available virtual
+    networks within private cloud for that resouce_pool. Or, if
+    virtual_network is passed, will return details about that virtual network.
     """
     if (((resource_pool is None) and (virtual_network is None)) or
             ((resource_pool is not None) and (virtual_network is not None))):
@@ -115,6 +125,7 @@ def create_vmware_cs_vm(client, location, resource_group_name, vm_name,
                         amount_of_ram=1024, number_of_cores=1):
     """
     Create or update a VMware virtual machine.
+    The default values are inline with the Azure portal defaults.
     """
     from .vendored_sdks.models.virtual_machine import VirtualMachine
     from .vendored_sdks.models.resource_pool import ResourcePool
@@ -136,6 +147,7 @@ def add_vmware_cs_vnic(cmd, client, resource_group_name, vm_name,
                        virtual_network, adapter="VMXNET3", power_on_boot=False):
     """
     Adds a virtual network interface in the VMware virtual machine.
+    The default values are inline with the Azure portal defaults.
     """
     from .vendored_sdks.models.virtual_nic import VirtualNic
     from .vendored_sdks.models.virtual_network import VirtualNetwork
@@ -157,6 +169,7 @@ def add_vmware_cs_vdisk(client, resource_group_name, vm_name, controller="1000",
                         independence_mode="persistent", size=16777216):
     """
     Adds a virtual disk in the VMware virtual machine.
+    The default values are inline with the Azure portal defaults.
     """
     from .vendored_sdks.models.virtual_disk import VirtualDisk
 
@@ -184,6 +197,7 @@ def list_vm_template_by_PC(client, private_cloud, resource_pool=None, template=N
     """
     Returns a list of VMware virtual machines templates in a private cloud,
     either by its name (or id) or in a resource pool.
+    If the name is passed, that specific vm teplate details would be returned.
     """
     if (((resource_pool is None) and (template is None)) or
             ((resource_pool is not None) and (template is not None))):

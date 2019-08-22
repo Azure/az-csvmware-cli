@@ -25,10 +25,12 @@ VMWARE_CS_CONFIG_FILENAME = "vmware_cs.config"
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 VMWARE_CS_CONFIG_FILE = os.path.join(CURRENT_DIRECTORY, VMWARE_CS_CONFIG_FILENAME)
 
+PATH_CHAR = "/"
+
 
 def get_region_id():
     """
-    Used to extract the region id from the vmware_cs.config file
+    Used to extract the region id from the VMWARE_CS_CONFIG_FILENAME file
     """
     from knack.config import get_config_parser
 
@@ -48,7 +50,7 @@ REGION_ID = get_region_id()
 REFERER = "https://management.azure.com/"
 
 
-# Enum that lists the avialable providers for AVS
+# Enum that lists the available providers for AVS
 class VmwareProviders(str, Enum):
     CS = "cs"
     VS = "vs"

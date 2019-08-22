@@ -17,13 +17,13 @@ helps['vmware'] = """
 """
 
 helps['vmware set-provider'] = """
-    type: group
+    type: command
     short-summary: Set the Azure VMware Solution provider.
 """
 
 helps['vmware get-provider'] = """
-    type: group
-    short-summary: Returns the Azure VMware Solution provider.
+    type: command
+    short-summary: Get the Azure VMware Solution provider.
 """
 
 if get_vmware_provider() == VmwareProviders.CS:
@@ -40,27 +40,17 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm add-nic'] = """
         type: command
-        short-summary: Add a virtual network interface in the VMware virtual machine.
+        short-summary: Add virtual network interface to a VMware virtual machine.
     """
 
     helps['vmware vm add-disk'] = """
         type: command
-        short-summary: Add a virtual disk in the VMware virtual machine.
+        short-summary: Add virtual disk to a VMware virtual machine.
     """
 
     helps['vmware vm list'] = """
         type: command
-        short-summary: Returns a list of VMware virtual machines in the current subscription. If resource group is specified, only the virtual machines in that resource group would be listed.
-    """
-
-    helps['vmware vm list-template'] = """
-        type: command
-        short-summary: Returns a list of VMware virtual machines templates in a private cloud, either by its name (or id) or in a resource pool.
-    """
-
-    helps['vmware list-virtual-networks'] = """
-        type: command
-        short-summary: Returns a list of available virtual networks in a private cloud, either by its name (or id) or through resource pool.
+        short-summary: Get the list of VMware virtual machines in the current subscription. If resource group is specified, only the virtual machines in that resource group would be listed.
     """
 
     helps['vmware vm delete'] = """
@@ -70,7 +60,7 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm show'] = """
         type: command
-        short-summary: Returns a VMware virtual machine.
+        short-summary: Get the details of a VMware virtual machine.
     """
 
     helps['vmware vm start'] = """
@@ -85,25 +75,55 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm update'] = """
         type: command
-        short-summary: Update VMware virtual machine tags.
-    """
-
-    helps['vmware list-private-cloud'] = """
-        type: command
-        short-summary: Returns a list of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
+        short-summary: Update the tags field of a VMware virtual machine.
     """
 
     helps['vmware set-region'] = """
         type: command
-        short-summary: Set your current region.
+        short-summary: Set the current region.
     """
 
     helps['vmware get-region'] = """
         type: command
-        short-summary: Returns your current set region.
+        short-summary: Get the current region.
     """
 
-    helps['vmware list-resource-pool'] = """
+    helps['vmware vm-template'] = """
+        type: group
+        short-summary: Commands to manage VMware virtual machine templates.
+    """
+
+    helps['vmware vm-template list'] = """
         type: command
-        short-summary: Returns a list of resource pool templates in the specified private cloud. If resource pool is specified, that resource pool would be returned.
+        short-summary: Get the list of VMware virtual machines templates in a private cloud, either by its name (or id) or in a resource pool.
+    """
+
+    helps['vmware virtual-network'] = """
+        type: group
+        short-summary: Commands to manage virtual networks.
+    """
+
+    helps['vmware virtual-network list'] = """
+        type: command
+        short-summary: Get the list of available virtual networks in a private cloud, either by its name (or id) or through resource pool.
+    """
+
+    helps['vmware private-cloud'] = """
+        type: group
+        short-summary: Commands to manage VMware private clouds.
+    """
+
+    helps['vmware private-cloud list'] = """
+        type: command
+        short-summary: Get the list of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
+    """
+
+    helps['vmware resource-pool'] = """
+        type: group
+        short-summary: Commands to manage VMware resource pools.
+    """
+
+    helps['vmware resource-pool list'] = """
+        type: command
+        short-summary: Get the list of resource pool templates in the specified private cloud. If resource pool is specified, that resource pool would be returned.
     """
