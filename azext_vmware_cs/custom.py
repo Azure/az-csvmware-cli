@@ -120,9 +120,10 @@ def list_virtual_networks(client, private_cloud, resource_pool=None, virtual_net
 # Virtual Machine APIs
 # --------------------------------------------------------------------------------------------
 
-def create_vmware_cs_vm(client, resource_group_name, vm_name, location,
+def create_vmware_cs_vm(client, resource_group_name, vm_name,
                         private_cloud, template, resource_pool,
-                        amount_of_ram=1024, number_of_cores=1):
+                        amount_of_ram=1024, number_of_cores=1,
+                        location=None):
     """
     Create or update a VMware virtual machine.
     The default values are inline with the Azure portal defaults.

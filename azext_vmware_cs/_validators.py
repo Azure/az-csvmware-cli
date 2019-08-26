@@ -65,6 +65,18 @@ def disk_size_validator(namespace):
         _check_postive_integer('Size', namespace.size)
 
 
+def location_validator(cmd, namespace):
+    """
+    If the passed location is none, then it is defaulted to the resource group's location.
+    """
+    from ._client_factory import cf_resource_groups
+
+    if not namespace.location:
+        client = cf_resource_groups(cmd.cli_ctx)
+        rg = client.get(namespace.resource_group_name)
+        namespace.location = rg.location
+
+
 def private_cloud_name_or_id_validator(cmd, namespace):
     """
     Checks whether the passed value is a valid resource id.
@@ -204,3 +216,13 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
         raise CLIError('Invalid virtual network.')
 
     return virtual_network
+
+
+def vm_create_namespace_validator(cmd, namespace):
+    vm_name_validator(namespace)
+    location_validator(cmd, namespace)
+    private_cloud_name_or_id_validator(cmd, namespace)
+    resource_pool_name_or_id_validator(cmd, namespace)
+    template_name_or_id_validator(cmd, namespace)
+    cores_validator(namespace)
+    ram_validator(namespace)

@@ -15,6 +15,7 @@ from azext_vmware_cs._client_factory import (cf_vmware_cs,
 from ._utils import get_vmware_provider
 from ._config import VmwareProviders
 from ._format import (transform_vm_table_output)
+from ._validators import (vm_create_namespace_validator)
 
 
 def load_command_table(self, _):
@@ -32,7 +33,7 @@ def load_command_table(self, _):
     if get_vmware_provider() == VmwareProviders.CS:
 
         with self.command_group('vmware vm', client_factory=cf_virtual_machine) as g:
-            g.custom_command('create', 'create_vmware_cs_vm', table_transformer=transform_vm_table_output)
+            g.custom_command('create', 'create_vmware_cs_vm', table_transformer=transform_vm_table_output, validator=vm_create_namespace_validator)
             g.custom_command('list', 'list_vmware_cs_vm', table_transformer=transform_vm_table_output)
             g.custom_command('show', 'get_vmware_cs_vm', table_transformer=transform_vm_table_output)
             g.generic_update_command('update', getter_name='get_vmware_cs_vm', setter_name='update_vmware_cs_vm',

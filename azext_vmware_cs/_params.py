@@ -12,7 +12,6 @@ from azure.cli.core.commands.parameters import (resource_group_name_type,
                                                 get_resource_name_completion_list,
                                                 tags_type,
                                                 get_enum_type)
-from azure.cli.core.commands.validators import get_default_location_from_resource_group
 from azext_vmware_cs.vendored_sdks.models.vmware_cloud_simple_client_enums import (GuestOSType,
                                                                                    StopMode,
                                                                                    NICType,
@@ -26,7 +25,8 @@ from ._validators import (private_cloud_name_or_id_validator,
                           resource_pool_only_name_validator,
                           template_only_name_validator,
                           vnet_only_name_validator,
-                          vm_name_validator)
+                          vm_name_validator,
+                          location_validator)
 from ._utils import get_vmware_provider
 from ._config import VmwareProviders
 
@@ -50,8 +50,8 @@ def load_arguments(self, _):
                        help="Location of your Azure resource.")
 
         with self.argument_context('vmware vm') as c:
-            c.argument('location', arg_type=get_location_type(self.cli_ctx),
-                       validator=get_default_location_from_resource_group)
+            c.argument('location', get_location_type(self.cli_ctx), validator=location_validator,
+                       help="Location in which to create VM. If default location is not configured, will default to the resource group\'s location")
             c.argument('vm_name', options_list=['--name', '-n'],
                        help="Name of the virtual machine.",
                        validator=vm_name_validator,

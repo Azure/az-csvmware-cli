@@ -33,3 +33,19 @@ def cf_private_cloud_by_region(cli_ctx, *_):
     Client factory for private cloud by region operations
     """
     return cf_vmware_cs(cli_ctx).private_cloud_by_region
+
+
+def _resource_client_factory(cli_ctx, **_):
+    """
+    Client factory for resource client
+    """
+    from azure.cli.core.commands.client_factory import get_mgmt_service_client
+    from azure.cli.core.profiles import ResourceType
+    return get_mgmt_service_client(cli_ctx, ResourceType.MGMT_RESOURCE_RESOURCES)
+
+
+def cf_resource_groups(cli_ctx, *_):
+    """
+    Client factory for resource group operations
+    """
+    return _resource_client_factory(cli_ctx).resource_groups
