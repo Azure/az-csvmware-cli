@@ -11,14 +11,34 @@ from knack.util import CLIError
 from ._utils import vm_cs_create_resource_id
 
 
-def _check_integer(parameter, value):
+def _check_postive_integer(parameter, value):
     """
     Checks whether the input is a integer or not
     """
     try:
-        int(value)
+        val = int(value)
     except ValueError:
-        raise CLIError(parameter + ' should be an integer value.')
+        raise CLIError(parameter + ' should be a postive integer value.')
+    if val <= 0:
+        raise CLIError(parameter + ' should be a postive integer value.')
+
+
+def _check_regex(parameter, value):
+    """
+    Checks whether the input matches ^[-a-zA-Z0-9]+$ pattern
+    """
+    import re
+    pattern = r'^[-a-zA-Z0-9]+$'
+    if not re.match(pattern, value):
+        raise CLIError(parameter + ' should only contain letters, numbers, or hyphen.')
+
+
+def vm_name_validator(namespace):
+    """
+    Checks whether the vm name is following the required pattern
+    """
+    if namespace.vm_name:
+        _check_regex('Virtual machine name', namespace.vm_name)
 
 
 def ram_validator(namespace):
@@ -26,7 +46,7 @@ def ram_validator(namespace):
     Checks whether the ram input is a interger or not
     """
     if namespace.amount_of_ram:
-        _check_integer('RAM', namespace.amount_of_ram)
+        _check_postive_integer('RAM', namespace.amount_of_ram)
 
 
 def cores_validator(namespace):
@@ -34,7 +54,7 @@ def cores_validator(namespace):
     Checks whether the number of cores input is a integer or not
     """
     if namespace.number_of_cores:
-        _check_integer('Cores', namespace.number_of_cores)
+        _check_postive_integer('Cores', namespace.number_of_cores)
 
 
 def disk_size_validator(namespace):
@@ -42,7 +62,7 @@ def disk_size_validator(namespace):
     Checks whether the size input is a integer or not
     """
     if namespace.size:
-        _check_integer('Size', namespace.size)
+        _check_postive_integer('Size', namespace.size)
 
 
 def private_cloud_name_or_id_validator(cmd, namespace):

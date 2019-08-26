@@ -13,7 +13,7 @@ from ._config import VmwareProviders
 
 helps['vmware'] = """
     type: group
-    short-summary: Commands to manage Azure VMware Solution. To see a provider's commands, you have to set the provider using set-provider command.
+    short-summary: Manage Azure VMware Solution. To see a provider's commands, you have to set the provider using set-provider command.
 """
 
 helps['vmware set-provider'] = """
@@ -30,7 +30,7 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm'] = """
         type: group
-        short-summary: Commands to manage VMware virtual machines.
+        short-summary: Manage VMware virtual machines.
     """
 
     helps['vmware vm create'] = """
@@ -90,27 +90,31 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm-template'] = """
         type: group
-        short-summary: Commands to manage VMware virtual machine templates.
+        short-summary: Manage VMware virtual machine templates.
     """
 
     helps['vmware vm-template list'] = """
         type: command
         short-summary: Get the list of VMware virtual machines templates in a private cloud, either by its name (or id) or in a resource pool.
+                       If resource pool is specified, the VM templates in that resource group would be listed.
+                       If name of the VM template is specified, it's details would be returned.
     """
 
     helps['vmware virtual-network'] = """
         type: group
-        short-summary: Commands to manage virtual networks.
+        short-summary: Manage virtual networks.
     """
 
     helps['vmware virtual-network list'] = """
         type: command
-        short-summary: Get the list of available virtual networks in a private cloud, either by its name (or id) or through resource pool.
+        short-summary: Get the list of available virtual networks in a private cloud, either by its name (or id) or in a resource pool.
+                       If resource pool is specified, the virtual networks in that resource group would be listed.
+                       If name of the virtual network is specified, it's details would be returned.
     """
 
     helps['vmware private-cloud'] = """
         type: group
-        short-summary: Commands to manage VMware private clouds.
+        short-summary: Manage VMware private clouds.
     """
 
     helps['vmware private-cloud list'] = """
@@ -120,10 +124,10 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware resource-pool'] = """
         type: group
-        short-summary: Commands to manage VMware resource pools.
+        short-summary: Manage VMware resource pools.
     """
 
     helps['vmware resource-pool list'] = """
         type: command
-        short-summary: Get the list of resource pool templates in the specified private cloud. If resource pool is specified, that resource pool would be returned.
+        short-summary: Get the list of resource pool templates in the specified private cloud. If name of the resource pool is specified, it's details would be returned.
     """

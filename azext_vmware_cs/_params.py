@@ -25,7 +25,8 @@ from ._validators import (private_cloud_name_or_id_validator,
                           private_cloud_only_name_validator,
                           resource_pool_only_name_validator,
                           template_only_name_validator,
-                          vnet_only_name_validator)
+                          vnet_only_name_validator,
+                          vm_name_validator)
 from ._utils import get_vmware_provider
 from ._config import VmwareProviders
 
@@ -43,19 +44,17 @@ def load_arguments(self, _):
     if get_vmware_provider() == VmwareProviders.CS:
 
         with self.argument_context('vmware') as c:
-            c.argument('resource_group_name', arg_type=resource_group_name_type,
-                       help='Azure resource group for this virtual machine.')
+            c.argument('resource_group_name', arg_type=resource_group_name_type)
             c.argument('tags', arg_type=tags_type)
             c.argument('region_name', options_list=['--name', '-n'],
                        help="Location of your Azure resource.")
 
         with self.argument_context('vmware vm') as c:
-            c.argument('location', options_list=['--location'],
-                       arg_type=get_location_type(self.cli_ctx),
-                       validator=get_default_location_from_resource_group,
-                       help='Location of the virtual machine.')
+            c.argument('location', arg_type=get_location_type(self.cli_ctx),
+                       validator=get_default_location_from_resource_group)
             c.argument('vm_name', options_list=['--name', '-n'],
                        help="Name of the virtual machine.",
+                       validator=vm_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
             c.argument('amount_of_ram', options_list=['--ram'],
                        validator=ram_validator,

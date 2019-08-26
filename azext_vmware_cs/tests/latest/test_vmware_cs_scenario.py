@@ -47,6 +47,67 @@ class Vmware_csScenarioTest(ScenarioTest):
                  checks=[self.check('{CURRENT_PROVIDER_FIELD_NAME}', '{provider_name}')])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
+    def test_vmware_cs_vm_create_param_validation(self, resource_group):
+        """
+        Tests the create API for vmware vm.
+        """
+
+        self.kwargs.update({
+            'name': self.create_random_name(prefix='cli-test', length=24),
+            'loc': 'eastus',
+            'pc': 'avs-test-eastus',
+            'vm_template': 'vm-125',
+            'rp': 'resgroup-52',
+            'ram': 1024,
+            'cores': 1
+        })
+
+        # Ensuring that CloudSimple commands are available by setting the correct provider.
+        self.cmd('az vmware set-provider -n cs')
+
+        # Checking that invalid vm_name causes error
+        with self.assertRaisesRegexp(CLIError, "Virtual machine name should only contain letters, numbers, or hyphen."):
+            self.cmd('az vmware vm create -g {rg} -n invalid_name# --location {loc} --ram {ram} \
+                 --cores {cores} --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for ram is float, it causes error
+        with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024.5 \
+                 --cores {cores} --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for ram is 0, it causes error
+        with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 0 \
+                 --cores {cores} --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for ram is negative, it causes error
+        with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram -1024 \
+                 --cores {cores} --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for cores is float, it causes error
+        with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+                 --cores 1.5 --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for cores is 0, it causes error
+        with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+                 --cores 0 --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+        # Checking that if entered value for cores is negative, it causes error
+        with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
+            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+                 --cores -1 --private-cloud {pc} --template {vm_template} \
+                 --resource-pool {rp}')
+
+    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_crud(self, resource_group):
         """
         Tests the CRUD APIs for vmware vm.
@@ -68,7 +129,6 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Checking that the number of VM in our rg (used for testing) is 0.
         count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
-        # assert count == 0
 
         # Creating a VM. Checking json to see if the operation succeeded.
         self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
@@ -85,7 +145,6 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Checking that the number of VM in our rg (used for testing) is 1 now.
         count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 1)
-        # assert count == 1
 
         # Testing show command
         self.cmd('az vmware vm show -g {rg} -n {name}',
@@ -108,7 +167,6 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Checking that the number of VM in our rg is 0 now.
         count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
-        # assert count == 0
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_start_stop(self, resource_group):
