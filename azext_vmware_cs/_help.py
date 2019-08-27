@@ -19,11 +19,22 @@ helps['vmware'] = """
 helps['vmware set-provider'] = """
     type: command
     short-summary: Set the Azure VMware Solution provider.
+    examples:
+        - name: Set provider to cs
+          text: >
+            az vmware set-provider -n cs
+        - name: Set provider to vs
+          text: >
+            az vmware set-provider -n vs
 """
 
 helps['vmware get-provider'] = """
     type: command
     short-summary: Get the Azure VMware Solution provider.
+    examples:
+        - name: Get provider
+          text: >
+            az vmware get-provider
 """
 
 if get_vmware_provider() == VmwareProviders.CS:
@@ -50,7 +61,7 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm list'] = """
         type: command
-        short-summary: Get the list of VMware virtual machines in the current subscription. If resource group is specified, only the virtual machines in that resource group would be listed.
+        short-summary: List details of VMware virtual machines in the current subscription. If resource group is specified, only the details of virtual machines in that resource group would be listed.
     """
 
     helps['vmware vm delete'] = """
@@ -95,9 +106,12 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm-template list'] = """
         type: command
-        short-summary: Get the list of VMware virtual machines templates in a private cloud, either by its name (or id) or in a resource pool.
-                       If resource pool is specified, the VM templates in that resource group would be listed.
-                       If name of the VM template is specified, it's details would be returned.
+        short-summary: List details of VMware virtual machines templates in a resource pool, in a private cloud.
+    """
+
+    helps['vmware vm-template show'] = """
+        type: command
+        short-summary: Get the details of a VMware virtual machines template in a private cloud.
     """
 
     helps['vmware virtual-network'] = """
@@ -107,9 +121,12 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware virtual-network list'] = """
         type: command
-        short-summary: Get the list of available virtual networks in a private cloud, either by its name (or id) or in a resource pool.
-                       If resource pool is specified, the virtual networks in that resource group would be listed.
-                       If name of the virtual network is specified, it's details would be returned.
+        short-summary: List details of available virtual networks in a resource pool, in a private cloud.
+    """
+
+    helps['vmware virtual-network show'] = """
+        type: command
+        short-summary: Get the details of a virtual network in a private cloud.
     """
 
     helps['vmware private-cloud'] = """
@@ -119,7 +136,7 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware private-cloud list'] = """
         type: command
-        short-summary: Get the list of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
+        short-summary: List details of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
     """
 
     helps['vmware resource-pool'] = """
@@ -129,5 +146,5 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware resource-pool list'] = """
         type: command
-        short-summary: Get the list of resource pool templates in the specified private cloud. If name of the resource pool is specified, it's details would be returned.
+        short-summary: List details of resource pool templates in the specified private cloud. If name of the resource pool is specified, it's details would be returned.
     """

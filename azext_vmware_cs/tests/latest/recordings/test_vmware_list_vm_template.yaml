@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-08-26T13:39:14Z"}}'
+      "date": "2019-08-27T10:25:01Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-26T13:39:14Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-27T10:25:01Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Mon, 26 Aug 2019 13:39:19 GMT
+      - Tue, 27 Aug 2019 10:25:06 GMT
       expires:
       - '-1'
       pragma:
@@ -45,7 +45,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1197'
+      - '1196'
     status:
       code: 201
       message: Created
@@ -95,7 +95,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:20 GMT
+      - Tue, 27 Aug 2019 10:25:07 GMT
       expires:
       - '-1'
       pragma:
@@ -111,11 +111,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 5901b6bd-518d-4fd1-87ac-55480dc4accb
+      - 4df84cb9-0fa4-4a4c-a3ca-d1d13a152fff
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 2a438d9d7ecfeb3a
+      - 1b975b7c6990d7ac
     status:
       code: 200
       message: OK
@@ -127,7 +127,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - vmware vm-template list
+      - vmware vm-template show
       Connection:
       - keep-alive
       ParameterSetName:
@@ -156,7 +156,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:22 GMT
+      - Tue, 27 Aug 2019 10:25:07 GMT
       expires:
       - '-1'
       pragma:
@@ -172,11 +172,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - f04dfa53-953e-452f-be20-6b6241e25a6e
+      - 87739ed1-ed64-4555-bb5d-bb5085cac6bc
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3ed4e84a3679573c
+      - 148288fae6cf08d8
     status:
       code: 200
       message: OK
@@ -211,11 +211,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Mon, 26 Aug 2019 13:39:27 GMT
+      - Tue, 27 Aug 2019 10:25:14 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NGNTVVUVBQSDdIRVJIUDVVVVpQTVVVUHxBOTQ3MDQ0NjI4OUIxM0JGLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NMT05PSFJaTUZKUE4zRk03UERGRERVRXxEOUJBMTg3QjRERTMwNThCLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:
@@ -223,7 +223,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14999'
+      - '14997'
     status:
       code: 202
       message: Accepted

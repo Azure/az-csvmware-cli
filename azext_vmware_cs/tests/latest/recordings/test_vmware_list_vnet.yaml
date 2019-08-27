@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-08-26T13:39:14Z"}}'
+      "date": "2019-08-27T10:25:01Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-26T13:39:14Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-27T10:25:01Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Mon, 26 Aug 2019 13:39:19 GMT
+      - Tue, 27 Aug 2019 10:25:07 GMT
       expires:
       - '-1'
       pragma:
@@ -82,7 +82,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:20 GMT
+      - Tue, 27 Aug 2019 10:25:08 GMT
       expires:
       - '-1'
       pragma:
@@ -98,11 +98,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 62b97e82-792a-4781-98c3-eaefe669bd37
+      - f6cfa97b-39aa-41b3-90b6-400657b0c9e2
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 664752f10bda5e6b
+      - 3f71f444dcb627c2
     status:
       code: 200
       message: OK
@@ -114,7 +114,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - vmware virtual-network list
+      - vmware virtual-network show
       Connection:
       - keep-alive
       ParameterSetName:
@@ -139,7 +139,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:22 GMT
+      - Tue, 27 Aug 2019 10:25:10 GMT
       expires:
       - '-1'
       pragma:
@@ -155,11 +155,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - e278d047-a1c7-4e68-bd4e-c38b5c2d0181
+      - c3c8015c-1b1e-43e0-af5b-423240100e6d
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 382e2d9e4f12667d
+      - 6d7028eeaaae5d86
     status:
       code: 200
       message: OK
@@ -194,11 +194,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Mon, 26 Aug 2019 13:39:25 GMT
+      - Tue, 27 Aug 2019 10:25:14 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NHRzdEMk9JNFJYRDRSS0FFM0JPTlc2RnxDMUI2QkUxQUFFNUMxRkI2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NBM1BGVVhER0xTNUFMRUJXWlhZRkEyVXw4OTBFQ0M2MTc1RkVFMzcyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:

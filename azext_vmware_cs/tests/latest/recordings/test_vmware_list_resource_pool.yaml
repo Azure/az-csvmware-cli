@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-08-26T13:39:14Z"}}'
+      "date": "2019-08-27T10:25:01Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-26T13:39:14Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-27T10:25:01Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Mon, 26 Aug 2019 13:39:19 GMT
+      - Tue, 27 Aug 2019 10:25:06 GMT
       expires:
       - '-1'
       pragma:
@@ -45,7 +45,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1198'
+      - '1197'
     status:
       code: 201
       message: Created
@@ -71,7 +71,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcePools?api-version=2019-04-01
   response:
     body:
-      string: '{"value":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-108","location":"eastus","name":"cavillue","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/cavillue"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-298","location":"eastus","name":"tony","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/tony"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-52","location":"eastus","name":"Workload","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/Workload"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-65","location":"eastus","name":"DevTest
+      string: '{"value":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-108","location":"eastus","name":"cavillue","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/cavillue"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-298","location":"eastus","name":"tony","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/tony"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-483","location":"eastus","name":"Sellalotofstuff","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/Sellalotofstuff"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-52","location":"eastus","name":"Workload","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/Workload"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-65","location":"eastus","name":"DevTest
         VM","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/DevTest
         VM"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-66","location":"eastus","name":"jujako","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"avs-test-eastus/Datacenter/Cluster/jujako"},"type":"Microsoft.VMwareCloudSimple/resourcePools"}]}
 
@@ -80,11 +80,11 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '2943'
+      - '3447'
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:20 GMT
+      - Tue, 27 Aug 2019 10:25:08 GMT
       expires:
       - '-1'
       pragma:
@@ -100,11 +100,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 39ef2d7f-69ce-427c-a843-58097ef4bcc9
+      - 7e43daf7-bb85-45ca-9a60-fc32226f3885
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 4e604e37cd4c2602
+      - 17560376fadb3719
     status:
       code: 200
       message: OK
@@ -141,7 +141,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 26 Aug 2019 13:39:21 GMT
+      - Tue, 27 Aug 2019 10:25:10 GMT
       expires:
       - '-1'
       pragma:
@@ -157,11 +157,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 1efae9fe-1264-47fa-bd3f-57fa4817a8b8
+      - 363d51da-090f-4f6f-b6dc-f570c6ba7374
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 2ca58c59d33a060e
+      - eaa903b52f3694f
     status:
       code: 200
       message: OK
@@ -196,11 +196,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Mon, 26 Aug 2019 13:39:25 GMT
+      - Tue, 27 Aug 2019 10:25:15 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1MzWFVET0pPUk42TUszQlUyMjVNVzJBTXxDNThEODY4QjUxRTVBQkUyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1M1VFRXQVQ2NkRLVFBJRUZRR0FKNkdaRXxFNUM2MDlFOTg5MzE2MTZDLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:
@@ -208,7 +208,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14999'
+      - '14997'
     status:
       code: 202
       message: Accepted

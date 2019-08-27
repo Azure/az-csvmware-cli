@@ -251,7 +251,7 @@ class Vmware_csScenarioTest(ScenarioTest):
 
         self.cmd('az vmware vm-template list -pc {pc} -rp {rp}')
 
-        self.cmd('az vmware vm-template list -pc {pc} -n {vmtemplate}',
+        self.cmd('az vmware vm-template show -pc {pc} -n {vmtemplate}',
                  checks=[
                      self.check('guestOsType', 'linux'),
                      self.check('guestOs', 'Ubuntu Linux (64-bit)'),
@@ -271,7 +271,7 @@ class Vmware_csScenarioTest(ScenarioTest):
 
         self.cmd('az vmware virtual-network list -pc {pc} -rp {rp}')
 
-        self.cmd('az vmware virtual-network list -pc {pc} -n {vnet}',
+        self.cmd('az vmware virtual-network show -pc {pc} -n {vnet}',
                  checks=[
                      self.check('name', 'Datacenter/Workload01'),
                      self.check('type', 'Microsoft.VMwareCloudSimple/virtualNetworks')

@@ -45,10 +45,12 @@ def load_command_table(self, _):
             g.custom_command('add-nic', 'add_vmware_cs_vnic')
 
         with self.command_group('vmware vm-template', client_factory=cf_vmware_cs) as g:
-            g.custom_command('list', 'list_vm_template_by_PC')
+            g.custom_command('show', 'list_vm_template_by_PC_and_name')
+            g.custom_command('list', 'list_vm_template_by_PC_and_rp')
 
         with self.command_group('vmware virtual-network', client_factory=cf_vmware_cs) as g:
-            g.custom_command('list', 'list_virtual_networks')
+            g.custom_command('show', 'list_virtual_networks_by_PC_and_name')
+            g.custom_command('list', 'list_virtual_networks_by_PC_and_rp')
 
         with self.command_group('vmware resource-pool', client_factory=cf_vmware_cs) as g:
             g.custom_command('list', 'list_resource_pool_by_PC')

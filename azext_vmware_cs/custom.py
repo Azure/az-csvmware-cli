@@ -7,8 +7,6 @@ This file contains the custom methods which are executed whenever any command is
 The custom methods are linked to the commands at the time of command registeration (commands.py).
 """
 
-from knack.util import CLIError
-
 
 def set_provider(provider_name):
     """
@@ -99,21 +97,32 @@ def list_resource_pool_by_PC(client, private_cloud, resource_pool=None):
     return client.resource_pool_by_pc.get(private_cloud, resource_pool)
 
 
-def list_virtual_networks(client, private_cloud, resource_pool=None, virtual_network=None):
+def list_virtual_networks_by_PC_and_rp(client, private_cloud, resource_pool):
     """
-    Returns a list of available virtual networks in a private cloud,
-    either by its name (or id) or through resource pool.
-    If resource_pool is passed, will return list of available virtual
-    networks within private cloud for that resouce_pool. Or, if
-    virtual_network is passed, will return details about that virtual network.
+    List details of available virtual networks in a resource pool, in a private cloud.
     """
-    if (((resource_pool is None) and (virtual_network is None)) or
-            ((resource_pool is not None) and (virtual_network is not None))):
-        raise CLIError('Enter either a resource pool or a virtual network.')
+    return client.virtual_networks_by_pc.list(private_cloud, resource_pool)
 
-    if resource_pool is not None:
-        return client.virtual_networks_by_pc.list(private_cloud, resource_pool)
+
+def list_virtual_networks_by_PC_and_name(client, private_cloud, virtual_network):
+    """
+    Get the details of a virtual network in a private cloud.
+    """
     return client.virtual_network_by_pc.get(private_cloud, virtual_network)
+
+
+def list_vm_template_by_PC_and_rp(client, private_cloud, resource_pool):
+    """
+    Returns details of VMware virtual machines templates in a resource pool, in a private cloud.
+    """
+    return client.virtual_machine_templates_by_pc.list(private_cloud, resource_pool)
+
+
+def list_vm_template_by_PC_and_name(client, private_cloud, template):
+    """
+    Returns details of a VMware virtual machines template in a private cloud.
+    """
+    return client.virtual_machine_template_by_pc.get(private_cloud, template)
 
 
 # --------------------------------------------------------------------------------------------
@@ -192,21 +201,6 @@ def list_vmware_cs_vm(client, resource_group_name=None):
     if resource_group_name is None:
         return client.list_by_subscription()
     return client.list_by_resource_group(resource_group_name)
-
-
-def list_vm_template_by_PC(client, private_cloud, resource_pool=None, template=None):
-    """
-    Returns a list of VMware virtual machines templates in a private cloud,
-    either by its name (or id) or in a resource pool.
-    If the name is passed, that specific vm teplate details would be returned.
-    """
-    if (((resource_pool is None) and (template is None)) or
-            ((resource_pool is not None) and (template is not None))):
-        raise CLIError('Enter either a resource pool or a virtual machine template.')
-
-    if resource_pool is not None:
-        return client.virtual_machine_templates_by_pc.list(private_cloud, resource_pool)
-    return client.virtual_machine_template_by_pc.get(private_cloud, template)
 
 
 def delete_vmware_cs_vm(client, resource_group_name, vm_name):
