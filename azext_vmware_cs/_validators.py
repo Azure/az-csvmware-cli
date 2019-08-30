@@ -188,7 +188,8 @@ def resource_pool_name_or_id_validator(cmd, namespace):
         raise CLIError('Invalid resource pool.')
 
 
-def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_group_name, vm_name):
+def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_group_name,
+                                         vm_name, region=None, pc=None):
     """
     Checks whether the passed value is a valid resource id.
     If not, then assuming that the passed value is a resource name, a resource id is constructed.
@@ -197,10 +198,12 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
     from azure.cli.core.commands.client_factory import get_subscription_id
     from msrestazure.tools import is_valid_resource_id
 
-    virtual_machine = client.get(resource_group_name, vm_name)
-
-    location = virtual_machine.location
-    private_cloud = virtual_machine.private_cloud_id
+    location = region
+    private_cloud = pc
+    if ((pc is None) and (region is None)):
+        virtual_machine = client.get(resource_group_name, vm_name)
+        location = virtual_machine.location
+        private_cloud = virtual_machine.private_cloud_id
 
     if is_valid_resource_id(private_cloud):
         private_cloud = private_cloud.rsplit('/', 1)[-1]

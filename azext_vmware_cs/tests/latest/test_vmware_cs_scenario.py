@@ -57,7 +57,7 @@ class Vmware_csScenarioTest(ScenarioTest):
             'loc': 'eastus',
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'ram': 1024,
             'cores': 1
         })
@@ -118,7 +118,7 @@ class Vmware_csScenarioTest(ScenarioTest):
             'loc': 'eastus',
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'ram': 1024,
             'cores': 1
         })
@@ -179,7 +179,7 @@ class Vmware_csScenarioTest(ScenarioTest):
             'loc': 'eastus',
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'ram': 1024,
             'cores': 1
         })
@@ -239,19 +239,19 @@ class Vmware_csScenarioTest(ScenarioTest):
                  checks=[self.check('status', 'suspended')])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_list_vm_template(self, resource_group):
+    def test_vmware_vm_template_list_and_show(self, resource_group):
         """
         Tests the list vm templates command.
         """
         self.kwargs.update({
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'pc': 'avs-test-eastus',
             'vmtemplate': 'vm-125'
         })
 
-        self.cmd('az vmware vm-template list -pc {pc} -rp {rp}')
+        self.cmd('az vmware vm-template list -p {pc} -r {rp}')
 
-        self.cmd('az vmware vm-template show -pc {pc} -n {vmtemplate}',
+        self.cmd('az vmware vm-template show -p {pc} -n {vmtemplate}',
                  checks=[
                      self.check('guestOsType', 'linux'),
                      self.check('guestOs', 'Ubuntu Linux (64-bit)'),
@@ -259,40 +259,40 @@ class Vmware_csScenarioTest(ScenarioTest):
                  ])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_list_vnet(self, resource_group):
+    def test_vmware_vnet_list_and_show(self, resource_group):
         """
         Tests the list virtual networks command.
         """
         self.kwargs.update({
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'pc': 'avs-test-eastus',
             'vnet': 'dvportgroup-85'
         })
 
-        self.cmd('az vmware virtual-network list -pc {pc} -rp {rp}')
+        self.cmd('az vmware virtual-network list -p {pc} -r {rp}')
 
-        self.cmd('az vmware virtual-network show -pc {pc} -n {vnet}',
+        self.cmd('az vmware virtual-network show -p {pc} -n {vnet}',
                  checks=[
                      self.check('name', 'Datacenter/Workload01'),
                      self.check('type', 'Microsoft.VMwareCloudSimple/virtualNetworks')
                  ])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_list_resource_pool(self, resource_group):
+    def test_vmware_resource_pool_list_and_show(self, resource_group):
         """
         Tests the list resource pools command.
         """
         self.kwargs.update({
-            'rp': 'resgroup-52',
+            'rp': 'resgroup-169',
             'pc': 'avs-test-eastus'
         })
 
-        self.cmd('az vmware resource-pool list -pc {pc}')
+        self.cmd('az vmware resource-pool list -p {pc}')
 
-        self.cmd('az vmware resource-pool list -pc {pc} -n {rp}',
+        self.cmd('az vmware resource-pool show -p {pc} -n {rp}',
                  checks=[
                      self.check('location', 'eastus'),
-                     self.check('name', 'Workload'),
+                     self.check('name', 'AzCLITest'),
                      self.check('type', 'Microsoft.VMwareCloudSimple/resourcePools')
                  ])
 
@@ -335,7 +335,7 @@ class Vmware_csScenarioTest(ScenarioTest):
 
     #     # Creating a VM.
     #     self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024 --cores 1 \
-    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-52')
+    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-169')
 
     #     # Add a disk
     #     self.cmd('az vmware vm add-disk -g {rg} -n {name}')
@@ -354,7 +354,7 @@ class Vmware_csScenarioTest(ScenarioTest):
 
     #     # Creating a VM.
     #     self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024 --cores 1 \
-    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-52')
+    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-169')
 
     #     # Add a disk
     #     self.cmd('az vmware vm add-disk -g {rg} -n {name} --virtual-network dvportgroup-85')
