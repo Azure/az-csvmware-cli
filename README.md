@@ -1,4 +1,4 @@
-#Install
+# Install
 
 Download the whl file (in azext_vmware_cs directory)
 
@@ -7,7 +7,7 @@ whl=vmware_cs-0.1.0-py2.py3-none-any.whl
 az extension add --source $whl -y
 ```
 
-#Usage
+# Usage
 ```
 az vmware -h
 ```
