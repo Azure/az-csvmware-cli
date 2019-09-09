@@ -22,7 +22,8 @@ def set_provider(provider_name):
         return
 
     from knack.config import get_config_parser
-    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME, VmwareProviders)
+    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION,
+                          CURRENT_PROVIDER_FIELD_NAME, VmwareProviders)
 
     config = get_config_parser()
     config.read(GLOBAL_CONFIG_FILE)
@@ -451,7 +452,7 @@ def show_vdisk(client, resource_group_name, vm_name, disk_name):
     Get the details of a VMware virtual machine's disk.
     """
     virtual_machine = client.get(resource_group_name, vm_name)
-    disks = virtual_machine.nics
+    disks = virtual_machine.disks
     for disk in disks:
         if disk.virtual_disk_name == disk_name:
             return disk

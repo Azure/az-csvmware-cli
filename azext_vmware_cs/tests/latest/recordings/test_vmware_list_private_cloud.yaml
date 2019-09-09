@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-08-30T14:10:29Z"}}'
+      "date": "2019-09-09T15:06:17Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-08-30T14:10:29Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-09-09T15:06:17Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Fri, 30 Aug 2019 14:10:31 GMT
+      - Mon, 09 Sep 2019 15:06:24 GMT
       expires:
       - '-1'
       pragma:
@@ -45,7 +45,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1194'
+      - '1192'
     status:
       code: 201
       message: Created
@@ -71,7 +71,7 @@ interactions:
     body:
       string: '{"value":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","location":"eastus","name":"avs-test-eastus","properties":{"availabilityZoneId":"az1","availabilityZoneName":"Availability
         Zone 1","clustersNumber":1,"createdBy":"mahain@microsoft.com","createdOn":"2019-05-17T16:56:39.304Z","dnsServers":["192.168.1.8","192.168.1.9"],"expires":"n/a","nsxType":"Advanced","placementGroupId":"n2","placementGroupName":"Placement
-        Group 2","privateCloudId":"45d858d8-20e2-4776-a14b-96e1e3ab7327","resourcePools":null,"state":"operational","totalCpuCores":112,"totalNodes":4,"totalRam":1024,"totalStorage":22.5,"type":"vSphere","vSphereVersion":"6.7u1","vcenterFqdn":"vcsa-986-eastus.az.cloudsimple.io","vcenterRefid":"192.168.1.6","virtualMachineTemplates":null,"virtualNetworks":null},"type":"Microsoft.VMwareCloudSimple/privateClouds"}]}
+        Group 2","privateCloudId":"45d858d8-20e2-4776-a14b-96e1e3ab7327","resourcePools":null,"state":"operational","totalCpuCores":112,"totalNodes":4,"totalRam":1024,"totalStorage":22.5,"type":"vSphere","vSphereVersion":"6.7u2","vcenterFqdn":"vcsa-986-eastus.az.cloudsimple.io","vcenterRefid":"192.168.1.6","virtualMachineTemplates":null,"virtualNetworks":null},"type":"Microsoft.VMwareCloudSimple/privateClouds"}]}
 
         '
     headers:
@@ -82,7 +82,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 30 Aug 2019 14:10:32 GMT
+      - Mon, 09 Sep 2019 15:06:26 GMT
       expires:
       - '-1'
       pragma:
@@ -98,11 +98,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 4404f319-647d-4650-934e-ffaa11b31f81
+      - 453e3e96-0f87-46aa-8736-f745dc048031
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 296d14c618d80966
+      - 3133964426ad9cf9
     status:
       code: 200
       message: OK
@@ -137,11 +137,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Fri, 30 Aug 2019 14:10:39 GMT
+      - Mon, 09 Sep 2019 15:06:31 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1M3RUNEQVg0V05UNzJEQlpaNk1PRlU1Q3w0MTQ4NzBFMTMxQzFCNkYwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NERUZRRzdDQUlMNlRCUDdESUtCWkk2S3w3QjY2NEEyQzgzQkREOUQxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:

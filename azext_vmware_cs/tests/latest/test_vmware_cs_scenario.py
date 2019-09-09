@@ -114,7 +114,7 @@ class Vmware_csScenarioTest(ScenarioTest):
         """
 
         self.kwargs.update({
-            'name': self.create_random_name(prefix='cli-test', length=24),
+            'name': self.create_random_name(prefix='cli-test1', length=24),
             'loc': 'eastus',
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
@@ -167,6 +167,66 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Checking that the number of VM in our rg is 0 now.
         count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
+
+    def test_vmware_cs_vm_create(self):
+        """
+        Tests the create API for vmware vm.
+        """
+
+        self.kwargs.update({
+            'name': self.create_random_name(prefix='cli-test', length=24),
+            'name2': self.create_random_name(prefix='cli-test', length=24),
+            'rg': 'az_cli_cs_test',
+            'pc': 'avs-test-eastus',
+            'vm_template': 'vm-125',
+            'rp': 'resgroup-169',
+        })
+
+        # Ensuring that CloudSimple commands are available by setting the correct provider.
+        self.cmd('az vmware set-provider -n cs')
+
+        # Creating a VM with default parameters from the vm template
+        self.cmd('az vmware vm create -g {rg} -n {name} -p {pc} --template {vm_template} -r {rp}',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('numberOfCores', 1)
+                 ])
+
+        # Creating a VM with default parameters from the vm template
+        self.cmd('az vmware vm create -g {rg} -n {name2} \
+                 -p {pc} --template {vm_template} -r {rp} \
+                 --nic name=NicNameWouldBeReassigned virtual-network=dvportgroup-85 \
+                 adapter=VMXNET3 power-on-boot=True',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name2}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('nics | [1].virtualNicName', 'Network adapter 2'),
+                     self.check('nics | [1].powerOnBoot', True),
+                     self.check('nics | [1].nicType', 'VMXNET3'),
+                     self.check('nics | [1].network.name', 'Datacenter/Workload01'),
+                     self.check('numberOfCores', 1)
+                 ])
+
+        # Deleting the VM.
+        self.cmd('az vmware vm delete -g {rg} -n {name}')
+
+        # Deleting the VM.
+        self.cmd('az vmware vm delete -g {rg} -n {name2}')
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_start_stop(self, resource_group):
@@ -237,6 +297,9 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Testing that VM is in suspended state
         self.cmd('az vmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'suspended')])
+
+        # Deleting the VM.
+        self.cmd('az vmware vm delete -g {rg} -n {name}')
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_vm_template_list_and_show(self, resource_group):
@@ -321,40 +384,128 @@ class Vmware_csScenarioTest(ScenarioTest):
 
         self.cmd('az vmware private-cloud list')
 
-    # @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    # def test_vmware_cs_vm_add_disk(self, resource_group):
+    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
+    def test_vmware_cs_vm_disk_apis(self, resource_group):
 
-    #     self.kwargs.update({
-    #         'name': self.create_random_name(prefix='cli-test', length=24),
-    #         'loc': 'eastus',
-    #         'pc': 'avs-test-eastus'
-    #     })
+        self.kwargs.update({
+            'name': self.create_random_name(prefix='cli-test', length=24),
+            'loc': 'eastus',
+            'pc': 'avs-test-eastus',
+            'vm_template': 'vm-125',
+            'rp': 'resgroup-169',
+        })
 
-    #     # Ensuring that CloudSimple commands are available by setting the correct provider.
-    #     self.cmd('az vmware set-provider -n cs')
+        # Ensuring that CloudSimple commands are available by setting the correct provider.
+        self.cmd('az vmware set-provider -n cs')
 
-    #     # Creating a VM.
-    #     self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024 --cores 1 \
-    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-169')
+        # Creating a VM.
+        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \
+                 --private-cloud {pc} --template {vm_template} --resource-pool {rp}')
 
-    #     # Add a disk
-    #     self.cmd('az vmware vm add-disk -g {rg} -n {name}')
+        # Add a disk with the default values
+        self.cmd('az vmware vm disk add -g {rg} --vm-name {name}',
+                 checks=[
+                     self.check('disks | [1].controllerId', '1000'),
+                     self.check('disks | [1].independenceMode', "persistent"),
+                     self.check('disks | [1].totalSize', 16777216),
+                 ])
 
-    # @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    # def test_vmware_cs_vm_add_nic(self, resource_group):
+        # Add a custom disk
+        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
+                 --mode independent_nonpersistent --size 8388608',
+                 checks=[
+                     self.check('disks | [2].controllerId', '1000'),
+                     self.check('disks | [2].independenceMode', "independent_nonpersistent"),
+                     self.check('disks | [2].totalSize', 8388608)
+                 ])
 
-    #     self.kwargs.update({
-    #         'name': self.create_random_name(prefix='cli-test', length=24),
-    #         'loc': 'eastus',
-    #         'pc': 'avs-test-eastus'
-    #     })
+        # Show a disk
+        self.cmd('az vmware vm disk show -g {rg} --vm-name {name} -n "Hard disk 1"',
+                 checks=[
+                     self.check('controllerId', '1000'),
+                     self.check('independenceMode', "persistent"),
+                     self.check('totalSize', 16777216),
+                     self.check('virtualDiskName', "Hard disk 1")
+                 ])
 
-    #     # Ensuring that CloudSimple commands are available by setting the correct provider.
-    #     self.cmd('az vmware set-provider -n cs')
+        # Checking that the number of disk in the VM is 3 now.
+        count = len(self.cmd('az vmware vm disk list -g {rg} \
+                             --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 3)
 
-    #     # Creating a VM.
-    #     self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024 --cores 1 \
-    #              --private-cloud {pc} --template vm-125 --resource-pool resgroup-169')
+        # Delete disks
+        self.cmd('az vmware vm disk delete -g {rg} --vm-name {name} \
+                 --disks "Hard disk 1" "Hard disk 2"')
 
-    #     # Add a disk
-    #     self.cmd('az vmware vm add-disk -g {rg} -n {name} --virtual-network dvportgroup-85')
+        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
+                 --mode independent_nonpersistent --size 8388608')
+
+        # Checking that the number of disk in the VM is 2 now.
+        count = len(self.cmd('az vmware vm disk list -g {rg} \
+                             --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 2)
+
+        # Deleting the VM.
+        self.cmd('az vmware vm delete -g {rg} -n {name}')
+
+    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
+    def test_vmware_cs_vm_nic_apis(self, resource_group):
+
+        self.kwargs.update({
+            'name': self.create_random_name(prefix='cli-test', length=24),
+            'loc': 'eastus',
+            'pc': 'avs-test-eastus',
+            'vm_template': 'vm-125',
+            'rp': 'resgroup-169',
+            'vnet': 'dvportgroup-85'
+        })
+
+        # Ensuring that CloudSimple commands are available by setting the correct provider.
+        self.cmd('az vmware set-provider -n cs')
+
+        # Creating a VM.
+        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \
+                 --private-cloud {pc} --template {vm_template} --resource-pool {rp}')
+
+        # Add a nic with the default values
+        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
+                 checks=[
+                     self.check('nics | [1].nicType', 'VMXNET3'),
+                     self.check('nics | [1].powerOnBoot', None),
+                     self.check('nics | [1].network.name', 'Datacenter/Workload01')
+                 ])
+
+        # Add a custom nic
+        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} \
+                 --virtual-network {vnet} --adapter E1000 --power-on-boot false',
+                 checks=[
+                     self.check('nics | [2].nicType', 'E1000'),
+                     self.check('nics | [2].powerOnBoot', None),
+                     self.check('nics | [1].network.name', 'Datacenter/Workload01')
+                 ])
+
+        # Show a nic
+        self.cmd('az vmware vm nic show -g {rg} --vm-name {name} -n "Network adapter 1"',
+                 checks=[
+                     self.check('nicType', 'VMXNET3'),
+                     self.check('powerOnBoot', True),
+                     self.check('network.name', 'Datacenter/Workload01'),
+                     self.check('virtualNicName', "Network adapter 1")
+                 ])
+
+        # Checking that the number of nic in the VM is 3 now.
+        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 3)
+
+        # Delete nics
+        self.cmd('az vmware vm nic delete -g {rg} --vm-name {name} \
+                 --nics "Network adapter 1" "Network adapter 2"')
+
+        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}')
+
+        # Checking that the number of nic in the VM is 2 now.
+        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 2)
+
+        # Deleting the VM.
+        self.cmd('az vmware vm delete -g {rg} -n {name}')

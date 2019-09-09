@@ -85,7 +85,7 @@ def load_arguments(self, _):
 
             c.argument('disks', options_list=['--disk'], action=AddDiskAction, arg_group='Storage', nargs='+')
 
-            c.argument('controller', options_list=['--controller'], arg_group='Storage',
+            c.argument('controller', options_list=['--controller'],
                        help="The SCSI controller.")
             c.argument('independence_mode', options_list=['--mode'], arg_group='Storage',
                        arg_type=get_enum_type(DiskIndependenceMode),
@@ -101,17 +101,17 @@ def load_arguments(self, _):
                        help="Name of the virtual machine.",
                        validator=vm_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
-            c.argument('virtual_network', options_list=['--virtual-network'],
+            c.argument('virtual_network', options_list=['--virtual-network'], arg_group='Network',
                        help="Name or ID of the virtual network.")
-            c.argument('adapter', options_list=['--adapter'],
+            c.argument('adapter', options_list=['--adapter'], arg_group='Network',
                        arg_type=get_enum_type(NICType),
                        help="The adapter for the NIC.")
-            c.argument('power_on_boot', options_list=['--power-on-boot'],
+            c.argument('power_on_boot', options_list=['--power-on-boot'], arg_group='Network',
                        arg_type=get_three_state_flag(),
                        help="Will power on the NIC at boot time.")
-            c.argument('nic_name', options_list=['--name', '-n'],
+            c.argument('nic_name', options_list=['--name', '-n'], arg_group='Network',
                        help="Name of the NIC.")
-            c.argument('nic_names', options_list=['--nics'], nargs='+',
+            c.argument('nic_names', options_list=['--nics'], nargs='+', arg_group='Network',
                        help="Names of NICs.")
 
         with self.argument_context('vmware vm disk') as c:
@@ -119,17 +119,17 @@ def load_arguments(self, _):
                        help="Name of the virtual machine.",
                        validator=vm_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
-            c.argument('controller', options_list=['--controller'],
+            c.argument('controller', options_list=['--controller'], arg_group='Storage',
                        help="The SCSI controller.")
-            c.argument('independence_mode', options_list=['--mode'],
+            c.argument('independence_mode', options_list=['--mode'], arg_group='Storage',
                        arg_type=get_enum_type(DiskIndependenceMode),
                        help="The disk independence mode.")
-            c.argument('size', options_list=['--size'],
+            c.argument('size', options_list=['--size'], arg_group='Storage',
                        validator=disk_size_validator,
                        help="The amount of disk size in KB.")
-            c.argument('disk_name', options_list=['--name', '-n'],
+            c.argument('disk_name', options_list=['--name', '-n'], arg_group='Storage',
                        help="Name of the disk.")
-            c.argument('disk_names', options_list=['--disks'], nargs='+',
+            c.argument('disk_names', options_list=['--disks'], nargs='+', arg_group='Storage',
                        help="Names of disks.")
 
         with self.argument_context('vmware vm-template') as c:
