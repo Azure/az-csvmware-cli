@@ -74,3 +74,6 @@ def load_command_table(self, _):
         with self.command_group('vmware', client_factory=cf_vmware_cs) as g:
             g.custom_command('set-region', 'set_region')
             g.custom_command('get-region', 'get_region')
+
+    with self.command_group('vmware', is_preview=True):
+        pass

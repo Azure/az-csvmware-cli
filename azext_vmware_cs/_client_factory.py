@@ -13,12 +13,20 @@ def cf_vmware_cs(cli_ctx, *_):
     Generic client factory
     """
     from azure.cli.core.commands.client_factory import get_mgmt_service_client
+
+    # This vendored_sdk import is temporary. Import should be from published SDK
+    # TODO: Change when production SDK published.
     from azext_vmware_cs.vendored_sdks import VMwareCloudSimpleClient
+
     from ._config import (REGION_ID, REFERER)
     return get_mgmt_service_client(cli_ctx,
                                    VMwareCloudSimpleClient,
                                    referer=REFERER,
                                    region_id=REGION_ID)
+    # The region_id parameter shouldn't be in the client as
+    # one subscription could have avs in multiple regions.
+    # This is a swagger issue which is being followed on.
+    # TODO: Remove after swagger issue fixed
 
 
 def cf_virtual_machine(cli_ctx, *_):

@@ -18,6 +18,18 @@ TEST_DIR = os.path.abspath(os.path.join(os.path.abspath(__file__), '..'))
 class Vmware_csScenarioTest(ScenarioTest):
     """
     Test for AVS by CloudSimple CLI commands.
+    This tests various command exposed by CloudSimple CLI.
+    To run the tests, run 'azdev test vmware_cs --discover --live'
+
+    The prerequisites for the tests are that you should be logged in to a subscription in the CLI.
+    That subscription should contain:
+    az_cli_cs_test resource group,
+    avs-test-eastus private cloud,
+    vm-125 vm template in vSphere,
+    resgroup-169 resource pool in vSphere,
+    dvportgroup-85 virtual network.
+
+    You can modify the above specified params in this test file.
     """
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
@@ -200,7 +212,7 @@ class Vmware_csScenarioTest(ScenarioTest):
                      self.check('numberOfCores', 1)
                  ])
 
-        # Creating a VM with default parameters from the vm template
+        # Creating a VM with default parameters from the vm template and adding a nic
         self.cmd('az vmware vm create -g {rg} -n {name2} \
                  -p {pc} --template {vm_template} -r {rp} \
                  --nic name=NicNameWouldBeReassigned virtual-network=dvportgroup-85 \
@@ -437,14 +449,6 @@ class Vmware_csScenarioTest(ScenarioTest):
         self.cmd('az vmware vm disk delete -g {rg} --vm-name {name} \
                  --disks "Hard disk 1" "Hard disk 2"')
 
-        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
-                 --mode independent_nonpersistent --size 8388608')
-
-        # Checking that the number of disk in the VM is 2 now.
-        count = len(self.cmd('az vmware vm disk list -g {rg} \
-                             --vm-name {name}').get_output_in_json())
-        self.assertEqual(count, 2)
-
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')
 
@@ -500,12 +504,6 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Delete nics
         self.cmd('az vmware vm nic delete -g {rg} --vm-name {name} \
                  --nics "Network adapter 1" "Network adapter 2"')
-
-        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}')
-
-        # Checking that the number of nic in the VM is 2 now.
-        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
-        self.assertEqual(count, 2)
 
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')

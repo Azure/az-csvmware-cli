@@ -49,6 +49,9 @@ def get_provider():
     return provider
 
 
+# This API is broken, as it doesn't take regionId as parameter for the method
+# Instead regionId is a parameter in the client
+# TODO: Change after thos issue is fixed in swagger
 def list_private_cloud_by_region(client):
     """
     Returns a list of private clouds in the current region.

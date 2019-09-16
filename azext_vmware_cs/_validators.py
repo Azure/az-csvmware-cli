@@ -8,7 +8,9 @@ Which validator method to be used for which argument, is defined in _params.py f
 """
 
 from knack.util import CLIError
-from ._utils import vm_cs_create_resource_id
+from ._utils import (vm_cs_create_resource_id,
+                     vmware_cs_name_or_id_validator,
+                     only_resource_name_validator)
 
 
 def _check_postive_integer(parameter, value):
@@ -77,67 +79,50 @@ def location_validator(cmd, namespace):
         namespace.location = rg.location
 
 
-def private_cloud_name_or_id_validator(cmd, namespace):
-    """
-    Checks whether the passed value is a valid resource id.
-    If not, then assuming that the passed value is a resource name, a resource id is constructed.
-    If the constructed resource id is also invalid, an error is raised.
-    """
-    from azure.cli.core.commands.client_factory import get_subscription_id
-    from msrestazure.tools import is_valid_resource_id
-    if namespace.private_cloud:
-        if not is_valid_resource_id(namespace.private_cloud):
-            namespace.private_cloud = vm_cs_create_resource_id(subscription=get_subscription_id(cmd.cli_ctx),
-                                                               namespace='Microsoft.VMwareCloudSimple',
-                                                               location=namespace.location,
-                                                               resource_type='privateClouds',
-                                                               resource_name=namespace.private_cloud)
-    if not is_valid_resource_id(namespace.private_cloud):
-        raise CLIError('Invalid private cloud.')
-
-
 def private_cloud_only_name_validator(namespace):
     """
-    Checks whether the passed value is just the resource name (and not the resource id).
+    Checks whether the private cloud value is just the resource name (and not the resource id).
     If its the resource id, then the resource name is extracted.
     """
-    from msrestazure.tools import is_valid_resource_id
     if namespace.private_cloud:
-        if is_valid_resource_id(namespace.private_cloud):
-            namespace.private_cloud = namespace.private_cloud.rsplit('/', 1)[-1]
+        namespace.private_cloud = only_resource_name_validator(namespace.private_cloud)
 
 
 def resource_pool_only_name_validator(namespace):
     """
-    Checks whether the passed value is just the resource name (and not the resource id).
+    Checks whether the resource pool value is just the resource name (and not the resource id).
     If its the resource id, then the resource name is extracted.
     """
-    from msrestazure.tools import is_valid_resource_id
     if namespace.resource_pool:
-        if is_valid_resource_id(namespace.resource_pool):
-            namespace.resource_pool = namespace.resource_pool.rsplit('/', 1)[-1]
+        namespace.resource_pool = only_resource_name_validator(namespace.resource_pool)
 
 
 def template_only_name_validator(namespace):
     """
-    Checks whether the passed value is just the resource name (and not the resource id).
+    Checks whether the vm template value is just the resource name (and not the resource id).
     If its the resource id, then the resource name is extracted.
     """
-    from msrestazure.tools import is_valid_resource_id
     if namespace.template:
-        if is_valid_resource_id(namespace.template):
-            namespace.template = namespace.template.rsplit('/', 1)[-1]
+        namespace.template = only_resource_name_validator(namespace.template)
 
 
 def vnet_only_name_validator(namespace):
     """
-    Checks whether the passed value is just the resource name (and not the resource id).
+    Checks whether the virtual network value is just the resource name (and not the resource id).
     If its the resource id, then the resource name is extracted.
     """
-    from msrestazure.tools import is_valid_resource_id
     if namespace.virtual_network:
-        if is_valid_resource_id(namespace.virtual_network):
-            namespace.virtual_network = namespace.virtual_network.rsplit('/', 1)[-1]
+        namespace.virtual_network = only_resource_name_validator(namespace.virtual_network)
+
+
+def private_cloud_name_or_id_validator(cmd, namespace):
+    """
+    Checks whether the private cloud value is a valid resource id.
+    If not, then assuming that the passed value is a resource name, a resource id is constructed.
+    If the constructed resource id is also invalid, an error is raised.
+    """
+    if namespace.private_cloud:
+        namespace.private_cloud = vmware_cs_name_or_id_validator(cmd, namespace, 'private cloud')
 
 
 def template_name_or_id_validator(cmd, namespace):
@@ -146,22 +131,11 @@ def template_name_or_id_validator(cmd, namespace):
     If not, then assuming that the passed value is a resource name, a resource id is constructed.
     If the constructed resource id is also invalid, an error is raised.
     """
-    from azure.cli.core.commands.client_factory import get_subscription_id
-    from msrestazure.tools import is_valid_resource_id
     if namespace.template:
-        private_cloud = namespace.private_cloud
-        if is_valid_resource_id(private_cloud):
-            private_cloud = private_cloud.rsplit('/', 1)[-1]
-        if not is_valid_resource_id(namespace.template):
-            namespace.template = vm_cs_create_resource_id(subscription=get_subscription_id(cmd.cli_ctx),
-                                                          namespace='Microsoft.VMwareCloudSimple',
-                                                          location=namespace.location,
-                                                          resource_type='privateClouds',
-                                                          resource_name=private_cloud,
-                                                          child_type='virtualmachinetemplates',
-                                                          child_name=namespace.template)
-    if not is_valid_resource_id(namespace.template):
-        raise CLIError('Invalid template.')
+        namespace.template = vmware_cs_name_or_id_validator(cmd, namespace,
+                                                            'template',
+                                                            'virtualmachinetemplates',
+                                                            namespace.template)
 
 
 def resource_pool_name_or_id_validator(cmd, namespace):
@@ -170,22 +144,11 @@ def resource_pool_name_or_id_validator(cmd, namespace):
     If not, then assuming that the passed value is a resource name, a resource id is constructed.
     If the constructed resource id is also invalid, an error is raised.
     """
-    from azure.cli.core.commands.client_factory import get_subscription_id
-    from msrestazure.tools import is_valid_resource_id
     if namespace.resource_pool:
-        private_cloud = namespace.private_cloud
-        if is_valid_resource_id(private_cloud):
-            private_cloud = private_cloud.rsplit('/', 1)[-1]
-        if not is_valid_resource_id(namespace.resource_pool):
-            namespace.resource_pool = vm_cs_create_resource_id(subscription=get_subscription_id(cmd.cli_ctx),
-                                                               namespace='Microsoft.VMwareCloudSimple',
-                                                               location=namespace.location,
-                                                               resource_type='privateClouds',
-                                                               resource_name=private_cloud,
-                                                               child_type='resourcepools',
-                                                               child_name=namespace.resource_pool)
-    if not is_valid_resource_id(namespace.resource_pool):
-        raise CLIError('Invalid resource pool.')
+        namespace.resource_pool = vmware_cs_name_or_id_validator(cmd, namespace,
+                                                                 'resource pool',
+                                                                 'resourcepools',
+                                                                 namespace.resource_pool)
 
 
 def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_group_name,

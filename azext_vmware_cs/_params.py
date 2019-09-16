@@ -68,11 +68,11 @@ def load_arguments(self, _):
             c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                        validator=resource_pool_name_or_id_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud.")
+                       help="Name or ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud. If you're entering the name, resgroup-* is expected.")
             c.argument('template', options_list=['--template'],
                        validator=template_name_or_id_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualmachinetemplates'),
-                       help="Name or ID of the vSphere template from which this virtual machine will be created.")
+                       help="Name or ID of the vSphere template from which this virtual machine will be created. If you're entering the name, vm-* is expected.")
             c.argument('private_cloud', options_list=['--private-cloud', '-p'],
                        validator=private_cloud_name_or_id_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
@@ -84,17 +84,6 @@ def load_arguments(self, _):
             c.argument('nics', options_list=['--nic'], action=AddNicAction, arg_group='Network', nargs='+')
 
             c.argument('disks', options_list=['--disk'], action=AddDiskAction, arg_group='Storage', nargs='+')
-
-            c.argument('controller', options_list=['--controller'],
-                       help="The SCSI controller.")
-            c.argument('independence_mode', options_list=['--mode'], arg_group='Storage',
-                       arg_type=get_enum_type(DiskIndependenceMode),
-                       help="The disk independence mode.")
-            c.argument('size', options_list=['--size'], arg_group='Storage',
-                       validator=disk_size_validator,
-                       help="The amount of disk size in KB.")
-            c.argument('disk_name', options_list=['--name', '-n'], arg_group='Storage',
-                       help="Name of the disk.")
 
         with self.argument_context('vmware vm nic') as c:
             c.argument('vm_name', options_list=['--vm-name'],
@@ -120,7 +109,7 @@ def load_arguments(self, _):
                        validator=vm_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
             c.argument('controller', options_list=['--controller'], arg_group='Storage',
-                       help="The SCSI controller.")
+                       help="The SCSI controller. Input 1000 for SCSI controller 0, and 15000 for SATA controller 0.")
             c.argument('independence_mode', options_list=['--mode'], arg_group='Storage',
                        arg_type=get_enum_type(DiskIndependenceMode),
                        help="The disk independence mode.")
@@ -140,11 +129,11 @@ def load_arguments(self, _):
             c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud.")
+                       help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud. If you're entering the name, resgroup-* is expected.")
             c.argument('template', options_list=['--name', '-n'],
                        validator=template_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualmachinetemplates'),
-                       help="Name or ID of the vSphere virtual machine template.")
+                       help="Name or ID of the vSphere virtual machine template. If you're entering the name, vm-* is expected.")
 
         with self.argument_context('vmware virtual-network') as c:
             c.argument('private_cloud', options_list=['--private-cloud', '-p'],
@@ -154,7 +143,7 @@ def load_arguments(self, _):
             c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the resource pool used to derive vSphere cluster which contains virtual networks.")
+                       help="Name or ID of the resource pool used to derive vSphere cluster which contains virtual networks. If you're entering the name, resgroup-* is expected.")
             c.argument('virtual_network', options_list=['--name', '-n'],
                        validator=vnet_only_name_validator,
                        help="Name or ID of the virtual network (vsphereId).")
@@ -167,4 +156,4 @@ def load_arguments(self, _):
             c.argument('resource_pool', options_list=['--name', '-n'],
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                       help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud.")
+                       help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud. If you're entering the name, resgroup-* is expected.")
