@@ -10,8 +10,7 @@ Here the commands are registered so that they can used in the CLI.
 
 from azure.cli.core.commands import CliCommandType
 from azext_vmware_cs._client_factory import (cf_vmware_cs,
-                                             cf_virtual_machine,
-                                             cf_private_cloud_by_region)
+                                             cf_virtual_machine)
 from ._utils import get_vmware_provider
 from ._config import VmwareProviders
 from ._format import (transform_vm_table_output)
@@ -68,8 +67,9 @@ def load_command_table(self, _):
             g.custom_command('show', 'show_resource_pool')
             g.custom_command('list', 'list_resource_pool')
 
-        with self.command_group('vmware private-cloud', client_factory=cf_private_cloud_by_region) as g:
+        with self.command_group('vmware private-cloud', client_factory=cf_vmware_cs) as g:
             g.custom_command('list', 'list_private_cloud_by_region')
+            g.custom_command('show', 'show_private_cloud')
 
         with self.command_group('vmware', client_factory=cf_vmware_cs) as g:
             g.custom_command('set-region', 'set_region')

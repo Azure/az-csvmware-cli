@@ -36,13 +36,6 @@ def cf_virtual_machine(cli_ctx, *_):
     return cf_vmware_cs(cli_ctx).virtual_machine
 
 
-def cf_private_cloud_by_region(cli_ctx, *_):
-    """
-    Client factory for private cloud by region operations
-    """
-    return cf_vmware_cs(cli_ctx).private_cloud_by_region
-
-
 def _resource_client_factory(cli_ctx, **_):
     """
     Client factory for resource client

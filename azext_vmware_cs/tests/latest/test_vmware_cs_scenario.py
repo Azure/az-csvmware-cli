@@ -6,10 +6,10 @@
 import os
 import unittest
 
+from knack.util import CLIError
 from azure_devtools.scenario_tests import AllowLargeResponse
 from azure.cli.testsdk import (ScenarioTest, ResourceGroupPreparer)
 from msrestazure.azure_exceptions import CloudError
-from knack.util import CLIError
 import logging
 
 TEST_DIR = os.path.abspath(os.path.join(os.path.abspath(__file__), '..'))
@@ -186,23 +186,28 @@ class Vmware_csScenarioTest(ScenarioTest):
         """
 
         self.kwargs.update({
-            'name': self.create_random_name(prefix='cli-test', length=24),
+            'name1': self.create_random_name(prefix='cli-test', length=24),
             'name2': self.create_random_name(prefix='cli-test', length=24),
+            'name3': self.create_random_name(prefix='cli-test', length=24),
+            'name4': self.create_random_name(prefix='cli-test', length=24),
+            'name5': self.create_random_name(prefix='cli-test', length=24),
+            'name6': self.create_random_name(prefix='cli-test', length=24),
             'rg': 'az_cli_cs_test',
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
             'rp': 'resgroup-169',
+            'vnet': 'dvportgroup-85'
         })
 
         # Ensuring that CloudSimple commands are available by setting the correct provider.
         self.cmd('az vmware set-provider -n cs')
 
         # Creating a VM with default parameters from the vm template
-        self.cmd('az vmware vm create -g {rg} -n {name} -p {pc} --template {vm_template} -r {rp}',
+        self.cmd('az vmware vm create -g {rg} -n {name1} -p {pc} --template {vm_template} -r {rp}',
                  checks=[
                      self.check('provisioningState', 'Succeeded'),
                      self.check('resourceGroup', '{rg}'),
-                     self.check('name', '{name}'),
+                     self.check('name', '{name1}'),
                      self.check('amountOfRam', 1024),
                      self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
                      self.check('guestOs', 'Ubuntu Linux (64-bit)'),
@@ -215,7 +220,7 @@ class Vmware_csScenarioTest(ScenarioTest):
         # Creating a VM with default parameters from the vm template and adding a nic
         self.cmd('az vmware vm create -g {rg} -n {name2} \
                  -p {pc} --template {vm_template} -r {rp} \
-                 --nic name=NicNameWouldBeReassigned virtual-network=dvportgroup-85 \
+                 --nic name=NicNameWouldBeReassigned virtual-network={vnet} \
                  adapter=VMXNET3 power-on-boot=True',
                  checks=[
                      self.check('provisioningState', 'Succeeded'),
@@ -234,11 +239,107 @@ class Vmware_csScenarioTest(ScenarioTest):
                      self.check('numberOfCores', 1)
                  ])
 
-        # Deleting the VM.
-        self.cmd('az vmware vm delete -g {rg} -n {name}')
+        # Customizing specific properties of a VM. Changing the number of cores to 2 and adapter of
+        # "Network adapter 1" nic to E1000E, from that specified in the template.
+        self.cmd('az vmware vm create -n {name3} -g {rg} -p {pc} -r {rp} --template {vm_template} \
+                 --cores 2 --nic name="Network adapter 1" adapter=E1000E',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name3}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('nics | [0].nicType', 'E1000E'),
+                     self.check('numberOfCores', 2)
+                 ])
 
-        # Deleting the VM.
+        # Customizing specific properties of a VM. Changing the adapter of
+        # "Network adapter 1" nic to E1000E, from that specified in the
+        # template, and also adding another nic with virtual network
+        # MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
+        self.cmd('az vmware vm create -g {rg} -n {name4} \
+                 -p {pc} --template {vm_template} -r {rp} \
+                 --nic name="Network adapter 1" adapter=E1000E --nic \
+                 name=NicNameWouldBeReassigned virtual-network={vnet} \
+                 adapter=VMXNET3 power-on-boot=True',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name4}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('nics | [0].nicType', 'E1000E'),
+                     self.check('nics | [1].virtualNicName', 'Network adapter 2'),
+                     self.check('nics | [1].powerOnBoot', True),
+                     self.check('nics | [1].nicType', 'VMXNET3'),
+                     self.check('nics | [1].network.name', 'Datacenter/Workload01'),
+                     self.check('numberOfCores', 1)
+                 ])
+
+        # Creating a virtual machine and adding an extra disk
+        # to the VM with SCSI controller 0, persistent
+        # mode, and 41943040 KB size.
+        self.cmd('az vmware vm create -n {name5} -g {rg} -p {pc} -r {rp} --template {vm_template} \
+                 --disk name=DiskNameWouldBeReassigned controller=1000 \
+                 mode=persistent size=41943040',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name5}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('disks | [1].controllerId', '1000'),
+                     self.check('disks | [1].independenceMode', 'persistent'),
+                     self.check('disks | [1].totalSize', 41943040),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('numberOfCores', 1)
+                 ])
+
+        # Customizing specific properties of a VM. Changing the
+        # size of "Hard disk 1" disk to 21943040 KB,
+        # from that specified in the template, and also adding
+        # another disk with SCSI controller 0,
+        # persistent mode, and 41943040 KB size.
+        self.cmd('az vmware vm create -g {rg} -n {name6} \
+                 -p {pc} --template {vm_template} -r {rp} \
+                 --disk name="Hard disk 1" size=21943040 --disk \
+                 name=DiskNameWouldBeReassigned controller=1000 \
+                 mode=persistent size=41943040',
+                 checks=[
+                     self.check('provisioningState', 'Succeeded'),
+                     self.check('resourceGroup', '{rg}'),
+                     self.check('name', '{name6}'),
+                     self.check('amountOfRam', 1024),
+                     self.check('disks | [0].virtualDiskName', 'Hard disk 1'),
+                     self.check('disks | [0].totalSize', 21943040),
+                     self.check('disks | [1].controllerId', '1000'),
+                     self.check('disks | [1].independenceMode', 'persistent'),
+                     self.check('disks | [1].totalSize', 41943040),
+                     self.check('guestOs', 'Ubuntu Linux (64-bit)'),
+                     self.check('guestOsType', 'linux'),
+                     self.check('location', 'eastus'),
+                     self.check('nics | [0].virtualNicName', 'Network adapter 1'),
+                     self.check('numberOfCores', 1)
+                 ])
+
+        # Deleting the VMs.
+        self.cmd('az vmware vm delete -g {rg} -n {name1}')
         self.cmd('az vmware vm delete -g {rg} -n {name2}')
+        self.cmd('az vmware vm delete -g {rg} -n {name3}')
+        self.cmd('az vmware vm delete -g {rg} -n {name4}')
+        self.cmd('az vmware vm delete -g {rg} -n {name5}')
+        self.cmd('az vmware vm delete -g {rg} -n {name6}')
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_start_stop(self, resource_group):
@@ -316,7 +417,7 @@ class Vmware_csScenarioTest(ScenarioTest):
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_vm_template_list_and_show(self, resource_group):
         """
-        Tests the list vm templates command.
+        Tests the list and show vm templates command.
         """
         self.kwargs.update({
             'rp': 'resgroup-169',
@@ -336,7 +437,7 @@ class Vmware_csScenarioTest(ScenarioTest):
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_vnet_list_and_show(self, resource_group):
         """
-        Tests the list virtual networks command.
+        Tests the list and show virtual networks command.
         """
         self.kwargs.update({
             'rp': 'resgroup-169',
@@ -355,7 +456,7 @@ class Vmware_csScenarioTest(ScenarioTest):
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_resource_pool_list_and_show(self, resource_group):
         """
-        Tests the list resource pools command.
+        Tests the list and show resource pools command.
         """
         self.kwargs.update({
             'rp': 'resgroup-169',
@@ -389,12 +490,20 @@ class Vmware_csScenarioTest(ScenarioTest):
                  checks=[self.check('{CONFIG_REGION_FIELD_NAME}', '{region_id}')])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_list_private_cloud(self, resource_group):
+    def test_vmware_private_cloud_list_and_show(self, resource_group):
         """
-        Tests the list private clouds command.
+        Tests the list and show private clouds command.
         """
-
+        self.kwargs.update({
+            'pc': 'avs-test-eastus'
+        })
         self.cmd('az vmware private-cloud list')
+
+        self.cmd('az vmware private-cloud show -n {pc}',
+                 checks=[
+                     self.check('location', 'eastus'),
+                     self.check('name', '{pc}')
+                 ])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_disk_apis(self, resource_group):
@@ -445,9 +554,23 @@ class Vmware_csScenarioTest(ScenarioTest):
                              --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 3)
 
-        # Delete disks
-        self.cmd('az vmware vm disk delete -g {rg} --vm-name {name} \
-                 --disks "Hard disk 1" "Hard disk 2"')
+        # Delete disks. Among the given disks, two disk are present in VM and one disk is absent.
+        # The present disk should be deleted, and an error for the absent disk should be displayed.
+        with self.assertRaisesRegexp(CLIError, "Hard disk 4 not present in the given virtual machine."):
+            self.cmd('az vmware vm disk delete -g {rg} --vm-name {name} \
+                     --disks "Hard disk 1" "Hard disk 2" "Hard disk 4"')
+
+        # Polling till update operation is complete
+        vm_status = self.cmd('az vmware vm show -g {rg} -n \
+                             {name}').get_output_in_json()["status"]
+        while vm_status == "updating":
+            vm_status = self.cmd('az vmware vm show -g {rg} -n \
+                                 {name}').get_output_in_json()["status"]
+
+        # Checking that the number of disk in the VM is 1 now.
+        count = len(self.cmd('az vmware vm disk list -g {rg} \
+                             --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 1)
 
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')
@@ -497,13 +620,26 @@ class Vmware_csScenarioTest(ScenarioTest):
                      self.check('virtualNicName', "Network adapter 1")
                  ])
 
-        # Checking that the number of nic in the VM is 3 now.
+        # Checking that the number of nics in the VM is 3 now.
         count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 3)
 
-        # Delete nics
-        self.cmd('az vmware vm nic delete -g {rg} --vm-name {name} \
-                 --nics "Network adapter 1" "Network adapter 2"')
+        # Delete nics. Among the given nics, two nics are present in VM and one nic is absent.
+        # The present nics should be deleted, and an error for the absent nic should be displayed.
+        with self.assertRaisesRegexp(CLIError, 'Network adapter 4 not present in the given virtual machine.'):
+            self.cmd('az vmware vm nic delete -g {rg} --vm-name {name} \
+                     --nics "Network adapter 1" "Network adapter 2" "Network adapter 4"')
+
+        # Polling till update operation is complete
+        vm_status = self.cmd('az vmware vm show -g {rg} -n \
+                             {name}').get_output_in_json()["status"]
+        while vm_status == "updating":
+            vm_status = self.cmd('az vmware vm show -g {rg} -n \
+                                 {name}').get_output_in_json()["status"]
+
+        # Checking that the number of nics in the VM is 1 now.
+        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
+        self.assertEqual(count, 1)
 
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')

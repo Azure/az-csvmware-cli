@@ -4,7 +4,7 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 """
-This file contains the help strings (summaries) for all commands and command groups.
+This file contains the help strings (summaries and examples) for all commands and command groups.
 """
 
 from knack.help_files import helps  # pylint: disable=unused-import
@@ -20,19 +20,16 @@ helps['vmware set-provider'] = """
     type: command
     short-summary: Set the Azure VMware Solution provider.
     examples:
-        - name: Set provider to cs
+        - name: Set the current provider.
           text: >
-            az vmware set-provider -n cs
-        - name: Set provider to vs
-          text: >
-            az vmware set-provider -n vs
+            az vmware set-provider -n MyProvider
 """
 
 helps['vmware get-provider'] = """
     type: command
     short-summary: Get the Azure VMware Solution provider.
     examples:
-        - name: Get provider
+        - name: Get the current provider.
           text: >
             az vmware get-provider
 """
@@ -70,11 +67,11 @@ if get_vmware_provider() == VmwareProviders.CS:
                 Usage:   --disk name=MyDiskName controller=SCSIControllerID mode=IndependenceMode size=DiskSizeInKB
 
         examples:
-            - name: Creating a virtual machine with default parameters from the vm template.
+            - name: Creating a VM with default parameters from the vm template.
               text: >
                 az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate
 
-            - name: Creating a virtual machine and adding an extra nic to the VM with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
+            - name: Creating a VM and adding an extra nic to the VM with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
                     The name entered in the nic is for identification purposes only, to see if such a nic name exists in the vm template, else a nic is created and name is reassigned.
                     Lets say the vm template contains a nic with name "Network adapter 1".
               text: >
@@ -88,7 +85,7 @@ if get_vmware_provider() == VmwareProviders.CS:
               text: >
                 az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name="Network adapter 1" adapter=E1000E --nic name=NicNameWouldBeReassigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
 
-            - name: Creating a virtual machine and adding an extra disk to the VM with SCSI controller 0, persistent mode, and 41943040 KB size.
+            - name: Creating a VM and adding an extra disk to the VM with SCSI controller 0, persistent mode, and 41943040 KB size.
                     The name entered in the disk is for identification purposes only, to see if such a disk name exists in the vm template, else a disk is created and name is reassigned.
                     Lets say the vm template contains a disk with name "Hard disk 1".
               text: >
@@ -102,31 +99,68 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware vm list'] = """
         type: command
         short-summary: List details of VMware virtual machines in the current subscription. If resource group is specified, only the details of virtual machines in that resource group would be listed.
+        examples:
+            - name: List details of VMware VMs in the current subscription.
+              text: >
+                az vmware vm list
+
+            - name: List details of VMware VMs in a particular resource group.
+              text: >
+                az vmware vm list -g MyResourceGroup
+
     """
 
     helps['vmware vm delete'] = """
         type: command
         short-summary: Delete a VMware virtual machine.
+        examples:
+            - name: Delete a VMware VM.
+              text: >
+                az vmware vm delete -n MyVm -g MyResourceGroup
     """
 
     helps['vmware vm show'] = """
         type: command
         short-summary: Get the details of a VMware virtual machine.
+        examples:
+            - name: Get the details of a VMware VM.
+              text: >
+                az vmware vm show -n MyVm -g MyResourceGroup
     """
 
     helps['vmware vm start'] = """
         type: command
         short-summary: Start a VMware virtual machine.
+        examples:
+            - name: Start a VMware VM.
+              text: >
+                az vmware vm start -n MyVm -g MyResourceGroup
     """
 
     helps['vmware vm stop'] = """
         type: command
         short-summary: Stop a VMware virtual machine.
+        examples:
+            - name: Power off a VMware VM.
+              text: >
+                az vmware vm stop -n MyVm -g MyResourceGroup --mode poweroff
+
+            - name: Restart a VMware VM.
+              text: >
+                az vmware vm stop -n MyVm -g MyResourceGroup --mode reboot
     """
 
     helps['vmware vm update'] = """
         type: command
         short-summary: Update the tags field of a VMware virtual machine.
+        examples:
+            - name: Add or update a tag.
+              text: >
+                az vmware vm update -n MyVm -g MyResourceGroup --set tags.tagName=tagValue
+
+            - name: Remove a tag.
+              text: >
+               az vmware vm update -n MyVm -g MyResourceGroup --remove tags.tagName
     """
 
     helps['vmware vm nic'] = """
@@ -137,21 +171,41 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware vm nic add'] = """
         type: command
         short-summary: Add NIC to a VMware virtual machine.
+        examples:
+            - name: Add a NIC with default parameters in a VM.
+              text: >
+                az vmware vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork
+
+            - name: Add a NIC with E1000E adapter that powers on boot in a VM.
+              text: >
+                az vmware vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork --adapter E1000E --power-on-boot true
     """
 
     helps['vmware vm nic list'] = """
         type: command
         short-summary: List details of NICs available on a VMware virtual machine.
+        examples:
+            - name: List details of NICs in a VM.
+              text: >
+                az vmware vm nic list --vm-name MyVm -g MyResourceGroup
     """
 
     helps['vmware vm nic show'] = """
         type: command
         short-summary: Get the details of a VMware virtual machine's NIC.
+        examples:
+            - name: Get the details of a NIC in a VM.
+              text: >
+                az vmware vm nic show --vm-name MyVm -g MyResourceGroup -n "My NIC Name"
     """
 
     helps['vmware vm nic delete'] = """
         type: command
         short-summary: Delete NICs from a VM.
+        examples:
+            - name: Delete two NICs from a VM.
+              text: >
+                az vmware vm nic delete --vm-name MyVm -g MyResourceGroup --nics "My NIC Name 1" "My NIC Name 2"
     """
 
     helps['vmware vm disk'] = """
@@ -162,21 +216,41 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware vm disk add'] = """
         type: command
         short-summary: Add disk to a VMware virtual machine.
+        examples:
+            - name: Add a disk with default parameters in a VM.
+              text: >
+                az vmware vm disk add --vm-name MyVm -g MyResourceGroup
+
+            - name: Add a disk with SATA controller 0 and 64 GB memory in a VM.
+              text: >
+                az vmware vm disk add --vm-name MyVm -g MyResourceGroup --controller 15000 --size 67108864
     """
 
     helps['vmware vm disk list'] = """
         type: command
         short-summary: List details of disks available on a VMware virtual machine.
+        examples:
+            - name: List details of disks in a VM.
+              text: >
+                az vmware vm disk list --vm-name MyVm -g MyResourceGroup
     """
 
     helps['vmware vm disk show'] = """
         type: command
         short-summary: Get the details of a VMware virtual machine's disk.
+        examples:
+            - name: Get the details of a disk in a VM.
+              text: >
+                az vmware vm disk show --vm-name MyVm -g MyResourceGroup -n "My Disk Name"
     """
 
     helps['vmware vm disk delete'] = """
         type: command
         short-summary: Delete disks from a VM.
+        examples:
+            - name: Delete two disks from a VM.
+              text: >
+                az vmware vm disk delete --vm-name MyVm -g MyResourceGroup --disks "My Disk Name 1" "My Disk Name 2"
     """
 
     helps['vmware set-region'] = """
@@ -197,11 +271,19 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware vm-template list'] = """
         type: command
         short-summary: List details of VMware virtual machines templates in a resource pool, in a private cloud.
+        examples:
+            - name: List details of VM templates.
+              text: >
+                az vmware vm-template list -p MyPrivateCloud -r MyResourcePool
     """
 
     helps['vmware vm-template show'] = """
         type: command
         short-summary: Get the details of a VMware virtual machines template in a private cloud.
+        examples:
+            - name: Get the details of a VM template.
+              text: >
+                az vmware vm-template show  -n MyVmTemplate -p MyPrivateCloud
     """
 
     helps['vmware virtual-network'] = """
@@ -212,11 +294,19 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware virtual-network list'] = """
         type: command
         short-summary: List details of available virtual networks in a resource pool, in a private cloud.
+        examples:
+            - name: List details of virtual networks.
+              text: >
+                az vmware virtual-network list -p MyPrivateCloud -r MyResourcePool
     """
 
     helps['vmware virtual-network show'] = """
         type: command
         short-summary: Get the details of a virtual network in a private cloud.
+        examples:
+            - name: Get the details of a virtual network.
+              text: >
+                az vmware virtual-network show -n MyVirtualNetwork -p MyPrivateCloud
     """
 
     helps['vmware private-cloud'] = """
@@ -227,6 +317,19 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware private-cloud list'] = """
         type: command
         short-summary: List details of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
+        examples:
+            - name: List details of private clouds.
+              text: >
+                az vmware private-cloud list
+    """
+
+    helps['vmware private-cloud show'] = """
+        type: command
+        short-summary: Get the details of a private cloud in the current region. The current region can be changed by "az vmware set-region" command.
+        examples:
+            - name: Get the details of a private cloud.
+              text: >
+                az vmware private-cloud show -n MyPrivateCloud
     """
 
     helps['vmware resource-pool'] = """
@@ -237,9 +340,17 @@ if get_vmware_provider() == VmwareProviders.CS:
     helps['vmware resource-pool list'] = """
         type: command
         short-summary: List details of resource pools in a private cloud.
+        examples:
+            - name: List details of resource pools.
+              text: >
+                az vmware resource-pool list -p MyPrivateCloud
     """
 
     helps['vmware resource-pool show'] = """
         type: command
         short-summary: Get the details of a resource pool in a private cloud.
+        examples:
+            - name: Get the details of a resource pool.
+              text: >
+                az vmware resource-pool show -n MyResourcePool -p MyPrivateCloud
     """

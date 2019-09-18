@@ -109,7 +109,7 @@ def load_arguments(self, _):
                        validator=vm_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
             c.argument('controller', options_list=['--controller'], arg_group='Storage',
-                       help="The SCSI controller. Input 1000 for SCSI controller 0, and 15000 for SATA controller 0.")
+                       help="Id of the controller. Input 1000 for SCSI controller 0, and 15000 for SATA controller 0.")
             c.argument('independence_mode', options_list=['--mode'], arg_group='Storage',
                        arg_type=get_enum_type(DiskIndependenceMode),
                        help="The disk independence mode.")
@@ -157,3 +157,9 @@ def load_arguments(self, _):
                        validator=resource_pool_only_name_validator,
                        completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
                        help="Name or ID of the VMware resource pool in your CloudSimple Private Cloud. If you're entering the name, resgroup-* is expected.")
+
+        with self.argument_context('vmware private-cloud') as c:
+            c.argument('private_cloud', options_list=['--name', '-n'],
+                       validator=private_cloud_only_name_validator,
+                       completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
+                       help="Name or ID of the CloudSimple private cloud.")

@@ -56,7 +56,14 @@ def list_private_cloud_by_region(client):
     """
     Returns a list of private clouds in the current region.
     """
-    return client.list()
+    return client.private_cloud_by_region.list()
+
+
+def show_private_cloud(client, private_cloud):
+    """
+    Get the details of a private cloud.
+    """
+    return client.get_private_cloud(private_cloud)
 
 
 def set_region(client, region_name):
@@ -418,8 +425,7 @@ def delete_vnics(client, resource_group_name, vm_name, nic_names):
             not_deleted_nics = not_deleted_nics + nic_name + ", "
     not_deleted_nics = not_deleted_nics[:-2]
     if not_deleted_nics != "":
-        raise CLIError(not_deleted_nics + ' not present in the ' + vm_name +
-                       ' virtual machine. Other nics (if mentioned) were deleted.')
+        raise CLIError(not_deleted_nics + ' not present in the given virtual machine. Other nics (if mentioned) were deleted.')
 
 
 # --------------------------------------------------------------------------------------------
@@ -490,5 +496,4 @@ def delete_vdisks(client, resource_group_name, vm_name, disk_names):
             not_deleted_disks = not_deleted_disks + disk_name + ", "
     not_deleted_disks = not_deleted_disks[:-2]
     if not_deleted_disks != "":
-        raise CLIError(not_deleted_disks + ' not present in the ' + vm_name +
-                       ' virtual machine. Other disks (if mentioned) were deleted.')
+        raise CLIError(not_deleted_disks + ' not present in the given virtual machine. Other disks (if mentioned) were deleted.')
