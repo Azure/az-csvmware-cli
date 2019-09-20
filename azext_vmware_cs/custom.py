@@ -49,6 +49,21 @@ def get_provider():
     return provider
 
 
+def remove_provider():
+    """
+    Removes the created section in the config file. Necessary for a clean uninstall.
+    """
+    from knack.config import get_config_parser
+    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION)
+    config = get_config_parser()
+    config.read(GLOBAL_CONFIG_FILE)
+
+    config.remove_section(GLOBAL_CONFIG_SECTION)
+
+    with open(GLOBAL_CONFIG_FILE, 'w') as configfile:
+        config.write(configfile)
+
+
 # This API is broken, as it doesn't take regionId as parameter for the method
 # Instead regionId is a parameter in the client
 # TODO: Change after thos issue is fixed in swagger

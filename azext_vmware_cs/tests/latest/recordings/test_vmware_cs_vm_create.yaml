@@ -30,7 +30,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:25:02 GMT
+      - Fri, 20 Sep 2019 06:49:18 GMT
       expires:
       - '-1'
       pragma:
@@ -81,7 +81,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:03 GMT
+      - Fri, 20 Sep 2019 06:49:19 GMT
       expires:
       - '-1'
       pragma:
@@ -97,11 +97,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 83ebb473-2a2d-4e92-bc8e-f9bd4d0e892a
+      - 18aea811-06cc-4fa3-9fb0-ee01aa9f4ce2
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 643080ca2a6da3ea
+      - 75e9fd61ada63584
     status:
       code: 200
       message: OK
@@ -146,7 +146,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/bbed37c8-da17-11e9-9f92-aa30d60fca0b?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/c8078f7a-db72-11e9-9f9f-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -154,7 +154,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:08 GMT
+      - Fri, 20 Sep 2019 06:49:24 GMT
       expires:
       - '-1'
       pragma:
@@ -170,13 +170,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - fdf7cc10-2a97-42ad-9b62-9daf3451ed7b
+      - 5fdc2f6a-080b-4e82-af37-005e20a3af7d
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1198'
+      - '1199'
       x-tracing-transaction-id:
-      - dd48373dac6157c
+      - 43a53c51a9d5922
     status:
       code: 200
       message: OK
@@ -197,10 +197,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/bbed37c8-da17-11e9-9f92-aa30d60fca0b?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/c8078f7a-db72-11e9-9f9f-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:25:35.342Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/bbed37c8-da17-11e9-9f92-aa30d60fca0b","name":"bbed37c8-da17-11e9-9f92-aa30d60fca0b","startTime":"2019-09-18T13:25:08.349Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:49:40.295Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/c8078f7a-db72-11e9-9f9f-aa30d60fca0b","name":"c8078f7a-db72-11e9-9f9f-aa30d60fca0b","startTime":"2019-09-20T06:49:24.020Z","status":"Succeeded"}
 
         '
     headers:
@@ -211,7 +211,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:39 GMT
+      - Fri, 20 Sep 2019 06:49:55 GMT
       expires:
       - '-1'
       pragma:
@@ -227,11 +227,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 1c813441-e741-48de-a87b-855a25ab1571
+      - d062d024-29bc-401f-8818-564bab3f8dd3
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 6fa863ce3010aff9
+      - 2fad83b7040e0730
     status:
       code: 200
       message: OK
@@ -258,8 +258,8 @@ interactions:
       string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/az_cli_cs_test/providers/microsoft.vmwarecloudsimple/virtualmachines/cli-test000001","location":"eastus","name":"cli-test000001","properties":{"amountOfRam":1024,"controllers":[{"id":"1000","name":"SCSI
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":16777216,"virtualDiskId":"2000","virtualDiskName":"Hard
-        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:ce:38","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-908","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:55:fa","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-921","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -270,7 +270,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:40 GMT
+      - Fri, 20 Sep 2019 06:49:56 GMT
       expires:
       - '-1'
       pragma:
@@ -286,11 +286,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 521287dc-6f50-4f70-9a03-dfd2049593bb
+      - 9f528f7f-2500-4a7a-bc11-a4d1bf3a3d23
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 7d76287716f2ad0a
+      - 79fdc63b3145a734
     status:
       code: 200
       message: OK
@@ -325,7 +325,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:25:40 GMT
+      - Fri, 20 Sep 2019 06:49:57 GMT
       expires:
       - '-1'
       pragma:
@@ -376,7 +376,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:41 GMT
+      - Fri, 20 Sep 2019 06:49:57 GMT
       expires:
       - '-1'
       pragma:
@@ -392,11 +392,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 455e3480-f1d3-49b5-86f6-9d1e1586157c
+      - 70c31c46-38ef-4009-b2e5-ac719acaf9c3
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 477852fb08b44ff8
+      - 627bef97f3ec14f8
     status:
       code: 200
       message: OK
@@ -443,7 +443,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/d1b13008-da17-11e9-bf5b-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ddbbd8b3-db72-11e9-9fa1-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -451,7 +451,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:45 GMT
+      - Fri, 20 Sep 2019 06:50:01 GMT
       expires:
       - '-1'
       pragma:
@@ -467,13 +467,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 631e878d-ca72-44ee-88ed-d72f6666da29
+      - 0827e762-605f-4dee-89d4-c215845bb699
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1199'
+      - '1197'
       x-tracing-transaction-id:
-      - 52215d5066d9b1fa
+      - 25bec370b3dacc19
     status:
       code: 200
       message: OK
@@ -494,10 +494,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/d1b13008-da17-11e9-bf5b-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ddbbd8b3-db72-11e9-9fa1-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:26:00.532Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/d1b13008-da17-11e9-bf5b-a2b4e0fe0b05","name":"d1b13008-da17-11e9-bf5b-a2b4e0fe0b05","startTime":"2019-09-18T13:25:44.866Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:50:15.419Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ddbbd8b3-db72-11e9-9fa1-aa30d60fca0b","name":"ddbbd8b3-db72-11e9-9fa1-aa30d60fca0b","startTime":"2019-09-20T06:50:00.434Z","status":"Succeeded"}
 
         '
     headers:
@@ -508,7 +508,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:16 GMT
+      - Fri, 20 Sep 2019 06:50:33 GMT
       expires:
       - '-1'
       pragma:
@@ -524,11 +524,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 8f7688ab-3798-4511-a24e-2c90056f9a6e
+      - 4ce7d43b-39f5-4052-bf1d-4c7e1c4f03cb
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3df588a5ce820264
+      - 4382af65a1b5ff88
     status:
       code: 200
       message: OK
@@ -555,9 +555,9 @@ interactions:
       string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/az_cli_cs_test/providers/microsoft.vmwarecloudsimple/virtualmachines/cli-test000002","location":"eastus","name":"cli-test000002","properties":{"amountOfRam":1024,"controllers":[{"id":"1000","name":"SCSI
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":16777216,"virtualDiskId":"2000","virtualDiskName":"Hard
-        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:05:0e","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"},{"ipAddresses":null,"macAddress":"00:50:56:89:13:c4","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4001","virtualNicName":"Network
-        adapter 2"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-913","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:c0:f9","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"},{"ipAddresses":null,"macAddress":"00:50:56:89:0d:ea","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4001","virtualNicName":"Network
+        adapter 2"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-926","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -568,7 +568,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:16 GMT
+      - Fri, 20 Sep 2019 06:50:33 GMT
       expires:
       - '-1'
       pragma:
@@ -584,11 +584,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - a11cacb5-6b9b-41f3-a154-652614067e10
+      - f2ab8e22-93f0-4bfa-8007-c4bfde698b16
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 4c75491a523901d4
+      - 1292f15665fe991a
     status:
       code: 200
       message: OK
@@ -623,7 +623,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:26:17 GMT
+      - Fri, 20 Sep 2019 06:50:34 GMT
       expires:
       - '-1'
       pragma:
@@ -674,7 +674,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:17 GMT
+      - Fri, 20 Sep 2019 06:50:35 GMT
       expires:
       - '-1'
       pragma:
@@ -690,11 +690,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 3a9b33e9-75e8-438d-9a5a-df9c0d5cdab0
+      - c8976a5d-342d-4e2d-8ee4-68924a7aa9a7
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3c5e775ceaa5df16
+      - 417d47816c0b7102
     status:
       code: 200
       message: OK
@@ -739,7 +739,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/e79ded20-da17-11e9-bf63-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/f472c181-db72-11e9-9fa8-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -747,7 +747,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:22 GMT
+      - Fri, 20 Sep 2019 06:50:39 GMT
       expires:
       - '-1'
       pragma:
@@ -763,13 +763,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 6bef478c-72ec-468d-8036-cc210379246e
+      - 5303a829-af8d-443c-8674-8d493adba95c
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1199'
+      - '1196'
       x-tracing-transaction-id:
-      - 1d087723cdff0862
+      - 340ada6d0011e47f
     status:
       code: 200
       message: OK
@@ -790,10 +790,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/e79ded20-da17-11e9-bf63-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/f472c181-db72-11e9-9fa8-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:26:35.327Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/e79ded20-da17-11e9-bf63-a2b4e0fe0b05","name":"e79ded20-da17-11e9-bf63-a2b4e0fe0b05","startTime":"2019-09-18T13:26:21.650Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:50:55.282Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/f472c181-db72-11e9-9fa8-aa30d60fca0b","name":"f472c181-db72-11e9-9fa8-aa30d60fca0b","startTime":"2019-09-20T06:50:38.542Z","status":"Succeeded"}
 
         '
     headers:
@@ -804,7 +804,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:52 GMT
+      - Fri, 20 Sep 2019 06:51:09 GMT
       expires:
       - '-1'
       pragma:
@@ -820,11 +820,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - ea7fc8ab-7a02-4d28-93ca-bddffc20624f
+      - 1522ece7-513d-4ca2-b03a-292ed4aede60
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3f60d2cbe566ef76
+      - 113b901f25bfe952
     status:
       code: 200
       message: OK
@@ -851,8 +851,8 @@ interactions:
       string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/az_cli_cs_test/providers/microsoft.vmwarecloudsimple/virtualmachines/cli-test000003","location":"eastus","name":"cli-test000003","properties":{"amountOfRam":1024,"controllers":[{"id":"1000","name":"SCSI
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":16777216,"virtualDiskId":"2000","virtualDiskName":"Hard
-        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:09:b6","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"}],"numberOfCores":2,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-914","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:46:15","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"}],"numberOfCores":2,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-927","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -863,7 +863,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:53 GMT
+      - Fri, 20 Sep 2019 06:51:10 GMT
       expires:
       - '-1'
       pragma:
@@ -879,11 +879,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 2ba21a29-7b64-4fcf-9392-cab56a9b258c
+      - 796ac2ff-377f-4e01-ad36-1c8196ebc3ce
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 443691b28b8a826
+      - 338aebd58857cd50
     status:
       code: 200
       message: OK
@@ -918,7 +918,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:26:54 GMT
+      - Fri, 20 Sep 2019 06:51:11 GMT
       expires:
       - '-1'
       pragma:
@@ -969,7 +969,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:54 GMT
+      - Fri, 20 Sep 2019 06:51:12 GMT
       expires:
       - '-1'
       pragma:
@@ -985,11 +985,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - ca054c10-7292-4de8-9301-f4c13fd51a85
+      - cb3737b0-1a27-463e-ae8d-875c2f9b3a0e
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 5a6e838fe2f2e63a
+      - 7f8ba497207b33bb
     status:
       code: 200
       message: OK
@@ -1035,7 +1035,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/fd58cf57-da17-11e9-bf6b-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/09d7eb6b-db73-11e9-9fa9-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -1043,7 +1043,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:26:58 GMT
+      - Fri, 20 Sep 2019 06:51:15 GMT
       expires:
       - '-1'
       pragma:
@@ -1059,13 +1059,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - a154981b-f49c-44c9-b758-90b78028a780
+      - fb53489f-7a8e-43f7-bea0-2a73f724514c
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1198'
+      - '1199'
       x-tracing-transaction-id:
-      - 6267da38ae08b3ac
+      - 3877b0857f9ce88e
     status:
       code: 200
       message: OK
@@ -1086,10 +1086,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/fd58cf57-da17-11e9-bf6b-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/09d7eb6b-db73-11e9-9fa9-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:27:10.369Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/fd58cf57-da17-11e9-bf6b-a2b4e0fe0b05","name":"fd58cf57-da17-11e9-bf6b-a2b4e0fe0b05","startTime":"2019-09-18T13:26:58.106Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:51:30.412Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/09d7eb6b-db73-11e9-9fa9-aa30d60fca0b","name":"09d7eb6b-db73-11e9-9fa9-aa30d60fca0b","startTime":"2019-09-20T06:51:14.437Z","status":"Succeeded"}
 
         '
     headers:
@@ -1100,7 +1100,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:27:29 GMT
+      - Fri, 20 Sep 2019 06:51:45 GMT
       expires:
       - '-1'
       pragma:
@@ -1116,11 +1116,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - b272cf93-1b9b-47ca-a88d-f298c061d420
+      - 05c6d841-1ca0-455b-88b0-f188cc16c2be
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3f99e6b3ab693bca
+      - 104464cb3be432b6
     status:
       code: 200
       message: OK
@@ -1147,9 +1147,9 @@ interactions:
       string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/az_cli_cs_test/providers/microsoft.vmwarecloudsimple/virtualmachines/cli-test000004","location":"eastus","name":"cli-test000004","properties":{"amountOfRam":1024,"controllers":[{"id":"1000","name":"SCSI
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":16777216,"virtualDiskId":"2000","virtualDiskName":"Hard
-        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:72:03","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"},{"ipAddresses":null,"macAddress":"00:50:56:89:ca:26","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4001","virtualNicName":"Network
-        adapter 2"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-915","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 1"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:e3:fa","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"},{"ipAddresses":null,"macAddress":"00:50:56:89:b0:91","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4001","virtualNicName":"Network
+        adapter 2"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-928","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -1160,7 +1160,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:27:30 GMT
+      - Fri, 20 Sep 2019 06:51:46 GMT
       expires:
       - '-1'
       pragma:
@@ -1176,11 +1176,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - f4b2fc55-02a0-4de3-9536-c6f4aaee078e
+      - 5a453c49-e567-4bc3-93b3-7fd031fa08c5
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 7cefad5b6d01bae8
+      - 29c43a6faec4b1d7
     status:
       code: 200
       message: OK
@@ -1215,7 +1215,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:27:30 GMT
+      - Fri, 20 Sep 2019 06:51:48 GMT
       expires:
       - '-1'
       pragma:
@@ -1266,7 +1266,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:27:31 GMT
+      - Fri, 20 Sep 2019 06:51:48 GMT
       expires:
       - '-1'
       pragma:
@@ -1282,11 +1282,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 902c28e1-0291-4843-a039-0c4192ca706b
+      - 02186e97-7f45-4634-8ae9-cbc95098879d
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 6c5cf3fb972b8d58
+      - 18649de64e962e9
     status:
       code: 200
       message: OK
@@ -1332,7 +1332,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/133631c3-da18-11e9-bf72-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/1f69f37a-db73-11e9-bf9c-a2b4e0fe0b05?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -1340,7 +1340,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:27:35 GMT
+      - Fri, 20 Sep 2019 06:51:51 GMT
       expires:
       - '-1'
       pragma:
@@ -1356,13 +1356,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 070c1ded-f3b1-4dcb-95fd-6cc68b37183c
+      - cd13409f-af3a-4353-994b-09a36ce5806c
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1196'
+      - '1199'
       x-tracing-transaction-id:
-      - 5453991cf0aa3ea6
+      - df33a106e92bace
     status:
       code: 200
       message: OK
@@ -1383,10 +1383,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/133631c3-da18-11e9-bf72-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/1f69f37a-db73-11e9-bf9c-a2b4e0fe0b05?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:27:50.326Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/133631c3-da18-11e9-bf72-a2b4e0fe0b05","name":"133631c3-da18-11e9-bf72-a2b4e0fe0b05","startTime":"2019-09-18T13:27:34.789Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:52:05.333Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/1f69f37a-db73-11e9-bf9c-a2b4e0fe0b05","name":"1f69f37a-db73-11e9-bf9c-a2b4e0fe0b05","startTime":"2019-09-20T06:51:50.627Z","status":"Succeeded"}
 
         '
     headers:
@@ -1397,7 +1397,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:05 GMT
+      - Fri, 20 Sep 2019 06:52:21 GMT
       expires:
       - '-1'
       pragma:
@@ -1413,11 +1413,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 2e127815-9374-4eb1-8554-a3ae4d2def1f
+      - a9971871-cf50-4115-832d-7f722eecc8e9
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 7602433aef86fe42
+      - 25a8624edbd80
     status:
       code: 200
       message: OK
@@ -1445,8 +1445,8 @@ interactions:
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":16777216,"virtualDiskId":"2000","virtualDiskName":"Hard
         disk 1"},{"controllerId":"1000","independenceMode":"persistent","totalSize":41943040,"virtualDiskId":"2001","virtualDiskName":"Hard
-        disk 2"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:c7:c6","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-916","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 2"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:36:0d","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-929","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -1457,7 +1457,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:06 GMT
+      - Fri, 20 Sep 2019 06:52:22 GMT
       expires:
       - '-1'
       pragma:
@@ -1473,11 +1473,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 204bc45c-89da-4203-a5d9-7d1f7c51889c
+      - 5c250ad4-3b83-4976-b160-87ed3cbeb986
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 797b65422730fdb3
+      - 72b615ce7b809e07
     status:
       code: 200
       message: OK
@@ -1512,7 +1512,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:28:07 GMT
+      - Fri, 20 Sep 2019 06:52:23 GMT
       expires:
       - '-1'
       pragma:
@@ -1563,7 +1563,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:08 GMT
+      - Fri, 20 Sep 2019 06:52:24 GMT
       expires:
       - '-1'
       pragma:
@@ -1579,11 +1579,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 73be1ace-5196-4928-890f-84084fec9b02
+      - d0f5647c-ded0-490e-849f-120d8ad1645e
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3fe4e88ff797a8e5
+      - 74e764f7c1221ca2
     status:
       code: 200
       message: OK
@@ -1629,7 +1629,7 @@ interactions:
         '
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/29a08933-da18-11e9-bf73-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/366a2f52-db73-11e9-bf9e-a2b4e0fe0b05?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -1637,7 +1637,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:12 GMT
+      - Fri, 20 Sep 2019 06:52:29 GMT
       expires:
       - '-1'
       pragma:
@@ -1653,13 +1653,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - d76212fc-32b0-4d72-a658-2f4cf8fcf2d3
+      - 5844daf3-9f12-410e-862a-ac084fb0533c
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-writes:
       - '1197'
       x-tracing-transaction-id:
-      - 58066e797a769805
+      - 7ae9c83076426d17
     status:
       code: 200
       message: OK
@@ -1680,10 +1680,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/29a08933-da18-11e9-bf73-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/366a2f52-db73-11e9-bf9e-a2b4e0fe0b05?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:28:25.294Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/29a08933-da18-11e9-bf73-a2b4e0fe0b05","name":"29a08933-da18-11e9-bf73-a2b4e0fe0b05","startTime":"2019-09-18T13:28:12.396Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:52:45.354Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/366a2f52-db73-11e9-bf9e-a2b4e0fe0b05","name":"366a2f52-db73-11e9-bf9e-a2b4e0fe0b05","startTime":"2019-09-20T06:52:29.216Z","status":"Succeeded"}
 
         '
     headers:
@@ -1694,7 +1694,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:44 GMT
+      - Fri, 20 Sep 2019 06:53:00 GMT
       expires:
       - '-1'
       pragma:
@@ -1710,11 +1710,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - c2233ac8-975a-4152-b260-559bb858f1c1
+      - 1c2fea09-facb-423f-8efe-31772cde38d0
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 5705c96a2a51e782
+      - 4bdf793fc8f3b32a
     status:
       code: 200
       message: OK
@@ -1742,8 +1742,8 @@ interactions:
         controller 0","subType":"LSI_PARALEL","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":21943040,"virtualDiskId":"2000","virtualDiskName":"Hard
         disk 1"},{"controllerId":"1000","independenceMode":"persistent","totalSize":41943040,"virtualDiskId":"2001","virtualDiskName":"Hard
-        disk 2"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:74:ab","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
-        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-917","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
+        disk 2"}],"folder":"Datacenter","guestOS":"Ubuntu Linux (64-bit)","guestOSType":"linux","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:b1:c7","network":{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},"nicType":"VMXNET3","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        adapter 1"}],"numberOfCores":1,"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","provisioningState":"Succeeded","resourcePool":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/resourcepools/resgroup-169","location":"eastus","name":"AzCLITest","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","properties":{"fullName":"Datacenter/Cluster/AzCLITest"},"type":"Microsoft.VMwareCloudSimple/resourcePools"},"status":"running","templateId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualmachinetemplates/vm-125","vSphereNetworks":null,"vmId":"vm-930","vmwaretools":"0"},"type":"Microsoft.VMwareCloudSimple/virtualMachines"}
 
         '
     headers:
@@ -1754,7 +1754,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:28:45 GMT
+      - Fri, 20 Sep 2019 06:53:02 GMT
       expires:
       - '-1'
       pragma:
@@ -1770,11 +1770,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - b664df5d-0b66-411d-8634-6d51b699323b
+      - 9f97e25c-4345-4b20-b76b-e03cc6eca87c
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 7f8cf14b5e5e8e85
+      - 415a52f6c4085c09
     status:
       code: 200
       message: OK
@@ -1807,7 +1807,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/4b3c6fc8-db73-11e9-bf9f-a2b4e0fe0b05?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -1815,11 +1815,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:28:47 GMT
+      - Fri, 20 Sep 2019 06:53:03 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/4b3c6fc8-db73-11e9-bf9f-a2b4e0fe0b05?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -1829,13 +1829,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 0f024bf0-2eac-42e9-b33b-9e4da92a6019
+      - 1a1b272f-2331-4102-8cc3-d72e16faf477
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14999'
+      - '14998'
       x-tracing-transaction-id:
-      - 4b58608199d653e4
+      - 5343fdd9fdc9cd7d
     status:
       code: 202
       message: Accepted
@@ -1856,65 +1856,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/4b3c6fc8-db73-11e9-bf9f-a2b4e0fe0b05?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"0001-01-01T00:00:00.000Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05","name":"3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05","startTime":"2019-09-18T13:28:47.945Z","status":"InProgress"}
-
-        '
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '314'
-      content-type:
-      - application/json
-      date:
-      - Wed, 18 Sep 2019 13:28:58 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - nginx/1.13.12
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding,Accept-Encoding
-      x-content-type-options:
-      - nosniff
-      x-correlation-id:
-      - 7cd8a247-38fe-4dbf-ad50-c70ea7ba324c
-      x-env-name:
-      - eastus-he.azure.cloudsimple.com
-      x-tracing-transaction-id:
-      - 69d43defade7599
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - vmware vm delete
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -g -n
-      User-Agent:
-      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
-        Azure-SDK-For-Python AZURECLI/2.0.68
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05?api-version=2019-04-01
-  response:
-    body:
-      string: '{"endTime":"2019-09-18T13:29:00.543Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05","name":"3ed0e7e4-da18-11e9-bf74-a2b4e0fe0b05","startTime":"2019-09-18T13:28:47.945Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:53:15.262Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/4b3c6fc8-db73-11e9-bf9f-a2b4e0fe0b05","name":"4b3c6fc8-db73-11e9-bf9f-a2b4e0fe0b05","startTime":"2019-09-20T06:53:04.148Z","status":"Succeeded"}
 
         '
     headers:
@@ -1925,7 +1870,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:29:30 GMT
+      - Fri, 20 Sep 2019 06:53:15 GMT
       expires:
       - '-1'
       pragma:
@@ -1941,11 +1886,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - df6e97cc-50cf-4354-9554-2a7986f45fec
+      - abd1d788-2d85-4764-aa78-4febe6194896
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 716c80399db058f6
+      - 3b02915330821116
     status:
       code: 200
       message: OK
@@ -1978,7 +1923,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/592a7b0f-da18-11e9-bf76-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -1986,11 +1931,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:29:31 GMT
+      - Fri, 20 Sep 2019 06:53:18 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/592a7b0f-da18-11e9-bf76-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -2000,13 +1945,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 4389d71c-7e64-466c-853d-5030ea2c3ce8
+      - dde5b2a3-5fca-484b-a59e-c7c21b91a9b1
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14998'
+      - '14999'
       x-tracing-transaction-id:
-      - 74153dde0dcad07c
+      - 44b6a999045a2996
     status:
       code: 202
       message: Accepted
@@ -2027,21 +1972,21 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/592a7b0f-da18-11e9-bf76-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:29:40.384Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/592a7b0f-da18-11e9-bf76-a2b4e0fe0b05","name":"592a7b0f-da18-11e9-bf76-a2b4e0fe0b05","startTime":"2019-09-18T13:29:32.153Z","status":"Succeeded"}
+      string: '{"endTime":"0001-01-01T00:00:00.000Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b","name":"53ef6a2d-db73-11e9-9fab-aa30d60fca0b","startTime":"2019-09-20T06:53:18.743Z","status":"InProgress"}
 
         '
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '313'
+      - '314'
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:29:42 GMT
+      - Fri, 20 Sep 2019 06:53:28 GMT
       expires:
       - '-1'
       pragma:
@@ -2057,11 +2002,66 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - e4c3ca8a-052d-4fa7-949d-e377c7a21a4f
+      - 0c304b00-ef69-44fa-9efd-7f34244f2399
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 6d38769039438f55
+      - 359903b99caa9021
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - vmware vm delete
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - -g -n
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b?api-version=2019-04-01
+  response:
+    body:
+      string: '{"endTime":"2019-09-20T06:53:30.454Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/53ef6a2d-db73-11e9-9fab-aa30d60fca0b","name":"53ef6a2d-db73-11e9-9fab-aa30d60fca0b","startTime":"2019-09-20T06:53:18.743Z","status":"Succeeded"}
+
+        '
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '313'
+      content-type:
+      - application/json
+      date:
+      - Fri, 20 Sep 2019 06:54:00 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - nginx/1.13.12
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-correlation-id:
+      - f403be37-330c-418f-91f4-c4f3d232ea04
+      x-env-name:
+      - eastus-he.azure.cloudsimple.com
+      x-tracing-transaction-id:
+      - 718a4965b51ed634
     status:
       code: 200
       message: OK
@@ -2094,7 +2094,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/618fc065-da18-11e9-bf78-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -2102,11 +2102,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:29:45 GMT
+      - Fri, 20 Sep 2019 06:54:03 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/618fc065-da18-11e9-bf78-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -2116,13 +2116,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 66d43ac1-b3e0-416f-99da-e98d46131053
+      - 6350c808-3dcb-4144-994c-65e44bab05fc
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
       - '14998'
       x-tracing-transaction-id:
-      - 383dd68da6ac66f1
+      - 34c5fdbd738ec9b1
     status:
       code: 202
       message: Accepted
@@ -2143,21 +2143,21 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/618fc065-da18-11e9-bf78-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:29:55.260Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/618fc065-da18-11e9-bf78-a2b4e0fe0b05","name":"618fc065-da18-11e9-bf78-a2b4e0fe0b05","startTime":"2019-09-18T13:29:46.239Z","status":"Succeeded"}
+      string: '{"endTime":"0001-01-01T00:00:00.000Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05","name":"6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05","startTime":"2019-09-20T06:54:02.983Z","status":"InProgress"}
 
         '
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '313'
+      - '314'
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:29:57 GMT
+      - Fri, 20 Sep 2019 06:54:14 GMT
       expires:
       - '-1'
       pragma:
@@ -2173,11 +2173,66 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - f124b4a7-29c2-42ed-9d88-138388976acc
+      - 8f0b5582-abc3-4830-a8cf-356f9f4ca860
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 4c5045a22f29e0bf
+      - 25b4e10f9aba2206
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - vmware vm delete
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - -g -n
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05?api-version=2019-04-01
+  response:
+    body:
+      string: '{"endTime":"2019-09-20T06:54:15.333Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05","name":"6e4df39c-db73-11e9-bfa1-a2b4e0fe0b05","startTime":"2019-09-20T06:54:02.983Z","status":"Succeeded"}
+
+        '
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '313'
+      content-type:
+      - application/json
+      date:
+      - Fri, 20 Sep 2019 06:54:44 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - nginx/1.13.12
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-correlation-id:
+      - b61f2719-524f-47bb-b22a-45e66d145e4d
+      x-env-name:
+      - eastus-he.azure.cloudsimple.com
+      x-tracing-transaction-id:
+      - 7a2d2c011b5b9055
     status:
       code: 200
       message: OK
@@ -2210,7 +2265,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/69ae7fa5-da18-11e9-bf7a-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -2218,11 +2273,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:30:00 GMT
+      - Fri, 20 Sep 2019 06:54:48 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/69ae7fa5-da18-11e9-bf7a-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -2232,13 +2287,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - e708e4f7-6650-428d-9592-83d9c22af57f
+      - 213a9073-6f35-4681-83eb-ea7c29b35c76
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14997'
+      - '14998'
       x-tracing-transaction-id:
-      - 50b835301b50e5f7
+      - 2c3f384eb4d20822
     status:
       code: 202
       message: Accepted
@@ -2259,21 +2314,21 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/69ae7fa5-da18-11e9-bf7a-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:30:10.338Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/69ae7fa5-da18-11e9-bf7a-a2b4e0fe0b05","name":"69ae7fa5-da18-11e9-bf7a-a2b4e0fe0b05","startTime":"2019-09-18T13:29:59.862Z","status":"Succeeded"}
+      string: '{"endTime":"0001-01-01T00:00:00.000Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05","name":"88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05","startTime":"2019-09-20T06:54:47.749Z","status":"InProgress"}
 
         '
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '313'
+      - '314'
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:30:11 GMT
+      - Fri, 20 Sep 2019 06:54:58 GMT
       expires:
       - '-1'
       pragma:
@@ -2289,11 +2344,66 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - b5acaf44-be73-4583-8db0-c917dd6d34df
+      - c714795b-49ca-41cc-85f9-a5a353cb437f
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 30fba702e6dba197
+      - 44fdadc99f7f81b3
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - vmware vm delete
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - -g -n
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05?api-version=2019-04-01
+  response:
+    body:
+      string: '{"endTime":"2019-09-20T06:55:00.881Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05","name":"88fcc4d3-db73-11e9-bfa3-a2b4e0fe0b05","startTime":"2019-09-20T06:54:47.749Z","status":"Succeeded"}
+
+        '
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '313'
+      content-type:
+      - application/json
+      date:
+      - Fri, 20 Sep 2019 06:55:30 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - nginx/1.13.12
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-correlation-id:
+      - e4410130-74ca-4492-a787-17733572664b
+      x-env-name:
+      - eastus-he.azure.cloudsimple.com
+      x-tracing-transaction-id:
+      - 503d2b577bf9c9ae
     status:
       code: 200
       message: OK
@@ -2326,7 +2436,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/726f1836-da18-11e9-bf7c-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/a3e2bbd4-db73-11e9-9fae-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -2334,11 +2444,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:30:14 GMT
+      - Fri, 20 Sep 2019 06:55:33 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/726f1836-da18-11e9-bf7c-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/a3e2bbd4-db73-11e9-9fae-aa30d60fca0b?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -2348,13 +2458,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - cb520b5f-bed7-4f8a-a150-8c1c3a8c999c
+      - b7de97a6-2825-486e-a9bc-2a3602c4a3b1
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
       - '14997'
       x-tracing-transaction-id:
-      - 3abcbc0e03883978
+      - 72094e0e497f56fe
     status:
       code: 202
       message: Accepted
@@ -2375,10 +2485,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/726f1836-da18-11e9-bf7c-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/a3e2bbd4-db73-11e9-9fae-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:30:25.323Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/726f1836-da18-11e9-bf7c-a2b4e0fe0b05","name":"726f1836-da18-11e9-bf7c-a2b4e0fe0b05","startTime":"2019-09-18T13:30:14.546Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:55:40.244Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/a3e2bbd4-db73-11e9-9fae-aa30d60fca0b","name":"a3e2bbd4-db73-11e9-9fae-aa30d60fca0b","startTime":"2019-09-20T06:55:32.877Z","status":"Succeeded"}
 
         '
     headers:
@@ -2389,7 +2499,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:30:25 GMT
+      - Fri, 20 Sep 2019 06:55:44 GMT
       expires:
       - '-1'
       pragma:
@@ -2405,11 +2515,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 0b65eb5d-1829-468b-8c0a-3136973f9ed9
+      - e6725d11-fb73-4652-b85c-71e1c1430184
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 2302a3577fc87647
+      - e8b34ff4072fc51
     status:
       code: 200
       message: OK
@@ -2442,7 +2552,7 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/7ae7a56c-da18-11e9-bf7d-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ac751195-db73-11e9-9fb0-aa30d60fca0b?api-version=2019-04-01
       cache-control:
       - no-cache
       content-length:
@@ -2450,11 +2560,11 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:30:29 GMT
+      - Fri, 20 Sep 2019 06:55:46 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/7ae7a56c-da18-11e9-bf7d-a2b4e0fe0b05?api-version=2019-04-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ac751195-db73-11e9-9fb0-aa30d60fca0b?api-version=2019-04-01
       pragma:
       - no-cache
       server:
@@ -2464,13 +2574,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - e23c0fe8-10be-4da2-b56c-a4c07514f9e2
+      - e4d25300-15ed-4243-9b94-2f3fa1b1a645
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-ms-ratelimit-remaining-subscription-deletes:
       - '14998'
       x-tracing-transaction-id:
-      - 27d6143a22696ebe
+      - 3db91af132837d5b
     status:
       code: 202
       message: Accepted
@@ -2491,10 +2601,10 @@ interactions:
       - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
         Azure-SDK-For-Python AZURECLI/2.0.68
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/7ae7a56c-da18-11e9-bf7d-a2b4e0fe0b05?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ac751195-db73-11e9-9fb0-aa30d60fca0b?api-version=2019-04-01
   response:
     body:
-      string: '{"endTime":"2019-09-18T13:30:35.320Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/7ae7a56c-da18-11e9-bf7d-a2b4e0fe0b05","name":"7ae7a56c-da18-11e9-bf7d-a2b4e0fe0b05","startTime":"2019-09-18T13:30:28.758Z","status":"Succeeded"}
+      string: '{"endTime":"2019-09-20T06:55:55.376Z","id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.vmwarecloudsimple/locations/eastus/operationresults/ac751195-db73-11e9-9fb0-aa30d60fca0b","name":"ac751195-db73-11e9-9fb0-aa30d60fca0b","startTime":"2019-09-20T06:55:47.258Z","status":"Succeeded"}
 
         '
     headers:
@@ -2505,7 +2615,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:30:40 GMT
+      - Fri, 20 Sep 2019 06:55:58 GMT
       expires:
       - '-1'
       pragma:
@@ -2521,11 +2631,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 74e0469c-beeb-4375-9a3c-91a80407cdae
+      - 6efd8540-a244-43bb-8f8e-c71c071d2ac7
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 47567a69a5bd005f
+      - 42957059dbdd1e81
     status:
       code: 200
       message: OK

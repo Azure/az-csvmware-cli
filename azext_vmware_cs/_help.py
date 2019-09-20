@@ -34,6 +34,15 @@ helps['vmware get-provider'] = """
             az vmware get-provider
 """
 
+helps['vmware remove-provider'] = """
+    type: command
+    short-summary: Removes the currently set provider. This is recommended before the extension is uninstalled.
+    examples:
+        - name: Remove provider
+          text: >
+            az vmware remove-provider
+"""
+
 if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware vm'] = """

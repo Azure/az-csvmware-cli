@@ -28,6 +28,7 @@ def load_command_table(self, _):
     with self.command_group('vmware') as g:
         g.custom_command('set-provider', 'set_provider')
         g.custom_command('get-provider', 'get_provider')
+        g.custom_command('remove-provider', 'remove_provider')
 
     if get_vmware_provider() == VmwareProviders.CS:
 

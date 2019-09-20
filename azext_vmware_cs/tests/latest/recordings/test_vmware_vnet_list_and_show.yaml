@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-09-18T13:24:58Z"}}'
+      "date": "2019-09-20T06:49:14Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-09-18T13:24:58Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-09-20T06:49:14Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 18 Sep 2019 13:25:05 GMT
+      - Fri, 20 Sep 2019 06:49:21 GMT
       expires:
       - '-1'
       pragma:
@@ -82,7 +82,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:07 GMT
+      - Fri, 20 Sep 2019 06:49:23 GMT
       expires:
       - '-1'
       pragma:
@@ -98,11 +98,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 4cc39c20-2a46-4354-b772-8703fa38e249
+      - e83cf48f-6969-4663-8ca0-ed08179026f6
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 1491ee85c2103b52
+      - 6d0b51990ef2b361
     status:
       code: 200
       message: OK
@@ -139,7 +139,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 18 Sep 2019 13:25:07 GMT
+      - Fri, 20 Sep 2019 06:49:24 GMT
       expires:
       - '-1'
       pragma:
@@ -155,11 +155,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 18659809-f51a-4432-ad47-06a596a4b5d6
+      - 3d7c9afc-3bce-4871-93cf-2ee6af276f0b
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 4ef0b690b21c25fe
+      - 504834a880cc214a
     status:
       code: 200
       message: OK
@@ -194,11 +194,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Wed, 18 Sep 2019 13:25:15 GMT
+      - Fri, 20 Sep 2019 06:49:30 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NITUlIUDVBVUdMQVlNQ1ZYTlpDRUs1RHxERTQwOTlCNjQxNUI5RjgyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NGUVNQTVJFTlZUS1lOUElSVTNST0k1Rnw2QzhBQTZENTdCQjhCODQwLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:
@@ -206,7 +206,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14999'
+      - '14997'
     status:
       code: 202
       message: Accepted
