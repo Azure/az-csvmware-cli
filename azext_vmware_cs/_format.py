@@ -29,25 +29,36 @@ def transform_vm_table_output(result):
                                       ('vSphere folder', result['folder']),
                                       ('VMware Tools', result['vmwaretools'])])
 
-    if result['nics']:
-        nics = result['nics']
-        ipAddresses = ""
-        notnull = False
-        for nic in nics:
-            if nic['ipAddresses'] is not None:
-                notnull = True
-                for ipaddress in nic['ipAddresses']:
-                    ipAddresses = ipAddresses + ipaddress + ", "
-        if notnull:
-            ipAddresses = ipAddresses[:-2]
-            transformed_result['IP Addresses'] = ipAddresses
+    # if result['nics']:
+    nics = result['nics']
+    ipAddresses = ""
+    notnull = False
+    for nic in nics:
+        if nic['ipAddresses'] is not None:
+            notnull = True
+            for ipaddress in nic['ipAddresses']:
+                ipAddresses = ipAddresses + ipaddress + ", "
+    if notnull:
+        ipAddresses = ipAddresses[:-2]
+        transformed_result['IP Addresses'] = ipAddresses
 
-    if result['nics']:
-        nics = result['nics']
-        vSphereNetworks = ""
-        for nic in nics:
+    # if result['nics']:
+    nics = result['nics']
+    vSphereNetworks = ""
+    notnull = False
+    for nic in nics:
+        if nic['network']['name'] is not None:
+            notnull = True
             vSphereNetworks = vSphereNetworks + nic['network']['name'] + ", "
+    if notnull:
         vSphereNetworks = vSphereNetworks[:-2]
         transformed_result['vSphere Networks'] = vSphereNetworks
 
     return transformed_result
+
+
+def transform_vm_table_list(vm_list):
+    """
+    For list output
+    """
+    return [transform_vm_table_output(v) for v in vm_list]
