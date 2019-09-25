@@ -24,8 +24,8 @@ class VirtualNetwork(Model):
     :vartype assignable: bool
     :param id: Required. virtual network id (privateCloudId:vsphereId)
     :type id: str
-    :param location: Azure region
-    :type location: str
+    :ivar location: Azure region
+    :vartype location: str
     :ivar name: {VirtualNetworkName}
     :vartype name: str
     :ivar private_cloud_id: The Private Cloud id
@@ -37,6 +37,7 @@ class VirtualNetwork(Model):
     _validation = {
         'assignable': {'readonly': True},
         'id': {'required': True},
+        'location': {'readonly': True},
         'name': {'readonly': True},
         'private_cloud_id': {'readonly': True},
         'type': {'readonly': True},
@@ -51,11 +52,11 @@ class VirtualNetwork(Model):
         'type': {'key': 'type', 'type': 'str'},
     }
 
-    def __init__(self, *, id: str, location: str=None, **kwargs) -> None:
+    def __init__(self, *, id: str, **kwargs) -> None:
         super(VirtualNetwork, self).__init__(**kwargs)
         self.assignable = None
         self.id = id
-        self.location = location
+        self.location = None
         self.name = None
         self.private_cloud_id = None
         self.type = None

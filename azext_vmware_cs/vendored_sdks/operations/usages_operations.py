@@ -15,8 +15,8 @@ from msrest.pipeline import ClientRawResponse
 from .. import models
 
 
-class VirtualNetworksByPCOperations(object):
-    """VirtualNetworksByPCOperations operations.
+class UsagesOperations(object):
+    """UsagesOperations operations.
 
     :param client: Client for service requests.
     :param config: Configuration of service client.
@@ -37,25 +37,25 @@ class VirtualNetworksByPCOperations(object):
         self.config = config
 
     def list(
-            self, pc_name, resource_pool_name, custom_headers=None, raw=False, **operation_config):
-        """Implements list available virtual networks within a subscription
-        method.
+            self, region_id, filter=None, custom_headers=None, raw=False, **operation_config):
+        """Implements Usages List method.
 
-        Return list of virtual networks in location for private cloud.
+        Returns list of usage in region.
 
-        :param pc_name: The private cloud name
-        :type pc_name: str
-        :param resource_pool_name: Resource pool used to derive vSphere
-         cluster which contains virtual networks
-        :type resource_pool_name: str
+        :param region_id: The region Id (westus, eastus)
+        :type region_id: str
+        :param filter: The filter to apply on the list operation. only
+         name.value is allowed here as a filter e.g. $filter=name.value eq
+         'xxxx'
+        :type filter: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: An iterator like instance of VirtualNetwork
+        :return: An iterator like instance of Usage
         :rtype:
-         ~azure.mgmt.vmwarecloudsimple.models.VirtualNetworkPaged[~azure.mgmt.vmwarecloudsimple.models.VirtualNetwork]
+         ~azure.mgmt.vmwarecloudsimple.models.UsagePaged[~azure.mgmt.vmwarecloudsimple.models.Usage]
         :raises:
          :class:`CSRPErrorException<azure.mgmt.vmwarecloudsimple.models.CSRPErrorException>`
         """
@@ -66,15 +66,15 @@ class VirtualNetworksByPCOperations(object):
                 url = self.list.metadata['url']
                 path_format_arguments = {
                     'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
-                    'regionId': self._serialize.url("self.config.region_id", self.config.region_id, 'str'),
-                    'pcName': self._serialize.url("pc_name", pc_name, 'str')
+                    'regionId': self._serialize.url("region_id", region_id, 'str')
                 }
                 url = self._client.format_url(url, **path_format_arguments)
 
                 # Construct parameters
                 query_parameters = {}
+                if filter is not None:
+                    query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
                 query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
-                query_parameters['resourcePoolName'] = self._serialize.query("resource_pool_name", resource_pool_name, 'str')
 
             else:
                 url = next_link
@@ -100,12 +100,12 @@ class VirtualNetworksByPCOperations(object):
             return response
 
         # Deserialize response
-        deserialized = models.VirtualNetworkPaged(internal_paging, self._deserialize.dependencies)
+        deserialized = models.UsagePaged(internal_paging, self._deserialize.dependencies)
 
         if raw:
             header_dict = {}
-            client_raw_response = models.VirtualNetworkPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            client_raw_response = models.UsagePaged(internal_paging, self._deserialize.dependencies, header_dict)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks'}
+    list.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/usages'}

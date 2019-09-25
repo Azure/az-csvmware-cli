@@ -37,10 +37,10 @@ class VirtualMachineTemplate(Model):
     :type disks: list[~azure.mgmt.vmwarecloudsimple.models.VirtualDisk]
     :param expose_to_guest_vm: Expose Guest OS or not
     :type expose_to_guest_vm: bool
-    :param guest_os: Required. The Guest OS
-    :type guest_os: str
-    :param guest_os_type: Required. The Guest OS types
-    :type guest_os_type: str
+    :ivar guest_os: The Guest OS
+    :vartype guest_os: str
+    :ivar guest_os_type: The Guest OS types
+    :vartype guest_os_type: str
     :param nics: The list of Virtual NICs
     :type nics: list[~azure.mgmt.vmwarecloudsimple.models.VirtualNic]
     :param number_of_cores: The number of CPU cores
@@ -62,8 +62,8 @@ class VirtualMachineTemplate(Model):
     _validation = {
         'id': {'readonly': True},
         'name': {'readonly': True},
-        'guest_os': {'required': True},
-        'guest_os_type': {'required': True},
+        'guest_os': {'readonly': True},
+        'guest_os_type': {'readonly': True},
         'private_cloud_id': {'required': True},
         'vmwaretools': {'readonly': True},
         'type': {'readonly': True},
@@ -100,8 +100,8 @@ class VirtualMachineTemplate(Model):
         self.description = kwargs.get('description', None)
         self.disks = kwargs.get('disks', None)
         self.expose_to_guest_vm = kwargs.get('expose_to_guest_vm', None)
-        self.guest_os = kwargs.get('guest_os', None)
-        self.guest_os_type = kwargs.get('guest_os_type', None)
+        self.guest_os = None
+        self.guest_os_type = None
         self.nics = kwargs.get('nics', None)
         self.number_of_cores = kwargs.get('number_of_cores', None)
         self.path = kwargs.get('path', None)

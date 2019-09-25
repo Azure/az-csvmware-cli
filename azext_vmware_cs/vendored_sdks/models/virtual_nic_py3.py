@@ -24,7 +24,7 @@ class VirtualNic(Model):
     :type ip_addresses: list[str]
     :param mac_address: NIC MAC address
     :type mac_address: str
-    :param network: The list of Virtual Networks
+    :param network: Required. Virtual Network
     :type network: ~azure.mgmt.vmwarecloudsimple.models.VirtualNetwork
     :param nic_type: Required. NIC type. Possible values include: 'E1000',
      'E1000E', 'PCNET32', 'VMXNET', 'VMXNET2', 'VMXNET3'
@@ -38,6 +38,7 @@ class VirtualNic(Model):
     """
 
     _validation = {
+        'network': {'required': True},
         'nic_type': {'required': True},
         'virtual_nic_name': {'readonly': True},
     }
@@ -52,7 +53,7 @@ class VirtualNic(Model):
         'virtual_nic_name': {'key': 'virtualNicName', 'type': 'str'},
     }
 
-    def __init__(self, *, nic_type, ip_addresses=None, mac_address: str=None, network=None, power_on_boot: bool=None, virtual_nic_id: str=None, **kwargs) -> None:
+    def __init__(self, *, network, nic_type, ip_addresses=None, mac_address: str=None, power_on_boot: bool=None, virtual_nic_id: str=None, **kwargs) -> None:
         super(VirtualNic, self).__init__(**kwargs)
         self.ip_addresses = ip_addresses
         self.mac_address = mac_address

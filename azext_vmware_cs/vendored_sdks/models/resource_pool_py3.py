@@ -22,8 +22,8 @@ class ResourcePool(Model):
 
     :param id: Required. resource pool id (privateCloudId:vsphereId)
     :type id: str
-    :param location: Azure region
-    :type location: str
+    :ivar location: Azure region
+    :vartype location: str
     :ivar name: {ResourcePoolName}
     :vartype name: str
     :ivar private_cloud_id: The Private Cloud Id
@@ -36,6 +36,7 @@ class ResourcePool(Model):
 
     _validation = {
         'id': {'required': True},
+        'location': {'readonly': True},
         'name': {'readonly': True},
         'private_cloud_id': {'readonly': True},
         'full_name': {'readonly': True},
@@ -51,10 +52,10 @@ class ResourcePool(Model):
         'type': {'key': 'type', 'type': 'str'},
     }
 
-    def __init__(self, *, id: str, location: str=None, **kwargs) -> None:
+    def __init__(self, *, id: str, **kwargs) -> None:
         super(ResourcePool, self).__init__(**kwargs)
         self.id = id
-        self.location = location
+        self.location = None
         self.name = None
         self.private_cloud_id = None
         self.full_name = None

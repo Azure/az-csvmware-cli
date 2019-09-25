@@ -13,23 +13,16 @@ from msrest.service_client import SDKClient
 from msrest import Serializer, Deserializer
 from msrestazure import AzureConfiguration
 from .version import VERSION
-from msrest.pipeline import ClientRawResponse
-from msrest.polling import LROPoller, NoPolling
-from msrestazure.polling.arm_polling import ARMPolling
-import uuid
-from .operations.available_operations import AvailableOperations
-from .operations.dedicated_cloud_node_operations import DedicatedCloudNodeOperations
-from .operations.dedicated_cloud_service_operations import DedicatedCloudServiceOperations
-from .operations.skus_availability_within_region_operations import SkusAvailabilityWithinRegionOperations
-from .operations.private_cloud_by_region_operations import PrivateCloudByRegionOperations
-from .operations.resource_pools_by_pc_operations import ResourcePoolsByPCOperations
-from .operations.resource_pool_by_pc_operations import ResourcePoolByPCOperations
-from .operations.virtual_machine_templates_by_pc_operations import VirtualMachineTemplatesByPCOperations
-from .operations.virtual_machine_template_by_pc_operations import VirtualMachineTemplateByPCOperations
-from .operations.virtual_networks_by_pc_operations import VirtualNetworksByPCOperations
-from .operations.virtual_network_by_pc_operations import VirtualNetworkByPCOperations
-from .operations.usages_within_region_operations import UsagesWithinRegionOperations
-from .operations.virtual_machine_operations import VirtualMachineOperations
+from .operations.operations import Operations
+from .operations.dedicated_cloud_nodes_operations import DedicatedCloudNodesOperations
+from .operations.dedicated_cloud_services_operations import DedicatedCloudServicesOperations
+from .operations.skus_availability_operations import SkusAvailabilityOperations
+from .operations.private_clouds_operations import PrivateCloudsOperations
+from .operations.resource_pools_operations import ResourcePoolsOperations
+from .operations.virtual_machine_templates_operations import VirtualMachineTemplatesOperations
+from .operations.virtual_networks_operations import VirtualNetworksOperations
+from .operations.usages_operations import UsagesOperations
+from .operations.virtual_machines_operations import VirtualMachinesOperations
 from . import models
 
 
@@ -41,26 +34,22 @@ class VMwareCloudSimpleClientConfiguration(AzureConfiguration):
     :param credentials: Credentials needed for the client to connect to Azure.
     :type credentials: :mod:`A msrestazure Credentials
      object<msrestazure.azure_active_directory>`
-    :param referer: referer url
-    :type referer: str
-    :param region_id: The region Id (westus, eastus)
-    :type region_id: str
     :param subscription_id: The subscription ID.
     :type subscription_id: str
+    :param referer: referer url
+    :type referer: str
     :param str base_url: Service URL
     """
 
     def __init__(
-            self, credentials, referer, region_id, subscription_id, base_url=None):
+            self, credentials, subscription_id, referer, base_url=None):
 
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        if referer is None:
-            raise ValueError("Parameter 'referer' must not be None.")
-        if region_id is None:
-            raise ValueError("Parameter 'region_id' must not be None.")
         if subscription_id is None:
             raise ValueError("Parameter 'subscription_id' must not be None.")
+        if referer is None:
+            raise ValueError("Parameter 'referer' must not be None.")
         if not base_url:
             base_url = 'https://management.azure.com'
 
@@ -70,9 +59,8 @@ class VMwareCloudSimpleClientConfiguration(AzureConfiguration):
         self.add_user_agent('Azure-SDK-For-Python')
 
         self.credentials = credentials
-        self.referer = referer
-        self.region_id = region_id
         self.subscription_id = subscription_id
+        self.referer = referer
 
 
 class VMwareCloudSimpleClient(SDKClient):
@@ -81,49 +69,41 @@ class VMwareCloudSimpleClient(SDKClient):
     :ivar config: Configuration for client.
     :vartype config: VMwareCloudSimpleClientConfiguration
 
-    :ivar available_operations: AvailableOperations operations
-    :vartype available_operations: azure.mgmt.vmwarecloudsimple.operations.AvailableOperations
-    :ivar dedicated_cloud_node: DedicatedCloudNode operations
-    :vartype dedicated_cloud_node: azure.mgmt.vmwarecloudsimple.operations.DedicatedCloudNodeOperations
-    :ivar dedicated_cloud_service: DedicatedCloudService operations
-    :vartype dedicated_cloud_service: azure.mgmt.vmwarecloudsimple.operations.DedicatedCloudServiceOperations
-    :ivar skus_availability_within_region: SkusAvailabilityWithinRegion operations
-    :vartype skus_availability_within_region: azure.mgmt.vmwarecloudsimple.operations.SkusAvailabilityWithinRegionOperations
-    :ivar private_cloud_by_region: PrivateCloudByRegion operations
-    :vartype private_cloud_by_region: azure.mgmt.vmwarecloudsimple.operations.PrivateCloudByRegionOperations
-    :ivar resource_pools_by_pc: ResourcePoolsByPC operations
-    :vartype resource_pools_by_pc: azure.mgmt.vmwarecloudsimple.operations.ResourcePoolsByPCOperations
-    :ivar resource_pool_by_pc: ResourcePoolByPC operations
-    :vartype resource_pool_by_pc: azure.mgmt.vmwarecloudsimple.operations.ResourcePoolByPCOperations
-    :ivar virtual_machine_templates_by_pc: VirtualMachineTemplatesByPC operations
-    :vartype virtual_machine_templates_by_pc: azure.mgmt.vmwarecloudsimple.operations.VirtualMachineTemplatesByPCOperations
-    :ivar virtual_machine_template_by_pc: VirtualMachineTemplateByPC operations
-    :vartype virtual_machine_template_by_pc: azure.mgmt.vmwarecloudsimple.operations.VirtualMachineTemplateByPCOperations
-    :ivar virtual_networks_by_pc: VirtualNetworksByPC operations
-    :vartype virtual_networks_by_pc: azure.mgmt.vmwarecloudsimple.operations.VirtualNetworksByPCOperations
-    :ivar virtual_network_by_pc: VirtualNetworkByPC operations
-    :vartype virtual_network_by_pc: azure.mgmt.vmwarecloudsimple.operations.VirtualNetworkByPCOperations
-    :ivar usages_within_region: UsagesWithinRegion operations
-    :vartype usages_within_region: azure.mgmt.vmwarecloudsimple.operations.UsagesWithinRegionOperations
-    :ivar virtual_machine: VirtualMachine operations
-    :vartype virtual_machine: azure.mgmt.vmwarecloudsimple.operations.VirtualMachineOperations
+    :ivar operations: Operations operations
+    :vartype operations: azure.mgmt.vmwarecloudsimple.operations.Operations
+    :ivar dedicated_cloud_nodes: DedicatedCloudNodes operations
+    :vartype dedicated_cloud_nodes: azure.mgmt.vmwarecloudsimple.operations.DedicatedCloudNodesOperations
+    :ivar dedicated_cloud_services: DedicatedCloudServices operations
+    :vartype dedicated_cloud_services: azure.mgmt.vmwarecloudsimple.operations.DedicatedCloudServicesOperations
+    :ivar skus_availability: SkusAvailability operations
+    :vartype skus_availability: azure.mgmt.vmwarecloudsimple.operations.SkusAvailabilityOperations
+    :ivar private_clouds: PrivateClouds operations
+    :vartype private_clouds: azure.mgmt.vmwarecloudsimple.operations.PrivateCloudsOperations
+    :ivar resource_pools: ResourcePools operations
+    :vartype resource_pools: azure.mgmt.vmwarecloudsimple.operations.ResourcePoolsOperations
+    :ivar virtual_machine_templates: VirtualMachineTemplates operations
+    :vartype virtual_machine_templates: azure.mgmt.vmwarecloudsimple.operations.VirtualMachineTemplatesOperations
+    :ivar virtual_networks: VirtualNetworks operations
+    :vartype virtual_networks: azure.mgmt.vmwarecloudsimple.operations.VirtualNetworksOperations
+    :ivar usages: Usages operations
+    :vartype usages: azure.mgmt.vmwarecloudsimple.operations.UsagesOperations
+    :ivar virtual_machines: VirtualMachines operations
+    :vartype virtual_machines: azure.mgmt.vmwarecloudsimple.operations.VirtualMachinesOperations
 
     :param credentials: Credentials needed for the client to connect to Azure.
     :type credentials: :mod:`A msrestazure Credentials
      object<msrestazure.azure_active_directory>`
-    :param referer: referer url
-    :type referer: str
-    :param region_id: The region Id (westus, eastus)
-    :type region_id: str
     :param subscription_id: The subscription ID.
     :type subscription_id: str
+    :param referer: referer url
+    :type referer: str
     :param str base_url: Service URL
     """
 
     def __init__(
-            self, credentials, subscription_id, referer, region_id, base_url=None):
+            self, credentials, subscription_id, referer, base_url=None):
 
-        self.config = VMwareCloudSimpleClientConfiguration(credentials, referer, region_id, subscription_id, base_url)
+        self.config = VMwareCloudSimpleClientConfiguration(credentials, subscription_id, referer, base_url)
         super(VMwareCloudSimpleClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
@@ -131,159 +111,23 @@ class VMwareCloudSimpleClient(SDKClient):
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.available_operations = AvailableOperations(
+        self.operations = Operations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.dedicated_cloud_node = DedicatedCloudNodeOperations(
+        self.dedicated_cloud_nodes = DedicatedCloudNodesOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.dedicated_cloud_service = DedicatedCloudServiceOperations(
+        self.dedicated_cloud_services = DedicatedCloudServicesOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.skus_availability_within_region = SkusAvailabilityWithinRegionOperations(
+        self.skus_availability = SkusAvailabilityOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.private_cloud_by_region = PrivateCloudByRegionOperations(
+        self.private_clouds = PrivateCloudsOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.resource_pools_by_pc = ResourcePoolsByPCOperations(
+        self.resource_pools = ResourcePoolsOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.resource_pool_by_pc = ResourcePoolByPCOperations(
+        self.virtual_machine_templates = VirtualMachineTemplatesOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.virtual_machine_templates_by_pc = VirtualMachineTemplatesByPCOperations(
+        self.virtual_networks = VirtualNetworksOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.virtual_machine_template_by_pc = VirtualMachineTemplateByPCOperations(
+        self.usages = UsagesOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.virtual_networks_by_pc = VirtualNetworksByPCOperations(
+        self.virtual_machines = VirtualMachinesOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.virtual_network_by_pc = VirtualNetworkByPCOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.usages_within_region = UsagesWithinRegionOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.virtual_machine = VirtualMachineOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-
-    def get_operation_result_by_region(
-            self, operation_id, custom_headers=None, raw=False, **operation_config):
-        """Implements get of async operation.
-
-        Return an async operation.
-
-        :param operation_id: operation id
-        :type operation_id: str
-        :param dict custom_headers: headers that will be added to the request
-        :param bool raw: returns the direct response alongside the
-         deserialized response
-        :param operation_config: :ref:`Operation configuration
-         overrides<msrest:optionsforoperations>`.
-        :return: OperationResource or ClientRawResponse if raw=true
-        :rtype: ~azure.mgmt.vmwarecloudsimple.models.OperationResource or
-         ~msrest.pipeline.ClientRawResponse
-        :raises:
-         :class:`CSRPErrorException<azure.mgmt.vmwarecloudsimple.models.CSRPErrorException>`
-        """
-        # Construct URL
-        url = self.get_operation_result_by_region.metadata['url']
-        path_format_arguments = {
-            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
-            'regionId': self._serialize.url("self.config.region_id", self.config.region_id, 'str'),
-            'operationId': self._serialize.url("operation_id", operation_id, 'str')
-        }
-        url = self._client.format_url(url, **path_format_arguments)
-
-        # Construct parameters
-        query_parameters = {}
-        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
-
-        # Construct headers
-        header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        if self.config.generate_client_request_id:
-            header_parameters['x-ms-client-request-id'] = str(uuid.uuid1())
-        if custom_headers:
-            header_parameters.update(custom_headers)
-        header_parameters['Referer'] = self._serialize.header("self.config.referer", self.config.referer, 'str')
-        if self.config.accept_language is not None:
-            header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
-
-        # Construct and send request
-        request = self._client.get(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
-
-        if response.status_code not in [200, 202, 204]:
-            raise models.CSRPErrorException(self._deserialize, response)
-
-        deserialized = None
-        header_dict = {}
-
-        if response.status_code == 200:
-            deserialized = self._deserialize('OperationResource', response)
-            header_dict = {
-                'Location': 'str',
-                'Retry-After': 'int',
-                'Content-Type': 'str',
-            }
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            client_raw_response.add_headers(header_dict)
-            return client_raw_response
-
-        return deserialized
-    get_operation_result_by_region.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/operationResults/{operationId}'}
-
-    def get_private_cloud(
-            self, pc_name, custom_headers=None, raw=False, **operation_config):
-        """Implements private cloud GET method.
-
-        Returns private cloud by its name.
-
-        :param pc_name: The private cloud name
-        :type pc_name: str
-        :param dict custom_headers: headers that will be added to the request
-        :param bool raw: returns the direct response alongside the
-         deserialized response
-        :param operation_config: :ref:`Operation configuration
-         overrides<msrest:optionsforoperations>`.
-        :return: PrivateCloud or ClientRawResponse if raw=true
-        :rtype: ~azure.mgmt.vmwarecloudsimple.models.PrivateCloud or
-         ~msrest.pipeline.ClientRawResponse
-        :raises:
-         :class:`CSRPErrorException<azure.mgmt.vmwarecloudsimple.models.CSRPErrorException>`
-        """
-        # Construct URL
-        url = self.get_private_cloud.metadata['url']
-        path_format_arguments = {
-            'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
-            'pcName': self._serialize.url("pc_name", pc_name, 'str'),
-            'regionId': self._serialize.url("self.config.region_id", self.config.region_id, 'str')
-        }
-        url = self._client.format_url(url, **path_format_arguments)
-
-        # Construct parameters
-        query_parameters = {}
-        query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
-
-        # Construct headers
-        header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        if self.config.generate_client_request_id:
-            header_parameters['x-ms-client-request-id'] = str(uuid.uuid1())
-        if custom_headers:
-            header_parameters.update(custom_headers)
-        if self.config.accept_language is not None:
-            header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
-
-        # Construct and send request
-        request = self._client.get(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
-
-        if response.status_code not in [200]:
-            raise models.CSRPErrorException(self._deserialize, response)
-
-        deserialized = None
-
-        if response.status_code == 200:
-            deserialized = self._deserialize('PrivateCloud', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
-
-        return deserialized
-    get_private_cloud.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}'}

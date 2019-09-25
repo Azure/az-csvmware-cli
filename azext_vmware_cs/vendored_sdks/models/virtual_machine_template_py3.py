@@ -37,10 +37,10 @@ class VirtualMachineTemplate(Model):
     :type disks: list[~azure.mgmt.vmwarecloudsimple.models.VirtualDisk]
     :param expose_to_guest_vm: Expose Guest OS or not
     :type expose_to_guest_vm: bool
-    :param guest_os: Required. The Guest OS
-    :type guest_os: str
-    :param guest_os_type: Required. The Guest OS types
-    :type guest_os_type: str
+    :ivar guest_os: The Guest OS
+    :vartype guest_os: str
+    :ivar guest_os_type: The Guest OS types
+    :vartype guest_os_type: str
     :param nics: The list of Virtual NICs
     :type nics: list[~azure.mgmt.vmwarecloudsimple.models.VirtualNic]
     :param number_of_cores: The number of CPU cores
@@ -62,8 +62,8 @@ class VirtualMachineTemplate(Model):
     _validation = {
         'id': {'readonly': True},
         'name': {'readonly': True},
-        'guest_os': {'required': True},
-        'guest_os_type': {'required': True},
+        'guest_os': {'readonly': True},
+        'guest_os_type': {'readonly': True},
         'private_cloud_id': {'required': True},
         'vmwaretools': {'readonly': True},
         'type': {'readonly': True},
@@ -90,7 +90,7 @@ class VirtualMachineTemplate(Model):
         'type': {'key': 'type', 'type': 'str'},
     }
 
-    def __init__(self, *, guest_os: str, guest_os_type: str, private_cloud_id: str, location: str=None, amount_of_ram: int=None, controllers=None, description: str=None, disks=None, expose_to_guest_vm: bool=None, nics=None, number_of_cores: int=None, path: str=None, v_sphere_networks=None, v_sphere_tags=None, **kwargs) -> None:
+    def __init__(self, *, private_cloud_id: str, location: str=None, amount_of_ram: int=None, controllers=None, description: str=None, disks=None, expose_to_guest_vm: bool=None, nics=None, number_of_cores: int=None, path: str=None, v_sphere_networks=None, v_sphere_tags=None, **kwargs) -> None:
         super(VirtualMachineTemplate, self).__init__(**kwargs)
         self.id = None
         self.location = location
@@ -100,8 +100,8 @@ class VirtualMachineTemplate(Model):
         self.description = description
         self.disks = disks
         self.expose_to_guest_vm = expose_to_guest_vm
-        self.guest_os = guest_os
-        self.guest_os_type = guest_os_type
+        self.guest_os = None
+        self.guest_os_type = None
         self.nics = nics
         self.number_of_cores = number_of_cores
         self.path = path

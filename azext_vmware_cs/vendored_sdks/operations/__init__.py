@@ -9,32 +9,26 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from .available_operations import AvailableOperations
-from .dedicated_cloud_node_operations import DedicatedCloudNodeOperations
-from .dedicated_cloud_service_operations import DedicatedCloudServiceOperations
-from .skus_availability_within_region_operations import SkusAvailabilityWithinRegionOperations
-from .private_cloud_by_region_operations import PrivateCloudByRegionOperations
-from .resource_pools_by_pc_operations import ResourcePoolsByPCOperations
-from .resource_pool_by_pc_operations import ResourcePoolByPCOperations
-from .virtual_machine_templates_by_pc_operations import VirtualMachineTemplatesByPCOperations
-from .virtual_machine_template_by_pc_operations import VirtualMachineTemplateByPCOperations
-from .virtual_networks_by_pc_operations import VirtualNetworksByPCOperations
-from .virtual_network_by_pc_operations import VirtualNetworkByPCOperations
-from .usages_within_region_operations import UsagesWithinRegionOperations
-from .virtual_machine_operations import VirtualMachineOperations
+from .operations import Operations
+from .dedicated_cloud_nodes_operations import DedicatedCloudNodesOperations
+from .dedicated_cloud_services_operations import DedicatedCloudServicesOperations
+from .skus_availability_operations import SkusAvailabilityOperations
+from .private_clouds_operations import PrivateCloudsOperations
+from .resource_pools_operations import ResourcePoolsOperations
+from .virtual_machine_templates_operations import VirtualMachineTemplatesOperations
+from .virtual_networks_operations import VirtualNetworksOperations
+from .usages_operations import UsagesOperations
+from .virtual_machines_operations import VirtualMachinesOperations
 
 __all__ = [
-    'AvailableOperations',
-    'DedicatedCloudNodeOperations',
-    'DedicatedCloudServiceOperations',
-    'SkusAvailabilityWithinRegionOperations',
-    'PrivateCloudByRegionOperations',
-    'ResourcePoolsByPCOperations',
-    'ResourcePoolByPCOperations',
-    'VirtualMachineTemplatesByPCOperations',
-    'VirtualMachineTemplateByPCOperations',
-    'VirtualNetworksByPCOperations',
-    'VirtualNetworkByPCOperations',
-    'UsagesWithinRegionOperations',
-    'VirtualMachineOperations',
+    'Operations',
+    'DedicatedCloudNodesOperations',
+    'DedicatedCloudServicesOperations',
+    'SkusAvailabilityOperations',
+    'PrivateCloudsOperations',
+    'ResourcePoolsOperations',
+    'VirtualMachineTemplatesOperations',
+    'VirtualNetworksOperations',
+    'UsagesOperations',
+    'VirtualMachinesOperations',
 ]

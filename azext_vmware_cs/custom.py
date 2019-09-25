@@ -64,98 +64,60 @@ def remove_provider():
         config.write(configfile)
 
 
-# This API is broken, as it doesn't take regionId as parameter for the method
-# Instead regionId is a parameter in the client
-# TODO: Change after thos issue is fixed in swagger
-def list_private_cloud_by_region(client):
+def list_private_cloud(client, location):
     """
-    Returns a list of private clouds in the current region.
+    Returns a list of private clouds in a region.
     """
-    return client.private_cloud_by_region.list()
+    return client.list(location)
 
 
-def show_private_cloud(client, private_cloud):
+def show_private_cloud(client, private_cloud, location):
     """
     Get the details of a private cloud.
     """
-    return client.get_private_cloud(private_cloud)
+    return client.get(private_cloud, location)
 
 
-def set_region(client, region_name):
-    """
-    Set your current region (in the configuration information).
-    """
-    from ._config import get_region_id
-    if get_region_id() == region_name:
-        return
-
-    from knack.config import get_config_parser
-    from ._config import (VMWARE_CS_CONFIG_FILE, CONFIG_REGION_SECTION_NAME, CONFIG_REGION_FIELD_NAME)
-
-    config = get_config_parser()
-    config.read(VMWARE_CS_CONFIG_FILE)
-
-    if not config.has_section(CONFIG_REGION_SECTION_NAME):
-        config.add_section(CONFIG_REGION_SECTION_NAME)
-
-    config.set(CONFIG_REGION_SECTION_NAME, CONFIG_REGION_FIELD_NAME, region_name)
-
-    with open(VMWARE_CS_CONFIG_FILE, 'w') as configfile:
-        config.write(configfile)
-
-    client.config.region_id = region_name
-
-
-def get_region():
-    """
-    Returns your current set region.
-    """
-    from ._config import (get_region_id, CONFIG_REGION_FIELD_NAME)
-
-    region = {CONFIG_REGION_FIELD_NAME: get_region_id()}
-    return region
-
-
-def list_resource_pool(client, private_cloud):
+def list_resource_pool(client, location, private_cloud):
     """
     Returns the list of resource pool in the specified private cloud.
     """
-    return client.resource_pools_by_pc.list(private_cloud)
+    return client.list(location, private_cloud)
 
 
-def show_resource_pool(client, private_cloud, resource_pool):
+def show_resource_pool(client, location, private_cloud, resource_pool):
     """
     Returns the details of a resource pool.
     """
-    return client.resource_pool_by_pc.get(private_cloud, resource_pool)
+    return client.get(location, private_cloud, resource_pool)
 
 
-def list_virtual_networks(client, private_cloud, resource_pool):
+def list_virtual_networks(client, location, private_cloud, resource_pool):
     """
     Returns the list of available virtual networks in a resource pool, in a private cloud.
     """
-    return client.virtual_networks_by_pc.list(private_cloud, resource_pool)
+    return client.list(location, private_cloud, resource_pool)
 
 
-def show_virtual_network(client, private_cloud, virtual_network):
+def show_virtual_network(client, location, private_cloud, virtual_network):
     """
     Returns the details of a virtual network in a private cloud.
     """
-    return client.virtual_network_by_pc.get(private_cloud, virtual_network)
+    return client.get(location, private_cloud, virtual_network)
 
 
-def list_vm_template(client, private_cloud, resource_pool):
+def list_vm_template(client, private_cloud, location, resource_pool):
     """
     Returns the list of VMware virtual machines templates in a resource pool, in a private cloud.
     """
-    return client.virtual_machine_templates_by_pc.list(private_cloud, resource_pool)
+    return client.list(private_cloud, location, resource_pool)
 
 
-def show_vm_template(client, private_cloud, template):
+def show_vm_template(client, location, private_cloud, template):
     """
     Returns details of a VMware virtual machines template in a private cloud.
     """
-    return client.virtual_machine_template_by_pc.get(private_cloud, template)
+    return client.get(location, private_cloud, template)
 
 
 # --------------------------------------------------------------------------------------------
@@ -285,7 +247,7 @@ def create_vm(cmd, client, resource_group_name, vm_name,
     # Extracting template and private cloud name from the resource id
     template_name = template.rsplit('/', 1)[-1]
     private_cloud_name = private_cloud.rsplit('/', 1)[-1]
-    vm_template = client.virtual_machine_template_by_pc.get(private_cloud_name, template_name)
+    vm_template = client.virtual_machine_templates.get(location, private_cloud_name, template_name)
 
     cores = number_of_cores or vm_template.number_of_cores
     ram = amount_of_ram or vm_template.amount_of_ram
@@ -318,7 +280,7 @@ def create_vm(cmd, client, resource_group_name, vm_name,
                                      resource_pool=resource_pool,
                                      template_id=template)
 
-    return client.virtual_machine.create_or_update(resource_group_name, vm_name, virtual_machine)
+    return client.virtual_machines.create_or_update(resource_group_name, vm_name, virtual_machine)
 
 
 def list_vm(client, resource_group_name=None):

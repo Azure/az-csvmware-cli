@@ -47,12 +47,10 @@ def load_arguments(self, _):
         with self.argument_context('vmware') as c:
             c.argument('resource_group_name', arg_type=resource_group_name_type)
             c.argument('tags', arg_type=tags_type)
-            c.argument('region_name', options_list=['--name', '-n'],
-                       help="Location of your Azure resource.")
+            c.argument('location', get_location_type(self.cli_ctx), validator=location_validator,
+                       help="Region in which the private cloud is present. If default location is not configured, will default to the resource group\'s location.")
 
         with self.argument_context('vmware vm') as c:
-            c.argument('location', get_location_type(self.cli_ctx), validator=location_validator,
-                       help="Location in which to create VM. If default location is not configured, will default to the resource group\'s location")
             c.argument('vm_name', options_list=['--name', '-n'],
                        help="Name of the virtual machine.",
                        validator=vm_name_validator,

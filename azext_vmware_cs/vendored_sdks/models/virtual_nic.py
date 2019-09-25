@@ -24,7 +24,7 @@ class VirtualNic(Model):
     :type ip_addresses: list[str]
     :param mac_address: NIC MAC address
     :type mac_address: str
-    :param network: The list of Virtual Networks
+    :param network: Required. Virtual Network
     :type network: ~azure.mgmt.vmwarecloudsimple.models.VirtualNetwork
     :param nic_type: Required. NIC type. Possible values include: 'E1000',
      'E1000E', 'PCNET32', 'VMXNET', 'VMXNET2', 'VMXNET3'
@@ -38,6 +38,7 @@ class VirtualNic(Model):
     """
 
     _validation = {
+        'network': {'required': True},
         'nic_type': {'required': True},
         'virtual_nic_name': {'readonly': True},
     }

@@ -15,8 +15,8 @@ from msrest.pipeline import ClientRawResponse
 from .. import models
 
 
-class AvailableOperations(object):
-    """AvailableOperations operations.
+class SkusAvailabilityOperations(object):
+    """SkusAvailabilityOperations operations.
 
     :param client: Client for service requests.
     :param config: Configuration of service client.
@@ -37,19 +37,24 @@ class AvailableOperations(object):
         self.config = config
 
     def list(
-            self, custom_headers=None, raw=False, **operation_config):
-        """Implements list of available operations.
+            self, region_id, sku_id=None, custom_headers=None, raw=False, **operation_config):
+        """Implements SkuAvailability List method.
 
-        Return list of operations.
+        Returns list of available resources in region.
 
+        :param region_id: The region Id (westus, eastus)
+        :type region_id: str
+        :param sku_id: sku id, if no sku is passed availability for all skus
+         will be returned
+        :type sku_id: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: An iterator like instance of AvailableOperation
+        :return: An iterator like instance of SkuAvailability
         :rtype:
-         ~azure.mgmt.vmwarecloudsimple.models.AvailableOperationPaged[~azure.mgmt.vmwarecloudsimple.models.AvailableOperation]
+         ~azure.mgmt.vmwarecloudsimple.models.SkuAvailabilityPaged[~azure.mgmt.vmwarecloudsimple.models.SkuAvailability]
         :raises:
          :class:`CSRPErrorException<azure.mgmt.vmwarecloudsimple.models.CSRPErrorException>`
         """
@@ -58,9 +63,16 @@ class AvailableOperations(object):
             if not next_link:
                 # Construct URL
                 url = self.list.metadata['url']
+                path_format_arguments = {
+                    'subscriptionId': self._serialize.url("self.config.subscription_id", self.config.subscription_id, 'str'),
+                    'regionId': self._serialize.url("region_id", region_id, 'str')
+                }
+                url = self._client.format_url(url, **path_format_arguments)
 
                 # Construct parameters
                 query_parameters = {}
+                if sku_id is not None:
+                    query_parameters['skuId'] = self._serialize.query("sku_id", sku_id, 'str')
                 query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
             else:
@@ -87,12 +99,12 @@ class AvailableOperations(object):
             return response
 
         # Deserialize response
-        deserialized = models.AvailableOperationPaged(internal_paging, self._deserialize.dependencies)
+        deserialized = models.SkuAvailabilityPaged(internal_paging, self._deserialize.dependencies)
 
         if raw:
             header_dict = {}
-            client_raw_response = models.AvailableOperationPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            client_raw_response = models.SkuAvailabilityPaged(internal_paging, self._deserialize.dependencies, header_dict)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/providers/Microsoft.VMwareCloudSimple/operations'}
+    list.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/availabilities'}

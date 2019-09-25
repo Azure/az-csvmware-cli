@@ -422,12 +422,13 @@ class Vmware_csScenarioTest(ScenarioTest):
         self.kwargs.update({
             'rp': 'resgroup-169',
             'pc': 'avs-test-eastus',
-            'vmtemplate': 'vm-125'
+            'vmtemplate': 'vm-125',
+            'loc': 'eastus'
         })
 
-        self.cmd('az vmware vm-template list -p {pc} -r {rp}')
+        self.cmd('az vmware vm-template list -p {pc} -r {rp} --location {loc}')
 
-        self.cmd('az vmware vm-template show -p {pc} -n {vmtemplate}',
+        self.cmd('az vmware vm-template show -p {pc} -n {vmtemplate} --location {loc}',
                  checks=[
                      self.check('guestOsType', 'linux'),
                      self.check('guestOs', 'Ubuntu Linux (64-bit)'),
@@ -442,12 +443,13 @@ class Vmware_csScenarioTest(ScenarioTest):
         self.kwargs.update({
             'rp': 'resgroup-169',
             'pc': 'avs-test-eastus',
-            'vnet': 'dvportgroup-85'
+            'vnet': 'dvportgroup-85',
+            'loc': 'eastus'
         })
 
-        self.cmd('az vmware virtual-network list -p {pc} -r {rp}')
+        self.cmd('az vmware virtual-network list -p {pc} -r {rp} --location {loc}')
 
-        self.cmd('az vmware virtual-network show -p {pc} -n {vnet}',
+        self.cmd('az vmware virtual-network show -p {pc} -n {vnet} --location {loc}',
                  checks=[
                      self.check('name', 'Datacenter/Workload01'),
                      self.check('type', 'Microsoft.VMwareCloudSimple/virtualNetworks')
@@ -460,12 +462,13 @@ class Vmware_csScenarioTest(ScenarioTest):
         """
         self.kwargs.update({
             'rp': 'resgroup-169',
-            'pc': 'avs-test-eastus'
+            'pc': 'avs-test-eastus',
+            'loc': 'eastus'
         })
 
-        self.cmd('az vmware resource-pool list -p {pc}')
+        self.cmd('az vmware resource-pool list -p {pc} --location {loc}')
 
-        self.cmd('az vmware resource-pool show -p {pc} -n {rp}',
+        self.cmd('az vmware resource-pool show -p {pc} -n {rp} --location {loc}',
                  checks=[
                      self.check('location', 'eastus'),
                      self.check('name', 'AzCLITest'),
@@ -473,33 +476,17 @@ class Vmware_csScenarioTest(ScenarioTest):
                  ])
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_cs_region(self, resource_group):
-        """
-        Tests the set-region and get-region commands.
-        """
-        self.kwargs.update({
-            'region_id': 'eastus',
-            'CONFIG_REGION_FIELD_NAME': 'region_id'
-        })
-
-        # Set the region to eastus.
-        self.cmd('az vmware set-region -n {region_id}')
-
-        # Check that the region is eastus
-        self.cmd('az vmware get-region',
-                 checks=[self.check('{CONFIG_REGION_FIELD_NAME}', '{region_id}')])
-
-    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_private_cloud_list_and_show(self, resource_group):
         """
         Tests the list and show private clouds command.
         """
         self.kwargs.update({
-            'pc': 'avs-test-eastus'
+            'pc': 'avs-test-eastus',
+            'loc': 'eastus'
         })
-        self.cmd('az vmware private-cloud list')
+        self.cmd('az vmware private-cloud list --location {loc}')
 
-        self.cmd('az vmware private-cloud show -n {pc}',
+        self.cmd('az vmware private-cloud show -n {pc} --location {loc}',
                  checks=[
                      self.check('location', 'eastus'),
                      self.check('name', '{pc}')

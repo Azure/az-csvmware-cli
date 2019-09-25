@@ -10,7 +10,11 @@ Here the commands are registered so that they can used in the CLI.
 
 from azure.cli.core.commands import CliCommandType
 from azext_vmware_cs._client_factory import (cf_vmware_cs,
-                                             cf_virtual_machine)
+                                             cf_virtual_machine,
+                                             cf_private_cloud,
+                                             cf_resource_pool,
+                                             cf_virtual_machine_template,
+                                             cf_virtual_network)
 from ._utils import get_vmware_provider
 from ._config import VmwareProviders
 from ._format import (transform_vm_table_output, transform_vm_table_list)
@@ -56,25 +60,21 @@ def load_command_table(self, _):
             g.custom_command('list', 'list_vnics')
             g.custom_command('delete', 'delete_vnics')
 
-        with self.command_group('vmware vm-template', client_factory=cf_vmware_cs) as g:
+        with self.command_group('vmware vm-template', client_factory=cf_virtual_machine_template) as g:
             g.custom_command('show', 'show_vm_template')
             g.custom_command('list', 'list_vm_template')
 
-        with self.command_group('vmware virtual-network', client_factory=cf_vmware_cs) as g:
+        with self.command_group('vmware virtual-network', client_factory=cf_virtual_network) as g:
             g.custom_command('show', 'show_virtual_network')
             g.custom_command('list', 'list_virtual_networks')
 
-        with self.command_group('vmware resource-pool', client_factory=cf_vmware_cs) as g:
+        with self.command_group('vmware resource-pool', client_factory=cf_resource_pool) as g:
             g.custom_command('show', 'show_resource_pool')
             g.custom_command('list', 'list_resource_pool')
 
-        with self.command_group('vmware private-cloud', client_factory=cf_vmware_cs) as g:
-            g.custom_command('list', 'list_private_cloud_by_region')
+        with self.command_group('vmware private-cloud', client_factory=cf_private_cloud) as g:
+            g.custom_command('list', 'list_private_cloud')
             g.custom_command('show', 'show_private_cloud')
-
-        with self.command_group('vmware', client_factory=cf_vmware_cs) as g:
-            g.custom_command('set-region', 'set_region')
-            g.custom_command('get-region', 'get_region')
 
     with self.command_group('vmware', is_preview=True):
         pass

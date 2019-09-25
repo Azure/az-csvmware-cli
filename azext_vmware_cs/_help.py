@@ -283,7 +283,7 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: List details of VM templates.
               text: >
-                az vmware vm-template list -p MyPrivateCloud -r MyResourcePool
+                az vmware vm-template list -p MyPrivateCloud -r MyResourcePool --location eastus
     """
 
     helps['vmware vm-template show'] = """
@@ -292,7 +292,7 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: Get the details of a VM template.
               text: >
-                az vmware vm-template show  -n MyVmTemplate -p MyPrivateCloud
+                az vmware vm-template show  -n MyVmTemplate -p MyPrivateCloud --location eastus
     """
 
     helps['vmware virtual-network'] = """
@@ -306,7 +306,7 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: List details of virtual networks.
               text: >
-                az vmware virtual-network list -p MyPrivateCloud -r MyResourcePool
+                az vmware virtual-network list -p MyPrivateCloud -r MyResourcePool --location eastus
     """
 
     helps['vmware virtual-network show'] = """
@@ -315,7 +315,7 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: Get the details of a virtual network.
               text: >
-                az vmware virtual-network show -n MyVirtualNetwork -p MyPrivateCloud
+                az vmware virtual-network show -n MyVirtualNetwork -p MyPrivateCloud --location eastus
     """
 
     helps['vmware private-cloud'] = """
@@ -325,20 +325,20 @@ if get_vmware_provider() == VmwareProviders.CS:
 
     helps['vmware private-cloud list'] = """
         type: command
-        short-summary: List details of private clouds in the current region. The current region can be changed by "az vmware set-region" command.
+        short-summary: List details of private clouds in a region.
         examples:
-            - name: List details of private clouds.
+            - name: List details of private clouds in East US.
               text: >
-                az vmware private-cloud list
+                az vmware private-cloud list --location eastus
     """
 
     helps['vmware private-cloud show'] = """
         type: command
-        short-summary: Get the details of a private cloud in the current region. The current region can be changed by "az vmware set-region" command.
+        short-summary: Get the details of a private cloud in a region.
         examples:
-            - name: Get the details of a private cloud.
+            - name: Get the details of a private cloud which is in East US.
               text: >
-                az vmware private-cloud show -n MyPrivateCloud
+                az vmware private-cloud show -n MyPrivateCloud --location eastus
     """
 
     helps['vmware resource-pool'] = """
@@ -352,7 +352,7 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: List details of resource pools.
               text: >
-                az vmware resource-pool list -p MyPrivateCloud
+                az vmware resource-pool list -p MyPrivateCloud --location eastus
     """
 
     helps['vmware resource-pool show'] = """
@@ -361,5 +361,5 @@ if get_vmware_provider() == VmwareProviders.CS:
         examples:
             - name: Get the details of a resource pool.
               text: >
-                az vmware resource-pool show -n MyResourcePool -p MyPrivateCloud
+                az vmware resource-pool show -n MyResourcePool -p MyPrivateCloud --location eastus
     """
