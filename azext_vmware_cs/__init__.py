@@ -9,7 +9,7 @@ from azure.cli.core import AzCommandsLoader
 from azext_vmware_cs._help import helps  # pylint: disable=unused-import
 
 
-class Vmware_csCommandsLoader(AzCommandsLoader):
+class VmwareCsCommandsLoader(AzCommandsLoader):
     """
     Custom command loader (inherited from AzCommandsLoader class) which is used for loading the module.
     """
@@ -17,8 +17,8 @@ class Vmware_csCommandsLoader(AzCommandsLoader):
     def __init__(self, cli_ctx=None):
         from azure.cli.core.commands import CliCommandType
         vmware_cs_custom = CliCommandType(operations_tmpl='azext_vmware_cs.custom#{}')
-        super(Vmware_csCommandsLoader, self).__init__(cli_ctx=cli_ctx,
-                                                      custom_command_type=vmware_cs_custom)
+        super(VmwareCsCommandsLoader, self).__init__(cli_ctx=cli_ctx,
+                                                     custom_command_type=vmware_cs_custom)
 
     def load_command_table(self, args):
         from azext_vmware_cs.commands import load_command_table
@@ -30,4 +30,4 @@ class Vmware_csCommandsLoader(AzCommandsLoader):
         load_arguments(self, command)
 
 
-COMMAND_LOADER_CLS = Vmware_csCommandsLoader
+COMMAND_LOADER_CLS = VmwareCsCommandsLoader

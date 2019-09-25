@@ -15,11 +15,11 @@ import logging
 TEST_DIR = os.path.abspath(os.path.join(os.path.abspath(__file__), '..'))
 
 
-class Vmware_csScenarioTest(ScenarioTest):
+class VmwareCsScenarioTest(ScenarioTest):
     """
     Test for AVS by CloudSimple CLI commands.
     This tests various command exposed by CloudSimple CLI.
-    To run the tests, run 'azdev test vmware_cs --discover --live'
+    To run the tests, run 'azdev test vmware-cs --discover --live'
 
     The prerequisites for the tests are that you should be logged in to a subscription in the CLI.
     That subscription should contain:
