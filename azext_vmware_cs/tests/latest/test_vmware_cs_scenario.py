@@ -492,8 +492,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                      self.check('name', '{pc}')
                  ])
 
-    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_cs_vm_disk_apis(self, resource_group):
+    def test_vmware_cs_vm_disk_apis(self):
 
         self.kwargs.update({
             'name': self.create_random_name(prefix='cli-test', length=24),
@@ -501,6 +500,7 @@ class VmwareCsScenarioTest(ScenarioTest):
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
             'rp': 'resgroup-169',
+            'rg': 'az_cli_cs_test'
         })
 
         # Ensuring that CloudSimple commands are available by setting the correct provider.
@@ -554,16 +554,23 @@ class VmwareCsScenarioTest(ScenarioTest):
             vm_status = self.cmd('az vmware vm show -g {rg} -n \
                                  {name}').get_output_in_json()["status"]
 
-        # Checking that the number of disk in the VM is 1 now.
+        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
+                 --mode independent_nonpersistent --size 8388608',
+                 checks=[
+                     self.check('disks | [1].controllerId', '1000'),
+                     self.check('disks | [1].independenceMode', "independent_nonpersistent"),
+                     self.check('disks | [1].totalSize', 8388608)
+                 ])
+
+        # Checking that the number of disk in the VM is 2 now.
         count = len(self.cmd('az vmware vm disk list -g {rg} \
                              --vm-name {name}').get_output_in_json())
-        self.assertEqual(count, 1)
+        self.assertEqual(count, 2)
 
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')
 
-    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_cs_vm_nic_apis(self, resource_group):
+    def test_vmware_cs_vm_nic_apis(self):
 
         self.kwargs.update({
             'name': self.create_random_name(prefix='cli-test', length=24),
@@ -571,7 +578,8 @@ class VmwareCsScenarioTest(ScenarioTest):
             'pc': 'avs-test-eastus',
             'vm_template': 'vm-125',
             'rp': 'resgroup-169',
-            'vnet': 'dvportgroup-85'
+            'vnet': 'dvportgroup-85',
+            'rg': 'az_cli_cs_test'
         })
 
         # Ensuring that CloudSimple commands are available by setting the correct provider.
@@ -624,9 +632,17 @@ class VmwareCsScenarioTest(ScenarioTest):
             vm_status = self.cmd('az vmware vm show -g {rg} -n \
                                  {name}').get_output_in_json()["status"]
 
-        # Checking that the number of nics in the VM is 1 now.
+        # Add a nic with the default values
+        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
+                 checks=[
+                     self.check('nics | [1].nicType', 'VMXNET3'),
+                     self.check('nics | [1].powerOnBoot', None),
+                     self.check('nics | [1].network.name', 'Datacenter/Workload01')
+                 ])
+
+        # Checking that the number of nics in the VM is 2 now.
         count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
-        self.assertEqual(count, 1)
+        self.assertEqual(count, 2)
 
         # Deleting the VM.
         self.cmd('az vmware vm delete -g {rg} -n {name}')

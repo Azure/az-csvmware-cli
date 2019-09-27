@@ -40,11 +40,11 @@ class VirtualMachine(Model):
     :type expose_to_guest_vm: bool
     :ivar folder: The path to virtual machine folder in VCenter
     :vartype folder: str
-    :param guest_os: Required. The name of Guest OS
-    :type guest_os: str
-    :param guest_os_type: Required. The Guest OS type. Possible values
-     include: 'linux', 'windows', 'other'
-    :type guest_os_type: str or
+    :ivar guest_os: The name of Guest OS
+    :vartype guest_os: str
+    :ivar guest_os_type: The Guest OS type. Possible values include: 'linux',
+     'windows', 'other'
+    :vartype guest_os_type: str or
      ~azure.mgmt.vmwarecloudsimple.models.GuestOSType
     :param nics: The list of Virtual NICs
     :type nics: list[~azure.mgmt.vmwarecloudsimple.models.VirtualNic]
@@ -89,8 +89,8 @@ class VirtualMachine(Model):
         'controllers': {'readonly': True},
         'dnsname': {'readonly': True},
         'folder': {'readonly': True},
-        'guest_os': {'required': True},
-        'guest_os_type': {'required': True},
+        'guest_os': {'readonly': True},
+        'guest_os_type': {'readonly': True},
         'number_of_cores': {'required': True},
         'private_cloud_id': {'required': True},
         'provisioning_state': {'readonly': True},
@@ -130,7 +130,7 @@ class VirtualMachine(Model):
         'type': {'key': 'type', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str, amount_of_ram: int, guest_os: str, guest_os_type, number_of_cores: int, private_cloud_id: str, disks=None, expose_to_guest_vm: bool=None, nics=None, password: str=None, resource_pool=None, template_id: str=None, username: str=None, v_sphere_networks=None, tags=None, **kwargs) -> None:
+    def __init__(self, *, location: str, amount_of_ram: int, number_of_cores: int, private_cloud_id: str, disks=None, expose_to_guest_vm: bool=None, nics=None, password: str=None, resource_pool=None, template_id: str=None, username: str=None, v_sphere_networks=None, tags=None, **kwargs) -> None:
         super(VirtualMachine, self).__init__(**kwargs)
         self.id = None
         self.location = location
@@ -141,8 +141,8 @@ class VirtualMachine(Model):
         self.dnsname = None
         self.expose_to_guest_vm = expose_to_guest_vm
         self.folder = None
-        self.guest_os = guest_os
-        self.guest_os_type = guest_os_type
+        self.guest_os = None
+        self.guest_os_type = None
         self.nics = nics
         self.number_of_cores = number_of_cores
         self.password = password

@@ -40,11 +40,11 @@ class VirtualMachine(Model):
     :type expose_to_guest_vm: bool
     :ivar folder: The path to virtual machine folder in VCenter
     :vartype folder: str
-    :param guest_os: Required. The name of Guest OS
-    :type guest_os: str
-    :param guest_os_type: Required. The Guest OS type. Possible values
-     include: 'linux', 'windows', 'other'
-    :type guest_os_type: str or
+    :ivar guest_os: The name of Guest OS
+    :vartype guest_os: str
+    :ivar guest_os_type: The Guest OS type. Possible values include: 'linux',
+     'windows', 'other'
+    :vartype guest_os_type: str or
      ~azure.mgmt.vmwarecloudsimple.models.GuestOSType
     :param nics: The list of Virtual NICs
     :type nics: list[~azure.mgmt.vmwarecloudsimple.models.VirtualNic]
@@ -89,8 +89,8 @@ class VirtualMachine(Model):
         'controllers': {'readonly': True},
         'dnsname': {'readonly': True},
         'folder': {'readonly': True},
-        'guest_os': {'required': True},
-        'guest_os_type': {'required': True},
+        'guest_os': {'readonly': True},
+        'guest_os_type': {'readonly': True},
         'number_of_cores': {'required': True},
         'private_cloud_id': {'required': True},
         'provisioning_state': {'readonly': True},
@@ -141,8 +141,8 @@ class VirtualMachine(Model):
         self.dnsname = None
         self.expose_to_guest_vm = kwargs.get('expose_to_guest_vm', None)
         self.folder = None
-        self.guest_os = kwargs.get('guest_os', None)
-        self.guest_os_type = kwargs.get('guest_os_type', None)
+        self.guest_os = None
+        self.guest_os_type = None
         self.nics = kwargs.get('nics', None)
         self.number_of_cores = kwargs.get('number_of_cores', None)
         self.password = kwargs.get('password', None)
