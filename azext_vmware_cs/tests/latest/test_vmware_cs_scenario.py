@@ -33,32 +33,6 @@ class VmwareCsScenarioTest(ScenarioTest):
     """
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
-    def test_vmware_cs_provider(self, resource_group):
-        """
-        Tests the set-provider and get-provider commands.
-        """
-        self.kwargs.update({
-            'dummy_name': self.create_random_name(prefix='cli-test', length=24),
-            'provider_name': 'cs',
-            'CURRENT_PROVIDER_FIELD_NAME': 'current_provider'
-        })
-
-        # Set the provider to CloudSimple (cs).
-        self.cmd('az vmware set-provider -n {provider_name}')
-
-        # Check that the provider is cs
-        self.cmd('az vmware get-provider',
-                 checks=[self.check('{CURRENT_PROVIDER_FIELD_NAME}', '{provider_name}')])
-
-        # Check that setting any dummy provider will result in an error
-        with self.assertRaises(SystemExit):
-            self.cmd('az vmware set-provider -n {dummy_name}')
-
-        # Check that the provider is still cs
-        self.cmd('az vmware get-provider',
-                 checks=[self.check('{CURRENT_PROVIDER_FIELD_NAME}', '{provider_name}')])
-
-    @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_create_param_validation(self, resource_group):
         """
         Tests the create API for vmware vm.
@@ -73,9 +47,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'ram': 1024,
             'cores': 1
         })
-
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
 
         # Checking that invalid vm_name causes error
         with self.assertRaisesRegexp(CLIError, "Virtual machine name should only contain letters, numbers, or hyphen."):
@@ -135,9 +106,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'cores': 1
         })
 
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
-
         # Checking that the number of VM in our rg (used for testing) is 0.
         count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
@@ -167,6 +135,12 @@ class VmwareCsScenarioTest(ScenarioTest):
                      self.check('amountOfRam', '{ram}'),
                      self.check('location', '{loc}')
                  ])
+
+        # Show as table
+        self.cmd('az vmware vm show -g {rg} -n {name} -o table')
+
+        # List as table
+        self.cmd('az vmware vm list -g {rg} -o table')
 
         # Testing update command
         self.cmd('az vmware vm update -g {rg} -n {name} --set tags.foo=boo', checks=[
@@ -198,9 +172,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'rp': 'resgroup-169',
             'vnet': 'dvportgroup-85'
         })
-
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
 
         # Creating a VM with default parameters from the vm template
         self.cmd('az vmware vm create -g {rg} -n {name1} -p {pc} --template {vm_template} -r {rp}',
@@ -357,9 +328,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'cores': 1
         })
 
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
-
         # Creating a VM.
         self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores {cores}  --private-cloud {pc} --template {vm_template} \
@@ -503,9 +471,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'rg': 'az_cli_cs_test'
         })
 
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
-
         # Creating a VM.
         self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \
                  --private-cloud {pc} --template {vm_template} --resource-pool {rp}')
@@ -581,9 +546,6 @@ class VmwareCsScenarioTest(ScenarioTest):
             'vnet': 'dvportgroup-85',
             'rg': 'az_cli_cs_test'
         })
-
-        # Ensuring that CloudSimple commands are available by setting the correct provider.
-        self.cmd('az vmware set-provider -n cs')
 
         # Creating a VM.
         self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \

@@ -6,7 +6,6 @@
 This file contains generic utility functions.
 """
 
-import os
 from knack.util import CLIError
 from ._config import PATH_CHAR
 
@@ -25,25 +24,6 @@ def vm_cs_create_resource_id(subscription, namespace, location,
     if child_name is not None:
         resource_id = resource_id + PATH_CHAR + child_name
     return resource_id
-
-
-def get_vmware_provider():
-    """
-    Gets the current provider for AVS, from the global configuration file.
-    """
-    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME)
-
-    from knack.config import get_config_parser
-
-    if not os.path.isfile(GLOBAL_CONFIG_FILE):
-        return None
-
-    config = get_config_parser()
-    config.read(GLOBAL_CONFIG_FILE)
-
-    if config.has_section(GLOBAL_CONFIG_SECTION):
-        return config.get(GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME)
-    return None
 
 
 def vmware_cs_name_or_id_validator(cmd, namespace, resource_type_display_name,

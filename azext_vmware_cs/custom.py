@@ -11,59 +11,6 @@ The custom methods are linked to the commands at the time of command registerati
 from knack.util import CLIError
 
 
-def set_provider(provider_name):
-    """
-    Set the Azure VMware Solution provider.
-    """
-    from ._utils import get_vmware_provider
-    vmware_provider = get_vmware_provider()
-
-    if vmware_provider == provider_name:
-        return
-
-    from knack.config import get_config_parser
-    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION,
-                          CURRENT_PROVIDER_FIELD_NAME, VmwareProviders)
-
-    config = get_config_parser()
-    config.read(GLOBAL_CONFIG_FILE)
-
-    if not config.has_section(GLOBAL_CONFIG_SECTION):
-        config.add_section(GLOBAL_CONFIG_SECTION)
-
-    config.set(GLOBAL_CONFIG_SECTION, CURRENT_PROVIDER_FIELD_NAME, provider_name)
-
-    with open(GLOBAL_CONFIG_FILE, 'w') as configfile:
-        config.write(configfile)
-
-
-def get_provider():
-    """
-    Returns the Azure VMware Solution provider.
-    """
-    from ._utils import get_vmware_provider
-    from ._config import CURRENT_PROVIDER_FIELD_NAME
-    vmware_provider = get_vmware_provider()
-
-    provider = {CURRENT_PROVIDER_FIELD_NAME: vmware_provider}
-    return provider
-
-
-def remove_provider():
-    """
-    Removes the created section in the config file. Necessary for a clean uninstall.
-    """
-    from knack.config import get_config_parser
-    from ._config import (GLOBAL_CONFIG_FILE, GLOBAL_CONFIG_SECTION)
-    config = get_config_parser()
-    config.read(GLOBAL_CONFIG_FILE)
-
-    config.remove_section(GLOBAL_CONFIG_SECTION)
-
-    with open(GLOBAL_CONFIG_FILE, 'w') as configfile:
-        config.write(configfile)
-
-
 def list_private_cloud(client, location):
     """
     Returns a list of private clouds in a region.
