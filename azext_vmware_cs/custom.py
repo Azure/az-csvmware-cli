@@ -25,42 +25,42 @@ def show_private_cloud(client, private_cloud, location):
     return client.get(private_cloud, location)
 
 
-def list_resource_pool(client, location, private_cloud):
+def list_resource_pool(client, private_cloud, location):
     """
     Returns the list of resource pool in the specified private cloud.
     """
     return client.list(location, private_cloud)
 
 
-def show_resource_pool(client, location, private_cloud, resource_pool):
+def show_resource_pool(client, private_cloud, resource_pool, location):
     """
     Returns the details of a resource pool.
     """
     return client.get(location, private_cloud, resource_pool)
 
 
-def list_virtual_networks(client, location, private_cloud, resource_pool):
+def list_virtual_networks(client, private_cloud, resource_pool, location):
     """
     Returns the list of available virtual networks in a resource pool, in a private cloud.
     """
     return client.list(location, private_cloud, resource_pool)
 
 
-def show_virtual_network(client, location, private_cloud, virtual_network):
+def show_virtual_network(client, private_cloud, virtual_network, location):
     """
     Returns the details of a virtual network in a private cloud.
     """
     return client.get(location, private_cloud, virtual_network)
 
 
-def list_vm_template(client, private_cloud, location, resource_pool):
+def list_vm_template(client, private_cloud, resource_pool, location):
     """
     Returns the list of VMware virtual machines templates in a resource pool, in a private cloud.
     """
     return client.list(private_cloud, location, resource_pool)
 
 
-def show_vm_template(client, location, private_cloud, template):
+def show_vm_template(client, private_cloud, template, location):
     """
     Returns details of a VMware virtual machines template in a private cloud.
     """

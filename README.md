@@ -68,6 +68,15 @@ This extension provides CLI commands to:
     For creating a VMware VM by CloudSimple, a CloudSimple private cloud should be provisioned, which involves creating a CloudSimple service and provisioning a minimum of 3 nodes.
 2. List and show - private clouds, resource pools, virtual machine templates, and virtual networks.
 
+## Removing extension
+
+Extension can be removed using the following CLI command:
+
+```
+az extension remove -n vmware-cs
+```
+
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
