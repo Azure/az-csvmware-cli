@@ -40,7 +40,7 @@ def vmware_cs_name_or_id_validator(cmd, namespace, resource_type_display_name,
         if not is_valid_resource_id(child_resource):
             private_cloud = namespace.private_cloud
             if is_valid_resource_id(private_cloud):
-                private_cloud = private_cloud.rsplit('/', 1)[-1]
+                private_cloud = private_cloud.rsplit(PATH_CHAR, 1)[-1]
             resource_id = vm_cs_create_resource_id(subscription=get_subscription_id(cmd.cli_ctx),
                                                    namespace='Microsoft.VMwareCloudSimple',
                                                    location=namespace.location,
@@ -73,7 +73,7 @@ def only_resource_name_validator(resource):
     """
     from msrestazure.tools import is_valid_resource_id
     if is_valid_resource_id(resource):
-        return resource.rsplit('/', 1)[-1]
+        return resource.rsplit(PATH_CHAR, 1)[-1]
     return resource
 
 

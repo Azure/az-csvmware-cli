@@ -160,6 +160,7 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
     """
     from azure.cli.core.commands.client_factory import get_subscription_id
     from msrestazure.tools import is_valid_resource_id
+    from ._config import PATH_CHAR
 
     location = region
     private_cloud = pc
@@ -169,7 +170,7 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
         private_cloud = virtual_machine.private_cloud_id
 
     if is_valid_resource_id(private_cloud):
-        private_cloud = private_cloud.rsplit('/', 1)[-1]
+        private_cloud = private_cloud.rsplit(PATH_CHAR, 1)[-1]
     if not is_valid_resource_id(virtual_network):
         virtual_network = vm_cs_create_resource_id(subscription=get_subscription_id(cmd.cli_ctx),
                                                    namespace='Microsoft.VMwareCloudSimple',
@@ -185,6 +186,15 @@ def virtual_network_name_or_id_validator(cmd, client, virtual_network, resource_
 
 
 def vm_create_namespace_validator(cmd, namespace):
+    """
+    Command validator for the create vm command.
+    This calls various argument validators.
+    We need this for sequencing argument validators essentially.
+    More specifically we want the location validator to run before other validators,
+    because some of the other argument validators requires location to be present in the namespace,
+    and location validator is responsible for extracting location from resource group,
+    if it is not present in namespace.
+    """
     vm_name_validator(namespace)
     location_validator(cmd, namespace)
     private_cloud_name_or_id_validator(cmd, namespace)

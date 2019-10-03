@@ -77,7 +77,7 @@ def _modify_template_disks_according_to_input(template_disks, input_disks):
     """
 
     # Populating the disk names of vm-template in a dictionary,
-    # and mapping them to their index in _nics list
+    # and mapping them to their index in template_disks list
     vm_template_disk_names = {}
     for (i, disk) in enumerate(template_disks):
         vm_template_disk_names[disk.virtual_disk_name] = i
@@ -95,7 +95,6 @@ def _modify_template_disks_according_to_input(template_disks, input_disks):
                 template_disks[index].independence_mode = disk['mode']
             if 'size' in disk.keys():
                 template_disks[index].total_size = disk['size']
-            # template_disks[index].virtual_disk_id = None
 
         else:
             disk_name = disk['name']
@@ -126,7 +125,7 @@ def _modify_template_nics_according_to_input(template_nics, input_nics, cmd, cli
     Change template nics according to the input given by the user.
     """
     # Populating the nic names of vm-template in a dictionary,
-    # and mapping them to their index in _nics list
+    # and mapping them to their index in template_nics list
     vm_template_nic_names = {}
     for (i, nic) in enumerate(template_nics):
         vm_template_nic_names[nic.virtual_nic_name] = i
@@ -188,28 +187,27 @@ def create_vm(cmd, client, resource_group_name, vm_name,
     """
     from .vendored_sdks.models.virtual_machine import VirtualMachine
     from .vendored_sdks.models.resource_pool import ResourcePool
+    from ._config import PATH_CHAR
 
     resource_pool = ResourcePool(id=resource_pool)
 
     # Extracting template and private cloud name from the resource id
-    template_name = template.rsplit('/', 1)[-1]
-    private_cloud_name = private_cloud.rsplit('/', 1)[-1]
+    template_name = template.rsplit(PATH_CHAR, 1)[-1]
+    private_cloud_name = private_cloud.rsplit(PATH_CHAR, 1)[-1]
     vm_template = client.virtual_machine_templates.get(location, private_cloud_name, template_name)
 
     cores = number_of_cores or vm_template.number_of_cores
     ram = amount_of_ram or vm_template.amount_of_ram
-    if expose_to_guest_vm is None:
-        expose = vm_template.expose_to_guest_vm
-    else:
+
+    expose = vm_template.expose_to_guest_vm
+    if expose_to_guest_vm is not None:
         expose = expose_to_guest_vm
 
     final_disks = vm_template.disks
-
     if disks is not None:
         final_disks = _modify_template_disks_according_to_input(final_disks, disks)
 
     final_nics = vm_template.nics
-
     if nics is not None:
         final_nics = _modify_template_nics_according_to_input(final_nics, nics, cmd, client,
                                                               resource_group_name, vm_name,
@@ -312,8 +310,7 @@ def show_vnic(client, resource_group_name, vm_name, nic_name):
     Get the details of a VMware virtual machine's NIC.
     """
     virtual_machine = client.get(resource_group_name, vm_name)
-    nics = virtual_machine.nics
-    for nic in nics:
+    for nic in virtual_machine.nics:
         if nic.virtual_nic_name == nic_name:
             return nic
     return None
@@ -331,9 +328,10 @@ def delete_vnics(client, resource_group_name, vm_name, nic_names):
     for nic_name in nic_names:
         to_delete_nics[nic_name] = True
 
-    nics = virtual_machine.nics
-    final_nics = copy.deepcopy(nics)
-    for nic in nics:
+    # We'll be iterating over virtual_machine.nics.
+    # Hence we need a copy of that which we can modify within the loop.
+    final_nics = copy.deepcopy(virtual_machine.nics)
+    for nic in virtual_machine.nics:
         if nic.virtual_nic_name in to_delete_nics.keys():
             final_nics.remove(nic)
             to_delete_nics[nic.virtual_nic_name] = False
@@ -383,8 +381,7 @@ def show_vdisk(client, resource_group_name, vm_name, disk_name):
     Get the details of a VMware virtual machine's disk.
     """
     virtual_machine = client.get(resource_group_name, vm_name)
-    disks = virtual_machine.disks
-    for disk in disks:
+    for disk in virtual_machine.disks:
         if disk.virtual_disk_name == disk_name:
             return disk
     return None
@@ -402,9 +399,10 @@ def delete_vdisks(client, resource_group_name, vm_name, disk_names):
     for disk_name in disk_names:
         to_delete_disks[disk_name] = True
 
-    disks = virtual_machine.disks
-    final_disks = copy.deepcopy(disks)
-    for disk in disks:
+    # We'll be iterating over virtual_machine.disks.
+    # Hence we need a copy of that which we can modify within the loop.
+    final_disks = copy.deepcopy(virtual_machine.disks)
+    for disk in virtual_machine.disks:
         if disk.virtual_disk_name in to_delete_disks.keys():
             final_disks.remove(disk)
             to_delete_disks[disk.virtual_disk_name] = False

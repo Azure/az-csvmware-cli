@@ -50,10 +50,10 @@ helps['vmware vm create'] = """
             az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate
 
         - name: Creating a VM and adding an extra nic to the VM with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
-                The name entered in the nic is for identification purposes only, to see if such a nic name exists in the vm template, else a nic is created and name is reassigned.
+                The name entered in the nic is for identification purposes only, to see if such a nic name exists in the vm template, else a nic is created and a new name is assigned.
                 Lets say the vm template contains a nic with name "Network adapter 1".
           text: >
-            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name=NicNameWouldBeReassigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
+            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
 
         - name: Customizing specific properties of a VM. Changing the number of cores to 2 and adapter of "Network adapter 1" nic to E1000E, from that specified in the template. All other properties would be defaulted from the template.
           text: >
@@ -61,17 +61,17 @@ helps['vmware vm create'] = """
 
         - name: Customizing specific properties of a VM. Changing the adapter of "Network adapter 1" nic to E1000E, from that specified in the template, and also adding another nic with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
           text: >
-            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name="Network adapter 1" adapter=E1000E --nic name=NicNameWouldBeReassigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
+            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name="Network adapter 1" adapter=E1000E --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
 
         - name: Creating a VM and adding an extra disk to the VM with SCSI controller 0, persistent mode, and 41943040 KB size.
-                The name entered in the disk is for identification purposes only, to see if such a disk name exists in the vm template, else a disk is created and name is reassigned.
+                The name entered in the disk is for identification purposes only, to see if such a disk name exists in the vm template, else a disk is created and a new name is assigned.
                 Lets say the vm template contains a disk with name "Hard disk 1".
           text: >
-            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name=DiskNameWouldBeReassigned controller=1000 mode=persistent size=41943040
+            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
 
         - name: Customizing specific properties of a VM. Changing the size of "Hard disk 1" disk to 21943040 KB, from that specified in the template, and also adding another disk with SCSI controller 0, persistent mode, and 41943040 KB size.
           text: >
-            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name="Hard disk 1" size=21943040 --disk name=DiskNameWouldBeReassigned controller=1000 mode=persistent size=41943040
+            az vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name="Hard disk 1" size=21943040 --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
 """
 
 helps['vmware vm list'] = """
@@ -117,7 +117,7 @@ helps['vmware vm start'] = """
 
 helps['vmware vm stop'] = """
     type: command
-    short-summary: Stop a VMware virtual machine.
+    short-summary: Stop/Reboot/Suspend a VMware virtual machine.
     examples:
         - name: Power off a VMware VM.
           text: >
@@ -248,7 +248,7 @@ helps['vmware vm-template'] = """
 
 helps['vmware vm-template list'] = """
     type: command
-    short-summary: List details of VMware virtual machines templates in a resource pool, in a private cloud.
+    short-summary: List details of VMware virtual machines templates in a private cloud.
     examples:
         - name: List details of VM templates.
           text: >
@@ -271,7 +271,7 @@ helps['vmware virtual-network'] = """
 
 helps['vmware virtual-network list'] = """
     type: command
-    short-summary: List details of available virtual networks in a resource pool, in a private cloud.
+    short-summary: List details of available virtual networks in a private cloud.
     examples:
         - name: List details of virtual networks.
           text: >

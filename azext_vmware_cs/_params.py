@@ -57,11 +57,11 @@ def load_arguments(self, _):
         c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                    validator=resource_pool_name_or_id_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                   help="ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud. You can also pass the last segment of the ID (resgroup-*).")
+                   help="ID of the VMware resource pool for this virtual machine in your CloudSimple Private Cloud. You can also pass the basename of the ID.")
         c.argument('template', options_list=['--template'],
                    validator=template_name_or_id_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualmachinetemplates'),
-                   help="ID of the vSphere template from which this virtual machine will be created. You can also pass the last segment of the ID (vm-*).")
+                   help="ID of the vSphere template from which this virtual machine will be created. You can also pass the basename of the ID.")
         c.argument('private_cloud', options_list=['--private-cloud', '-p'],
                    validator=private_cloud_name_or_id_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
@@ -80,7 +80,7 @@ def load_arguments(self, _):
                    validator=vm_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualMachines'))
         c.argument('virtual_network', options_list=['--virtual-network'], arg_group='Network',
-                   help="ID of the virtual network. You can also pass the last segment of the ID (dvportgroup-*).")
+                   help="ID of the virtual network. You can also pass the basename of the ID.")
         c.argument('adapter', options_list=['--adapter'], arg_group='Network',
                    arg_type=get_enum_type(NICType),
                    help="The adapter for the NIC.")
@@ -118,11 +118,11 @@ def load_arguments(self, _):
         c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                    validator=resource_pool_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                   help="ID of the VMware resource pool in your CloudSimple Private Cloud. You can also pass the last segment of the ID (resgroup-*).")
+                   help="ID of the VMware resource pool in your CloudSimple Private Cloud. You can also pass the basename of the ID.")
         c.argument('template', options_list=['--name', '-n'],
                    validator=template_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/virtualmachinetemplates'),
-                   help="ID of the vSphere virtual machine template. You can also pass the last segment of the ID (vm-*).")
+                   help="ID of the vSphere virtual machine template. You can also pass the basename of the ID.")
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 
@@ -134,10 +134,10 @@ def load_arguments(self, _):
         c.argument('resource_pool', options_list=['--resource-pool', '-r'],
                    validator=resource_pool_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                   help="ID of the resource pool used to derive vSphere cluster which contains virtual networks. You can also pass the last segment of the ID (resgroup-*).")
+                   help="ID of the resource pool used to derive vSphere cluster which contains virtual networks. You can also pass the basename of the ID.")
         c.argument('virtual_network', options_list=['--name', '-n'],
                    validator=vnet_only_name_validator,
-                   help="ID of the virtual network (vsphereId). You can also pass the last segment of the ID (dvportgroup-*).")
+                   help="ID of the virtual network (vsphereId). You can also pass the basename of the ID.")
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 
@@ -149,7 +149,7 @@ def load_arguments(self, _):
         c.argument('resource_pool', options_list=['--name', '-n'],
                    validator=resource_pool_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/resourcePools'),
-                   help="ID of the VMware resource pool in your CloudSimple Private Cloud. You can also pass the last segment of the ID (resgroup-*).")
+                   help="ID of the VMware resource pool in your CloudSimple Private Cloud. You can also pass the basename of the ID.")
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 

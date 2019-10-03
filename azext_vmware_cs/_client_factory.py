@@ -33,21 +33,21 @@ def cf_private_cloud(cli_ctx, *_):
 
 def cf_resource_pool(cli_ctx, *_):
     """
-    Client factory for VM operations
+    Client factory for resource pool operations
     """
     return cf_vmware_cs(cli_ctx).resource_pools
 
 
 def cf_virtual_machine_template(cli_ctx, *_):
     """
-    Client factory for VM operations
+    Client factory for VM template operations
     """
     return cf_vmware_cs(cli_ctx).virtual_machine_templates
 
 
 def cf_virtual_network(cli_ctx, *_):
     """
-    Client factory for VM operations
+    Client factory for virtual network operations
     """
     return cf_vmware_cs(cli_ctx).virtual_networks
 

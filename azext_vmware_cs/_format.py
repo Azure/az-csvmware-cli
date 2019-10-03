@@ -14,6 +14,7 @@ def transform_vm_table_output(result):
     are displayed in CloudSimple VM summary in UI
     """
     from collections import OrderedDict
+    from ._config import PATH_CHAR
 
     transformed_result = OrderedDict([('Resource group', result['resourceGroup']),
                                       ('Computer name', result['name']),
@@ -22,18 +23,16 @@ def transform_vm_table_output(result):
                                       ('Location', result['location']),
                                       ('Size', str(result['numberOfCores']) + " cores, " +
                                        str(result['amountOfRam']) + " MB memory"),
-                                      ('Public IP/DNS name', str(result['publicIp']) +
-                                       "/" + str(result['dnsname'])),
-                                      ('Subscription ID', result['id'].split('/')[2]),
+                                      ('Public IP' + PATH_CHAR + 'DNS name', str(result['publicIp']) +
+                                       PATH_CHAR + str(result['dnsname'])),
+                                      ('Subscription ID', result['id'].split(PATH_CHAR)[2]),
                                       ('Resource Pool', result['resourcePool']['fullName']),
                                       ('vSphere folder', result['folder']),
                                       ('VMware Tools', result['vmwaretools'])])
 
-    # if result['nics']:
-    nics = result['nics']
     ipAddresses = ""
     notnull = False
-    for nic in nics:
+    for nic in result['nics']:
         if nic['ipAddresses'] is not None:
             notnull = True
             for ipaddress in nic['ipAddresses']:
@@ -42,11 +41,9 @@ def transform_vm_table_output(result):
         ipAddresses = ipAddresses[:-2]
         transformed_result['IP Addresses'] = ipAddresses
 
-    # if result['nics']:
-    nics = result['nics']
     vSphereNetworks = ""
     notnull = False
-    for nic in nics:
+    for nic in result['nics']:
         if nic['network']['name'] is not None:
             notnull = True
             vSphereNetworks = vSphereNetworks + nic['network']['name'] + ", "
