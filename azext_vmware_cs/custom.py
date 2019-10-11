@@ -82,7 +82,7 @@ def _modify_template_disks_according_to_input(template_disks, input_disks):
     for (i, disk) in enumerate(template_disks):
         vm_template_disk_names[disk.virtual_disk_name] = i
 
-    from .vendored_sdks.models.virtual_disk import VirtualDisk
+    from .vendored_sdks.models import VirtualDisk
 
     # Check if disks entered by the user exist in vm-template,
     # then override the properties specified. Else create a new disk.
@@ -130,8 +130,8 @@ def _modify_template_nics_according_to_input(template_nics, input_nics, cmd, cli
     for (i, nic) in enumerate(template_nics):
         vm_template_nic_names[nic.virtual_nic_name] = i
 
-    from .vendored_sdks.models.virtual_nic import VirtualNic
-    from .vendored_sdks.models.virtual_network import VirtualNetwork
+    from .vendored_sdks.models import VirtualNic
+    from .vendored_sdks.models import VirtualNetwork
     from ._validators import virtual_network_name_or_id_validator
 
     # Check if nics entered by a user exist in vm-template,
@@ -185,8 +185,8 @@ def create_vm(cmd, client, resource_group_name, vm_name,
     Create or update a VMware virtual machine.
     The vm-template specified is used as a template for creation.
     """
-    from .vendored_sdks.models.virtual_machine import VirtualMachine
-    from .vendored_sdks.models.resource_pool import ResourcePool
+    from .vendored_sdks.models import VirtualMachine
+    from .vendored_sdks.models import ResourcePool
     from ._config import PATH_CHAR
 
     resource_pool = ResourcePool(id=resource_pool)
@@ -281,8 +281,8 @@ def add_vnic(cmd, client, resource_group_name, vm_name,
     """
     Add virtual network interface to a VMware virtual machine.
     """
-    from .vendored_sdks.models.virtual_nic import VirtualNic
-    from .vendored_sdks.models.virtual_network import VirtualNetwork
+    from .vendored_sdks.models import VirtualNic
+    from .vendored_sdks.models import VirtualNetwork
     from ._validators import virtual_network_name_or_id_validator
 
     virtual_machine = client.get(resource_group_name, vm_name)
@@ -357,7 +357,7 @@ def add_vdisk(client, resource_group_name, vm_name, controller="1000",
     """
     Add disk to a VMware virtual machine
     """
-    from .vendored_sdks.models.virtual_disk import VirtualDisk
+    from .vendored_sdks.models import VirtualDisk
 
     virtual_machine = client.get(resource_group_name, vm_name)
     disk = VirtualDisk(controller_id=controller,

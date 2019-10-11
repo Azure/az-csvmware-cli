@@ -13,9 +13,9 @@ from azure.cli.core.commands.parameters import (resource_group_name_type,
                                                 tags_type,
                                                 get_enum_type,
                                                 get_three_state_flag)
-from azext_vmware_cs.vendored_sdks.models.vmware_cloud_simple_client_enums import (StopMode,
-                                                                                   NICType,
-                                                                                   DiskIndependenceMode)
+from azext_vmware_cs.vendored_sdks.models import (StopMode,
+                                                  NICType,
+                                                  DiskIndependenceMode)
 from ._validators import (private_cloud_name_or_id_validator,
                           template_name_or_id_validator,
                           resource_pool_name_or_id_validator,
