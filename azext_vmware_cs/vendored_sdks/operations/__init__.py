@@ -9,16 +9,17 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from ._operations import Operations
-from ._dedicated_cloud_nodes_operations import DedicatedCloudNodesOperations
-from ._dedicated_cloud_services_operations import DedicatedCloudServicesOperations
-from ._skus_availability_operations import SkusAvailabilityOperations
-from ._private_clouds_operations import PrivateCloudsOperations
-from ._resource_pools_operations import ResourcePoolsOperations
-from ._virtual_machine_templates_operations import VirtualMachineTemplatesOperations
-from ._virtual_networks_operations import VirtualNetworksOperations
-from ._usages_operations import UsagesOperations
-from ._virtual_machines_operations import VirtualMachinesOperations
+from .operations import Operations
+from .dedicated_cloud_nodes_operations import DedicatedCloudNodesOperations
+from .dedicated_cloud_services_operations import DedicatedCloudServicesOperations
+from .skus_availability_operations import SkusAvailabilityOperations
+from .private_clouds_operations import PrivateCloudsOperations
+from .customization_policies_operations import CustomizationPoliciesOperations
+from .resource_pools_operations import ResourcePoolsOperations
+from .virtual_machine_templates_operations import VirtualMachineTemplatesOperations
+from .virtual_networks_operations import VirtualNetworksOperations
+from .usages_operations import UsagesOperations
+from .virtual_machines_operations import VirtualMachinesOperations
 
 __all__ = [
     'Operations',
@@ -26,6 +27,7 @@ __all__ = [
     'DedicatedCloudServicesOperations',
     'SkusAvailabilityOperations',
     'PrivateCloudsOperations',
+    'CustomizationPoliciesOperations',
     'ResourcePoolsOperations',
     'VirtualMachineTemplatesOperations',
     'VirtualNetworksOperations',

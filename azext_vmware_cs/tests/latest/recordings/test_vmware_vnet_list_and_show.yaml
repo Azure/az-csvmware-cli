@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-10-11T09:46:19Z"}}'
+      "date": "2019-10-16T09:56:17Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-10-11T09:46:19Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-10-16T09:56:17Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Fri, 11 Oct 2019 09:46:26 GMT
+      - Wed, 16 Oct 2019 09:56:22 GMT
       expires:
       - '-1'
       pragma:
@@ -45,7 +45,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1199'
+      - '1198'
     status:
       code: 201
       message: Created
@@ -82,7 +82,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2019 09:46:27 GMT
+      - Wed, 16 Oct 2019 09:56:25 GMT
       expires:
       - '-1'
       pragma:
@@ -98,11 +98,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 0e9cb65d-649f-4fd6-94d8-c8f959bdaa6b
+      - ea37ebce-a3c5-49f8-a914-5dbf87212492
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3c92642d620d2c48
+      - 42c1bc65f103965a
     status:
       code: 200
       message: OK
@@ -139,7 +139,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 11 Oct 2019 09:46:29 GMT
+      - Wed, 16 Oct 2019 09:56:26 GMT
       expires:
       - '-1'
       pragma:
@@ -155,11 +155,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 79cbf7f8-9539-47cd-9090-43fe5a2d3954
+      - 022e286d-e1f2-4ed6-b5cd-dd2734418a96
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 3f646bcf3e3031c5
+      - 1fe95638da07e8f9
     status:
       code: 200
       message: OK
@@ -194,11 +194,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Fri, 11 Oct 2019 09:46:56 GMT
+      - Wed, 16 Oct 2019 09:56:33 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NUNktSMzRGUUtHSFBQWFhQTFZaM05DN3wxRTk5QTQ3MTk2MjkxMjlBLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NJVTY3WFhVN1NQQVhKQlpURFBINDVMUnw0RTE2QkJERkFGNjVCMzQ2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:

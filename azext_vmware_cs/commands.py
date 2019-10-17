@@ -55,6 +55,10 @@ def load_command_table(self, _):
         g.custom_command('show', 'show_vm_template')
         g.custom_command('list', 'list_vm_template')
 
+    # with self.command_group('vmware custom-policy', client_factory=cf_vmware_cs) as g:
+    #     g.custom_command('show', 'show_custom_policy')
+    #     g.custom_command('list', 'list_custom_policy')
+
     with self.command_group('vmware virtual-network', client_factory=cf_virtual_network) as g:
         g.custom_command('show', 'show_virtual_network')
         g.custom_command('list', 'list_virtual_networks')

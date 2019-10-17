@@ -11,6 +11,13 @@ The custom methods are linked to the commands at the time of command registerati
 from knack.util import CLIError
 
 
+# def list_custom_policy(client, location, private_cloud):
+#     return client.customization_policies.list(location, private_cloud)
+
+
+# def show_custom_policy(client, location, private_cloud, name):
+#     return client.customization_policies.get(location, private_cloud, name)
+
 def list_private_cloud(client, location):
     """
     Returns a list of private clouds in a region.
