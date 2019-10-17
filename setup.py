@@ -31,7 +31,7 @@ CLASSIFIERS = [
 ]
 
 DEPENDENCIES = [
-    'azure-cli-core', 'azure-mgmt-vmwarecloudsimple'
+    'azure-cli-core'
 ]
 
 with open('README.rst', 'r', encoding='utf-8') as f:
@@ -42,7 +42,7 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
 setup(
     name='vmware-cs',
     version=VERSION,
-    description='Microsoft Azure Command-Line Tools Vmware-cs Extension',
+    description='Manage Azure VMware Solution.',
     author='Microsoft Corporation',
     author_email='shimitta@microsoft.com',
     url='https://github.com/Azure/az-vmware-cli',
