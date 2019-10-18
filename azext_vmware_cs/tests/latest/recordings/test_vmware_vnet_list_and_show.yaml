@@ -1,0 +1,213 @@
+interactions:
+- request:
+    body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
+      "date": "2019-10-17T05:49:25Z"}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - group create
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '110'
+      Content-Type:
+      - application/json; charset=utf-8
+      ParameterSetName:
+      - --location --name --tag
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 resourcemanagementclient/2.2.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+      accept-language:
+      - en-US
+    method: PUT
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
+  response:
+    body:
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-10-17T05:49:25Z"},"properties":{"provisioningState":"Succeeded"}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '384'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Thu, 17 Oct 2019 05:49:34 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ratelimit-remaining-subscription-writes:
+      - '1198'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - vmware virtual-network list
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - -p -r --location
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualNetworks?api-version=2019-04-01&resourcePoolName=resgroup-169
+  response:
+    body:
+      string: '{"value":[{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1061","location":"eastus","name":"Datacenter/sharaths-test-1","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1062","location":"eastus","name":"Datacenter/sharaths-test-2","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1063","location":"eastus","name":"Datacenter/sharaths-test-3","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1064","location":"eastus","name":"Datacenter/sharaths-test-4","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1253","location":"eastus","name":"Datacenter/trevor-pg","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1335","location":"eastus","name":"Datacenter/cdubose-dvs","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-1410","location":"eastus","name":"Datacenter/ranandag-pg01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":false,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-168","location":"eastus","name":"Datacenter/CS-Rescue","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-288","location":"eastus","name":"Datacenter/csademoPG","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-333","location":"eastus","name":"Datacenter/tonydemo","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-351","location":"eastus","name":"Datacenter/JS-Workload-2652-17-PG","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":false,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-40","location":"eastus","name":"Datacenter/CS-Management","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":false,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-41","location":"eastus","name":"Datacenter/CS-VSAN","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":false,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-42","location":"eastus","name":"Datacenter/CS-VMotion","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-588","location":"eastus","name":"Datacenter/JS-Workload-2654-10-44-PG","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-589","location":"eastus","name":"Datacenter/pelango-pg","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-626","location":"eastus","name":"Datacenter/scholden-pg","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-734","location":"eastus","name":"Datacenter/amtyagi-pg-01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-807","location":"eastus","name":"Datacenter/pelango-pg-02","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"},{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-97","location":"eastus","name":"Datacenter/jujako","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"}]}
+
+        '
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '9958'
+      content-type:
+      - application/json
+      date:
+      - Thu, 17 Oct 2019 05:49:35 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - nginx/1.13.12
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-correlation-id:
+      - dfbf33d3-4eae-4a55-9a90-d5845b752f78
+      x-env-name:
+      - eastus-he.azure.cloudsimple.com
+      x-tracing-transaction-id:
+      - 125c19aeb8bb05d5
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - vmware virtual-network show
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - -p -n --location
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualNetworks/dvportgroup-85?api-version=2019-04-01
+  response:
+    body:
+      string: '{"assignable":true,"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85","location":"eastus","name":"Datacenter/Workload01","properties":{"privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus"},"type":"Microsoft.VMwareCloudSimple/virtualNetworks"}
+
+        '
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '470'
+      content-type:
+      - application/json
+      date:
+      - Thu, 17 Oct 2019 05:49:37 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - nginx/1.13.12
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding,Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-correlation-id:
+      - 16aa4f26-832f-4795-b134-b555684ab2a9
+      x-env-name:
+      - eastus-he.azure.cloudsimple.com
+      x-tracing-transaction-id:
+      - 78c7bf460f414f0b
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - group delete
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      ParameterSetName:
+      - --name --yes --no-wait
+      User-Agent:
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 resourcemanagementclient/2.2.0
+        Azure-SDK-For-Python AZURECLI/2.0.68
+      accept-language:
+      - en-US
+    method: DELETE
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
+  response:
+    body:
+      string: ''
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      date:
+      - Thu, 17 Oct 2019 05:49:45 GMT
+      expires:
+      - '-1'
+      location:
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NETlNMQVBCUERBQ0lSUzRZS0tBVlJMRXw4RDJCNjI0MzZEOEU3MEQxLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      pragma:
+      - no-cache
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ratelimit-remaining-subscription-deletes:
+      - '14999'
+    status:
+      code: 202
+      message: Accepted
+version: 1

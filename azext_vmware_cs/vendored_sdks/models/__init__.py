@@ -10,66 +10,66 @@
 # --------------------------------------------------------------------------
 
 try:
-    from .available_operation_display_py3 import AvailableOperationDisplay
-    from .available_operation_display_property_service_specification_metrics_item_py3 import AvailableOperationDisplayPropertyServiceSpecificationMetricsItem
-    from .available_operation_display_property_service_specification_metrics_list_py3 import AvailableOperationDisplayPropertyServiceSpecificationMetricsList
-    from .available_operation_py3 import AvailableOperation
-    from .csrp_error_body_py3 import CSRPErrorBody
-    from .csrp_error_py3 import CSRPError, CSRPErrorException
-    from .sku_py3 import Sku
-    from .dedicated_cloud_node_py3 import DedicatedCloudNode
-    from .dedicated_cloud_service_py3 import DedicatedCloudService
-    from .operation_error_py3 import OperationError
-    from .operation_resource_py3 import OperationResource
-    from .patch_payload_py3 import PatchPayload
-    from .resource_pool_py3 import ResourcePool
-    from .virtual_disk_controller_py3 import VirtualDiskController
-    from .virtual_disk_py3 import VirtualDisk
-    from .virtual_network_py3 import VirtualNetwork
-    from .virtual_nic_py3 import VirtualNic
-    from .virtual_machine_template_py3 import VirtualMachineTemplate
-    from .private_cloud_py3 import PrivateCloud
-    from .sku_availability_py3 import SkuAvailability
-    from .usage_name_py3 import UsageName
-    from .usage_py3 import Usage
-    from .virtual_machine_py3 import VirtualMachine
-    from .virtual_machine_stop_mode_py3 import VirtualMachineStopMode
+    from ._models_py3 import AvailableOperation
+    from ._models_py3 import AvailableOperationDisplay
+    from ._models_py3 import AvailableOperationDisplayPropertyServiceSpecificationMetricsItem
+    from ._models_py3 import AvailableOperationDisplayPropertyServiceSpecificationMetricsList
+    from ._models_py3 import CSRPError, CSRPErrorException
+    from ._models_py3 import CSRPErrorBody
+    from ._models_py3 import DedicatedCloudNode
+    from ._models_py3 import DedicatedCloudService
+    from ._models_py3 import OperationError
+    from ._models_py3 import OperationResource
+    from ._models_py3 import PatchPayload
+    from ._models_py3 import PrivateCloud
+    from ._models_py3 import ResourcePool
+    from ._models_py3 import Sku
+    from ._models_py3 import SkuAvailability
+    from ._models_py3 import Usage
+    from ._models_py3 import UsageName
+    from ._models_py3 import VirtualDisk
+    from ._models_py3 import VirtualDiskController
+    from ._models_py3 import VirtualMachine
+    from ._models_py3 import VirtualMachineStopMode
+    from ._models_py3 import VirtualMachineTemplate
+    from ._models_py3 import VirtualNetwork
+    from ._models_py3 import VirtualNic
 except (SyntaxError, ImportError):
-    from .available_operation_display import AvailableOperationDisplay
-    from .available_operation_display_property_service_specification_metrics_item import AvailableOperationDisplayPropertyServiceSpecificationMetricsItem
-    from .available_operation_display_property_service_specification_metrics_list import AvailableOperationDisplayPropertyServiceSpecificationMetricsList
-    from .available_operation import AvailableOperation
-    from .csrp_error_body import CSRPErrorBody
-    from .csrp_error import CSRPError, CSRPErrorException
-    from .sku import Sku
-    from .dedicated_cloud_node import DedicatedCloudNode
-    from .dedicated_cloud_service import DedicatedCloudService
-    from .operation_error import OperationError
-    from .operation_resource import OperationResource
-    from .patch_payload import PatchPayload
-    from .resource_pool import ResourcePool
-    from .virtual_disk_controller import VirtualDiskController
-    from .virtual_disk import VirtualDisk
-    from .virtual_network import VirtualNetwork
-    from .virtual_nic import VirtualNic
-    from .virtual_machine_template import VirtualMachineTemplate
-    from .private_cloud import PrivateCloud
-    from .sku_availability import SkuAvailability
-    from .usage_name import UsageName
-    from .usage import Usage
-    from .virtual_machine import VirtualMachine
-    from .virtual_machine_stop_mode import VirtualMachineStopMode
-from .available_operation_paged import AvailableOperationPaged
-from .dedicated_cloud_node_paged import DedicatedCloudNodePaged
-from .dedicated_cloud_service_paged import DedicatedCloudServicePaged
-from .sku_availability_paged import SkuAvailabilityPaged
-from .private_cloud_paged import PrivateCloudPaged
-from .resource_pool_paged import ResourcePoolPaged
-from .virtual_machine_template_paged import VirtualMachineTemplatePaged
-from .virtual_network_paged import VirtualNetworkPaged
-from .usage_paged import UsagePaged
-from .virtual_machine_paged import VirtualMachinePaged
-from .vmware_cloud_simple_client_enums import (
+    from ._models import AvailableOperation
+    from ._models import AvailableOperationDisplay
+    from ._models import AvailableOperationDisplayPropertyServiceSpecificationMetricsItem
+    from ._models import AvailableOperationDisplayPropertyServiceSpecificationMetricsList
+    from ._models import CSRPError, CSRPErrorException
+    from ._models import CSRPErrorBody
+    from ._models import DedicatedCloudNode
+    from ._models import DedicatedCloudService
+    from ._models import OperationError
+    from ._models import OperationResource
+    from ._models import PatchPayload
+    from ._models import PrivateCloud
+    from ._models import ResourcePool
+    from ._models import Sku
+    from ._models import SkuAvailability
+    from ._models import Usage
+    from ._models import UsageName
+    from ._models import VirtualDisk
+    from ._models import VirtualDiskController
+    from ._models import VirtualMachine
+    from ._models import VirtualMachineStopMode
+    from ._models import VirtualMachineTemplate
+    from ._models import VirtualNetwork
+    from ._models import VirtualNic
+from ._paged_models import AvailableOperationPaged
+from ._paged_models import DedicatedCloudNodePaged
+from ._paged_models import DedicatedCloudServicePaged
+from ._paged_models import PrivateCloudPaged
+from ._paged_models import ResourcePoolPaged
+from ._paged_models import SkuAvailabilityPaged
+from ._paged_models import UsagePaged
+from ._paged_models import VirtualMachinePaged
+from ._paged_models import VirtualMachineTemplatePaged
+from ._paged_models import VirtualNetworkPaged
+from ._vmware_cloud_simple_client_enums import (
     OperationOrigin,
     AggregationType,
     NodeStatus,
@@ -84,30 +84,30 @@ from .vmware_cloud_simple_client_enums import (
 )
 
 __all__ = [
+    'AvailableOperation',
     'AvailableOperationDisplay',
     'AvailableOperationDisplayPropertyServiceSpecificationMetricsItem',
     'AvailableOperationDisplayPropertyServiceSpecificationMetricsList',
-    'AvailableOperation',
-    'CSRPErrorBody',
     'CSRPError', 'CSRPErrorException',
-    'Sku',
+    'CSRPErrorBody',
     'DedicatedCloudNode',
     'DedicatedCloudService',
     'OperationError',
     'OperationResource',
     'PatchPayload',
-    'ResourcePool',
-    'VirtualDiskController',
-    'VirtualDisk',
-    'VirtualNetwork',
-    'VirtualNic',
-    'VirtualMachineTemplate',
     'PrivateCloud',
+    'ResourcePool',
+    'Sku',
     'SkuAvailability',
-    'UsageName',
     'Usage',
+    'UsageName',
+    'VirtualDisk',
+    'VirtualDiskController',
     'VirtualMachine',
     'VirtualMachineStopMode',
+    'VirtualMachineTemplate',
+    'VirtualNetwork',
+    'VirtualNic',
     'AvailableOperationPaged',
     'DedicatedCloudNodePaged',
     'DedicatedCloudServicePaged',

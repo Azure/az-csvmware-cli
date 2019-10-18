@@ -9,10 +9,11 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from .vmware_cloud_simple_client import VMwareCloudSimpleClient
-from .version import VERSION
+from ._configuration import VMwareCloudSimpleClientConfiguration
+from ._vmware_cloud_simple_client import VMwareCloudSimpleClient
+__all__ = ['VMwareCloudSimpleClient', 'VMwareCloudSimpleClientConfiguration']
 
-__all__ = ['VMwareCloudSimpleClient']
+from .version import VERSION
 
 __version__ = VERSION
 
