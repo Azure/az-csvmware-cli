@@ -30,9 +30,7 @@ CLASSIFIERS = [
     'License :: OSI Approved :: MIT License',
 ]
 
-DEPENDENCIES = [
-    'azure-cli-core'
-]
+DEPENDENCIES = []
 
 with open('README.rst', 'r', encoding='utf-8') as f:
     README = f.read()
@@ -43,7 +41,7 @@ setup(
     name='vmware-cs',
     version=VERSION,
     description='Manage Azure VMware Solution.',
-    author='Microsoft Corporation',
+    author='Shivam Mittal',
     author_email='shimitta@microsoft.com',
     url='https://github.com/Azure/az-vmware-cli',
     long_description=README + '\n\n' + HISTORY,
