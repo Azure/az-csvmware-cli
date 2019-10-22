@@ -231,16 +231,6 @@ helps['vmware vm disk delete'] = """
             az vmware vm disk delete --vm-name MyVm -g MyResourceGroup --disks "My Disk Name 1" "My Disk Name 2"
 """
 
-helps['vmware set-region'] = """
-    type: command
-    short-summary: Set the current region.
-"""
-
-helps['vmware get-region'] = """
-    type: command
-    short-summary: Get the current region.
-"""
-
 helps['vmware vm-template'] = """
     type: group
     short-summary: Manage VMware virtual machine templates.
