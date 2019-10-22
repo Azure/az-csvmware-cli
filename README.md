@@ -12,11 +12,10 @@ You can also use the extension from Azure Cloud Shell.
 
 ## Installing vmware-cs extension
 
-Download the [whl file](https://github.com/Azure/az-vmware-cli/blob/no_provider_apis/azext_vmware_cs/vmware_cs-0.1.0-py2.py3-none-any.whl) for the extension.
 Install by the CLI command:
 
 ```
-az extension add --source vmware_cs-0.1.0-py2.py3-none-any.whl
+az extension add -n vmware-cs
 ```
 
 ## Quick start
