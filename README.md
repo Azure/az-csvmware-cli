@@ -62,7 +62,7 @@ Subgroups:
     vm-template     : Manage VMware virtual machine templates.
 ```
 
-You can views the various commands and its usage in [Microsoft docs](https://docs.microsoft.com/en-us/cli/azure/ext/vmware-cs/?view=azure-cli-latest)
+You can views the various commands and its usage here: [Microsoft docs](https://docs.microsoft.com/en-us/cli/azure/ext/vmware-cs/?view=azure-cli-latest).
 
 This extension provides CLI commands to:
 1. Create, list, show, update, delete, start, stop - VMware Virtual Machines by CloudSimple. You can update disks, nics, and the tags of a VM. More update capabilities would be supported in future releases.
