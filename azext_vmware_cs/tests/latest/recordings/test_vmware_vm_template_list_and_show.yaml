@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"location": "westus", "tags": {"product": "azurecli", "cause": "automation",
-      "date": "2019-10-17T05:49:25Z"}}'
+      "date": "2019-11-01T08:03:01Z"}}'
     headers:
       Accept:
       - application/json
@@ -26,7 +26,7 @@ interactions:
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_vmware_cs000001?api-version=2018-05-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-10-17T05:49:25Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_cs000001","name":"cli_test_vmware_cs000001","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2019-11-01T08:03:01Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
@@ -35,7 +35,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Thu, 17 Oct 2019 05:49:32 GMT
+      - Fri, 01 Nov 2019 08:03:06 GMT
       expires:
       - '-1'
       pragma:
@@ -45,7 +45,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1199'
+      - '1192'
     status:
       code: 201
       message: Created
@@ -63,7 +63,7 @@ interactions:
       ParameterSetName:
       - -p -r --location
       User-Agent:
-      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.2.0
         Azure-SDK-For-Python AZURECLI/2.0.68
       accept-language:
       - en-US
@@ -86,7 +86,7 @@ interactions:
         Server 2016","properties":{"amountOfRam":4096,"controllers":[{"id":"1000","name":"SCSI
         controller 0","subType":"LSI_SAS","type":"SCSI"},{"id":"15000","name":"SATA
         controller 0","subType":"AHCI","type":"SATA"}],"disks":[{"controllerId":"1000","independenceMode":"persistent","totalSize":41943040,"virtualDiskId":"2000","virtualDiskName":"Hard
-        disk 1"}],"guestOS":"Microsoft Windows Server 2016 (64-bit)","guestOSType":"windows","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:70:bc","network":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
+        disk 1"}],"guestOS":"Microsoft Windows Server 2016 or later (64-bit)","guestOSType":"windows","nics":[{"ipAddresses":null,"macAddress":"00:50:56:89:70:bc","network":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus/virtualnetworks/dvportgroup-85"},"nicType":"E1000E","powerOnBoot":true,"virtualNicId":"4000","virtualNicName":"Network
         adapter 1"}],"numberOfCores":2,"path":"Datacenter","privateCloudId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.VMwareCloudSimple/locations/eastus/privateClouds/avs-test-eastus","vSphereNetworks":null,"vSphereTags":null,"vmwaretools":"10338"},"type":"Microsoft.VMwareCloudSimple/virtualMachineTemplates"}]}
 
         '
@@ -94,11 +94,11 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '5138'
+      - '5147'
       content-type:
       - application/json
       date:
-      - Thu, 17 Oct 2019 05:49:35 GMT
+      - Fri, 01 Nov 2019 08:03:07 GMT
       expires:
       - '-1'
       pragma:
@@ -114,11 +114,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 0326a9cb-fbe1-47bc-84cf-b0950677a363
+      - 617f8f6d-8112-4f69-b816-6661b3650f24
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 894ffb78243a511
+      - 5de9b55f7b31a3ae
     status:
       code: 200
       message: OK
@@ -136,7 +136,7 @@ interactions:
       ParameterSetName:
       - -p -n --location
       User-Agent:
-      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.1.0
+      - python/3.6.8 (Windows-10-10.0.18362-SP0) msrest/0.6.8 msrest_azure/0.6.1 azure-mgmt-vmwarecloudsimple/0.2.0
         Azure-SDK-For-Python AZURECLI/2.0.68
       accept-language:
       - en-US
@@ -159,7 +159,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 17 Oct 2019 05:49:36 GMT
+      - Fri, 01 Nov 2019 08:03:07 GMT
       expires:
       - '-1'
       pragma:
@@ -175,11 +175,11 @@ interactions:
       x-content-type-options:
       - nosniff
       x-correlation-id:
-      - 0886d663-0ce4-4c0a-bb21-5fb94045e31b
+      - 27dd68a8-5126-4c73-8e6a-25e8f1ef725f
       x-env-name:
       - eastus-he.azure.cloudsimple.com
       x-tracing-transaction-id:
-      - 76ec6a198f47ce55
+      - 584cab0d670cc78
     status:
       code: 200
       message: OK
@@ -214,11 +214,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 17 Oct 2019 05:49:45 GMT
+      - Fri, 01 Nov 2019 08:03:13 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1M3WUk1RVVLMkFIRktNWlpPT1FGS1ZFS3w2MzU3Q0EzNTAxMEJFRUIzLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DTEk6NUZURVNUOjVGVk1XQVJFOjVGQ1NSRFVLTUdXNzdTSVVNRzRRSkFJWTU0UHwwN0IzOEJCODdBNzZFMERDLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2018-05-01
       pragma:
       - no-cache
       strict-transport-security:
@@ -226,7 +226,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14999'
+      - '14998'
     status:
       code: 202
       message: Accepted
