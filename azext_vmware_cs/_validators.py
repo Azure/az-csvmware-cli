@@ -30,7 +30,8 @@ def _check_regex(parameter, value):
     Checks whether the input matches ^[-a-zA-Z0-9]+$ pattern
     """
     import re
-    pattern = r'^[-a-zA-Z0-9]+$'
+
+    pattern = r'^[a-zA-Z0-9]([-_.a-zA-Z0-9]*[a-zA-Z0-9])?$'
     if not re.match(pattern, value):
         raise CLIError(parameter + ' should only contain letters, numbers, or hyphen.')
 
