@@ -49,10 +49,10 @@ az [group] [subgroup] [command] {parameters}
 For usage and help content for any command, pass in the -h parameter, for example:
 
 ```
-az vmware -h
+az vmware-cs -h
 
 Group
-    az vmware : Manage Azure VMware Solution.
+    az vmware-cs : Manage Azure VMware Solution.
         This command group is in preview. It may be changed/removed in a future release.
 Subgroups:
     private-cloud   : Manage VMware private clouds.
