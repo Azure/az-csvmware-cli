@@ -9,17 +9,17 @@ This file contains the help strings (summaries and examples) for all commands an
 
 from knack.help_files import helps  # pylint: disable=unused-import
 
-helps['vmware-cs'] = """
+helps['cs-vmware'] = """
     type: group
     short-summary: Manage Azure VMware Solution by CloudSimple.
 """
 
-helps['vmware-cs vm'] = """
+helps['cs-vmware vm'] = """
     type: group
     short-summary: Manage VMware virtual machines.
 """
 
-helps['vmware-cs vm create'] = """
+helps['cs-vmware vm create'] = """
     type: command
     short-summary: Create a VMware virtual machine.
 
@@ -47,278 +47,278 @@ helps['vmware-cs vm create'] = """
     examples:
         - name: Creating a VM with default parameters from the vm template.
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate
 
         - name: Creating a VM and adding an extra nic to the VM with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
                 The name entered in the nic is for identification purposes only, to see if such a nic name exists in the vm template, else a nic is created and a new name is assigned.
                 Lets say the vm template contains a nic with name "Network adapter 1".
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
 
         - name: Customizing specific properties of a VM. Changing the number of cores to 2 and adapter of "Network adapter 1" nic to E1000E, from that specified in the template. All other properties would be defaulted from the template.
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --cores 2 --nic name="Network adapter 1" adapter=E1000E
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --cores 2 --nic name="Network adapter 1" adapter=E1000E
 
         - name: Customizing specific properties of a VM. Changing the adapter of "Network adapter 1" nic to E1000E, from that specified in the template, and also adding another nic with virtual network MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name="Network adapter 1" adapter=E1000E --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --nic name="Network adapter 1" adapter=E1000E --nic name=NicNameWouldBeAssigned virtual-network=MyVirtualNetwork adapter=VMXNET3 power-on-boot=True
 
         - name: Creating a VM and adding an extra disk to the VM with SCSI controller 0, persistent mode, and 41943040 KB size.
                 The name entered in the disk is for identification purposes only, to see if such a disk name exists in the vm template, else a disk is created and a new name is assigned.
                 Lets say the vm template contains a disk with name "Hard disk 1".
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
 
         - name: Customizing specific properties of a VM. Changing the size of "Hard disk 1" disk to 21943040 KB, from that specified in the template, and also adding another disk with SCSI controller 0, persistent mode, and 41943040 KB size.
           text: >
-            az vmware-cs vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name="Hard disk 1" size=21943040 --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
+            az cs-vmware vm create -n MyVm -g MyResourceGroup -p MyPrivateCloud -r MyResourcePool --template MyVmTemplate --disk name="Hard disk 1" size=21943040 --disk name=DiskNameWouldBeAssigned controller=1000 mode=persistent size=41943040
 """
 
-helps['vmware-cs vm list'] = """
+helps['cs-vmware vm list'] = """
     type: command
     short-summary: List details of VMware virtual machines in the current subscription. If resource group is specified, only the details of virtual machines in that resource group would be listed.
     examples:
         - name: List details of VMware VMs in the current subscription.
           text: >
-            az vmware-cs vm list
+            az cs-vmware vm list
 
         - name: List details of VMware VMs in a particular resource group.
           text: >
-            az vmware-cs vm list -g MyResourceGroup
+            az cs-vmware vm list -g MyResourceGroup
 
 """
 
-helps['vmware-cs vm delete'] = """
+helps['cs-vmware vm delete'] = """
     type: command
     short-summary: Delete a VMware virtual machine.
     examples:
         - name: Delete a VMware VM.
           text: >
-            az vmware-cs vm delete -n MyVm -g MyResourceGroup
+            az cs-vmware vm delete -n MyVm -g MyResourceGroup
 """
 
-helps['vmware-cs vm show'] = """
+helps['cs-vmware vm show'] = """
     type: command
     short-summary: Get the details of a VMware virtual machine.
     examples:
         - name: Get the details of a VMware VM.
           text: >
-            az vmware-cs vm show -n MyVm -g MyResourceGroup
+            az cs-vmware vm show -n MyVm -g MyResourceGroup
 """
 
-helps['vmware-cs vm start'] = """
+helps['cs-vmware vm start'] = """
     type: command
     short-summary: Start a VMware virtual machine.
     examples:
         - name: Start a VMware VM.
           text: >
-            az vmware-cs vm start -n MyVm -g MyResourceGroup
+            az cs-vmware vm start -n MyVm -g MyResourceGroup
 """
 
-helps['vmware-cs vm stop'] = """
+helps['cs-vmware vm stop'] = """
     type: command
     short-summary: Stop/Reboot/Suspend a VMware virtual machine.
     examples:
         - name: Power off a VMware VM.
           text: >
-            az vmware-cs vm stop -n MyVm -g MyResourceGroup --mode poweroff
+            az cs-vmware vm stop -n MyVm -g MyResourceGroup --mode poweroff
 
         - name: Restart a VMware VM.
           text: >
-            az vmware-cs vm stop -n MyVm -g MyResourceGroup --mode reboot
+            az cs-vmware vm stop -n MyVm -g MyResourceGroup --mode reboot
 """
 
-helps['vmware-cs vm update'] = """
+helps['cs-vmware vm update'] = """
     type: command
     short-summary: Update the tags field of a VMware virtual machine.
     examples:
         - name: Add or update a tag.
           text: >
-            az vmware-cs vm update -n MyVm -g MyResourceGroup --set tags.tagName=tagValue
+            az cs-vmware vm update -n MyVm -g MyResourceGroup --set tags.tagName=tagValue
 
         - name: Remove a tag.
           text: >
-            az vmware-cs vm update -n MyVm -g MyResourceGroup --remove tags.tagName
+            az cs-vmware vm update -n MyVm -g MyResourceGroup --remove tags.tagName
 """
 
-helps['vmware-cs vm nic'] = """
+helps['cs-vmware vm nic'] = """
     type: group
     short-summary: Manage VMware virtual machine's Network Interface Cards.
 """
 
-helps['vmware-cs vm nic add'] = """
+helps['cs-vmware vm nic add'] = """
     type: command
     short-summary: Add NIC to a VMware virtual machine.
     examples:
         - name: Add a NIC with default parameters in a VM.
           text: >
-            az vmware-cs vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork
+            az cs-vmware vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork
 
         - name: Add a NIC with E1000E adapter that powers on boot in a VM.
           text: >
-            az vmware-cs vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork --adapter E1000E --power-on-boot true
+            az cs-vmware vm nic add --vm-name MyVm -g MyResourceGroup --virtual-network MyVirtualNetwork --adapter E1000E --power-on-boot true
 """
 
-helps['vmware-cs vm nic list'] = """
+helps['cs-vmware vm nic list'] = """
     type: command
     short-summary: List details of NICs available on a VMware virtual machine.
     examples:
         - name: List details of NICs in a VM.
           text: >
-            az vmware-cs vm nic list --vm-name MyVm -g MyResourceGroup
+            az cs-vmware vm nic list --vm-name MyVm -g MyResourceGroup
 """
 
-helps['vmware-cs vm nic show'] = """
+helps['cs-vmware vm nic show'] = """
     type: command
     short-summary: Get the details of a VMware virtual machine's NIC.
     examples:
         - name: Get the details of a NIC in a VM.
           text: >
-            az vmware-cs vm nic show --vm-name MyVm -g MyResourceGroup -n "My NIC Name"
+            az cs-vmware vm nic show --vm-name MyVm -g MyResourceGroup -n "My NIC Name"
 """
 
-helps['vmware-cs vm nic delete'] = """
+helps['cs-vmware vm nic delete'] = """
     type: command
     short-summary: Delete NICs from a VM.
     examples:
         - name: Delete two NICs from a VM.
           text: >
-            az vmware-cs vm nic delete --vm-name MyVm -g MyResourceGroup --nics "My NIC Name 1" "My NIC Name 2"
+            az cs-vmware vm nic delete --vm-name MyVm -g MyResourceGroup --nics "My NIC Name 1" "My NIC Name 2"
 """
 
-helps['vmware-cs vm disk'] = """
+helps['cs-vmware vm disk'] = """
     type: group
     short-summary: Manage VMware virtual machine's disks.
 """
 
-helps['vmware-cs vm disk add'] = """
+helps['cs-vmware vm disk add'] = """
     type: command
     short-summary: Add disk to a VMware virtual machine.
     examples:
         - name: Add a disk with default parameters in a VM.
           text: >
-            az vmware-cs vm disk add --vm-name MyVm -g MyResourceGroup
+            az cs-vmware vm disk add --vm-name MyVm -g MyResourceGroup
 
         - name: Add a disk with SATA controller 0 and 64 GB memory in a VM.
           text: >
-            az vmware-cs vm disk add --vm-name MyVm -g MyResourceGroup --controller 15000 --size 67108864
+            az cs-vmware vm disk add --vm-name MyVm -g MyResourceGroup --controller 15000 --size 67108864
 """
 
-helps['vmware-cs vm disk list'] = """
+helps['cs-vmware vm disk list'] = """
     type: command
     short-summary: List details of disks available on a VMware virtual machine.
     examples:
         - name: List details of disks in a VM.
           text: >
-            az vmware-cs vm disk list --vm-name MyVm -g MyResourceGroup
+            az cs-vmware vm disk list --vm-name MyVm -g MyResourceGroup
 """
 
-helps['vmware-cs vm disk show'] = """
+helps['cs-vmware vm disk show'] = """
     type: command
     short-summary: Get the details of a VMware virtual machine's disk.
     examples:
         - name: Get the details of a disk in a VM.
           text: >
-            az vmware-cs vm disk show --vm-name MyVm -g MyResourceGroup -n "My Disk Name"
+            az cs-vmware vm disk show --vm-name MyVm -g MyResourceGroup -n "My Disk Name"
 """
 
-helps['vmware-cs vm disk delete'] = """
+helps['cs-vmware vm disk delete'] = """
     type: command
     short-summary: Delete disks from a VM.
     examples:
         - name: Delete two disks from a VM.
           text: >
-            az vmware-cs vm disk delete --vm-name MyVm -g MyResourceGroup --disks "My Disk Name 1" "My Disk Name 2"
+            az cs-vmware vm disk delete --vm-name MyVm -g MyResourceGroup --disks "My Disk Name 1" "My Disk Name 2"
 """
 
-helps['vmware-cs vm-template'] = """
+helps['cs-vmware vm-template'] = """
     type: group
     short-summary: Manage VMware virtual machine templates.
 """
 
-helps['vmware-cs vm-template list'] = """
+helps['cs-vmware vm-template list'] = """
     type: command
     short-summary: List details of VMware virtual machines templates in a private cloud.
     examples:
         - name: List details of VM templates.
           text: >
-            az vmware-cs vm-template list -p MyPrivateCloud -r MyResourcePool --location eastus
+            az cs-vmware vm-template list -p MyPrivateCloud -r MyResourcePool --location eastus
 """
 
-helps['vmware-cs vm-template show'] = """
+helps['cs-vmware vm-template show'] = """
     type: command
     short-summary: Get the details of a VMware virtual machines template in a private cloud.
     examples:
         - name: Get the details of a VM template.
           text: >
-            az vmware-cs vm-template show  -n MyVmTemplate -p MyPrivateCloud --location eastus
+            az cs-vmware vm-template show  -n MyVmTemplate -p MyPrivateCloud --location eastus
 """
 
-helps['vmware-cs virtual-network'] = """
+helps['cs-vmware virtual-network'] = """
     type: group
     short-summary: Manage virtual networks.
 """
 
-helps['vmware-cs virtual-network list'] = """
+helps['cs-vmware virtual-network list'] = """
     type: command
     short-summary: List details of available virtual networks in a private cloud.
     examples:
         - name: List details of virtual networks.
           text: >
-            az vmware-cs virtual-network list -p MyPrivateCloud -r MyResourcePool --location eastus
+            az cs-vmware virtual-network list -p MyPrivateCloud -r MyResourcePool --location eastus
 """
 
-helps['vmware-cs virtual-network show'] = """
+helps['cs-vmware virtual-network show'] = """
     type: command
     short-summary: Get the details of a virtual network in a private cloud.
     examples:
         - name: Get the details of a virtual network.
           text: >
-            az vmware-cs virtual-network show -n MyVirtualNetwork -p MyPrivateCloud --location eastus
+            az cs-vmware virtual-network show -n MyVirtualNetwork -p MyPrivateCloud --location eastus
 """
 
-helps['vmware-cs private-cloud'] = """
+helps['cs-vmware private-cloud'] = """
     type: group
     short-summary: Manage VMware private clouds.
 """
 
-helps['vmware-cs private-cloud list'] = """
+helps['cs-vmware private-cloud list'] = """
     type: command
     short-summary: List details of private clouds in a region.
     examples:
         - name: List details of private clouds in East US.
           text: >
-            az vmware-cs private-cloud list --location eastus
+            az cs-vmware private-cloud list --location eastus
 """
 
-helps['vmware-cs private-cloud show'] = """
+helps['cs-vmware private-cloud show'] = """
     type: command
     short-summary: Get the details of a private cloud in a region.
     examples:
         - name: Get the details of a private cloud which is in East US.
           text: >
-            az vmware-cs private-cloud show -n MyPrivateCloud --location eastus
+            az cs-vmware private-cloud show -n MyPrivateCloud --location eastus
 """
 
-helps['vmware-cs resource-pool'] = """
+helps['cs-vmware resource-pool'] = """
     type: group
     short-summary: Manage VMware resource pools.
 """
 
-helps['vmware-cs resource-pool list'] = """
+helps['cs-vmware resource-pool list'] = """
     type: command
     short-summary: List details of resource pools in a private cloud.
     examples:
         - name: List details of resource pools.
           text: >
-            az vmware-cs resource-pool list -p MyPrivateCloud --location eastus
+            az cs-vmware resource-pool list -p MyPrivateCloud --location eastus
 """
 
-helps['vmware-cs resource-pool show'] = """
+helps['cs-vmware resource-pool show'] = """
     type: command
     short-summary: Get the details of a resource pool in a private cloud.
     examples:
         - name: Get the details of a resource pool.
           text: >
-            az vmware-cs resource-pool show -n MyResourcePool -p MyPrivateCloud --location eastus
+            az cs-vmware resource-pool show -n MyResourcePool -p MyPrivateCloud --location eastus
 """
