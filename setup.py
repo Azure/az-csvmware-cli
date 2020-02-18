@@ -40,7 +40,7 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
 setup(
     name='vmware-cs',
     version=VERSION,
-    description='Manage Azure VMware Solution.',
+    description='Manage Azure VMware Solution by CloudSimple.',
     author='Shivam Mittal',
     author_email='shimitta@microsoft.com',
     url='https://github.com/Azure/az-vmware-cli',
