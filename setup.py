@@ -38,7 +38,7 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
     HISTORY = f.read()
 
 setup(
-    name='vmware-cs',
+    name='csvmware',
     version=VERSION,
     description='Manage Azure VMware Solution by CloudSimple.',
     author='Shivam Mittal',
@@ -49,5 +49,5 @@ setup(
     classifiers=CLASSIFIERS,
     packages=find_packages(),
     install_requires=DEPENDENCIES,
-    package_data={'azext_vmware_cs': ['azext_metadata.json']},
+    package_data={'azext_csvmware': ['azext_metadata.json']},
 )

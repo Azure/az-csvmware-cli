@@ -10,12 +10,12 @@ You can also use the extension from Azure Cloud Shell.
 [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 
 
-## Installing vmware-cs extension
+## Installing csvmware extension
 
 Install by the CLI command:
 
 ```
-az extension add -n vmware-cs
+az extension add -n csvmware
 ```
 
 ## Quick start
@@ -49,10 +49,10 @@ az [group] [subgroup] [command] {parameters}
 For usage and help content for any command, pass in the -h parameter, for example:
 
 ```
-az cs-vmware -h
+az csvmware -h
 
 Group
-    az cs-vmware : Manage Azure VMware Solution.
+    az csvmware : Manage Azure VMware Solution.
         This command group is in preview. It may be changed/removed in a future release.
 Subgroups:
     private-cloud   : Manage VMware private clouds.
@@ -62,7 +62,7 @@ Subgroups:
     vm-template     : Manage VMware virtual machine templates.
 ```
 
-You can views the various commands and its usage here: [Microsoft docs](https://docs.microsoft.com/en-us/cli/azure/ext/vmware-cs/?view=azure-cli-latest).
+You can views the various commands and its usage here: [Microsoft docs](https://docs.microsoft.com/en-us/cli/azure/ext/csvmware/?view=azure-cli-latest).
 
 This extension provides CLI commands to:
 1. Create, list, show, update, delete, start, stop - VMware Virtual Machines by CloudSimple. You can update disks, nics, and the tags of a VM. More update capabilities would be supported in future releases.
@@ -74,7 +74,7 @@ This extension provides CLI commands to:
 Extension can be removed using the following CLI command:
 
 ```
-az extension remove -n vmware-cs
+az extension remove -n csvmware
 ```
 
 

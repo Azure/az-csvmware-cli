@@ -19,7 +19,7 @@ class VmwareCsScenarioTest(ScenarioTest):
     """
     Test for AVS by CloudSimple CLI commands.
     This tests various command exposed by CloudSimple CLI.
-    To run the tests, run 'azdev test vmware-cs --discover --live'
+    To run the tests, run 'azdev test csvmware --discover --live'
 
     The prerequisites for the tests are that you should be logged in to a subscription in the CLI.
     That subscription should contain:
@@ -50,43 +50,43 @@ class VmwareCsScenarioTest(ScenarioTest):
 
         # Checking that invalid vm_name causes error
         with self.assertRaisesRegexp(CLIError, "Virtual machine name should only contain letters, numbers, or hyphen."):
-            self.cmd('az vmware vm create -g {rg} -n invalid_name# --location {loc} --ram {ram} \
+            self.cmd('az csvmware vm create -g {rg} -n invalid_name# --location {loc} --ram {ram} \
                  --cores {cores} --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for ram is float, it causes error
         with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 1024.5 \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram 1024.5 \
                  --cores {cores} --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for ram is 0, it causes error
         with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram 0 \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram 0 \
                  --cores {cores} --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for ram is negative, it causes error
         with self.assertRaisesRegexp(CLIError, "RAM should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram -1024 \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram -1024 \
                  --cores {cores} --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for cores is float, it causes error
         with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores 1.5 --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for cores is 0, it causes error
         with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores 0 --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Checking that if entered value for cores is negative, it causes error
         with self.assertRaisesRegexp(CLIError, "Cores should be a postive integer value."):
-            self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+            self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores -1 --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
@@ -107,11 +107,11 @@ class VmwareCsScenarioTest(ScenarioTest):
         })
 
         # Checking that the number of VM in our rg (used for testing) is 0.
-        count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
+        count = len(self.cmd('az csvmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
 
         # Creating a VM. Checking json to see if the operation succeeded.
-        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+        self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores {cores} --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}',
                  checks=[
@@ -123,11 +123,11 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Checking that the number of VM in our rg (used for testing) is 1 now.
-        count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
+        count = len(self.cmd('az csvmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 1)
 
         # Testing show command
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[
                      self.check('provisioningState', 'Succeeded'),
                      self.check('resourceGroup', '{rg}'),
@@ -137,21 +137,21 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Show as table
-        self.cmd('az vmware vm show -g {rg} -n {name} -o table')
+        self.cmd('az csvmware vm show -g {rg} -n {name} -o table')
 
         # List as table
-        self.cmd('az vmware vm list -g {rg} -o table')
+        self.cmd('az csvmware vm list -g {rg} -o table')
 
         # Testing update command
-        self.cmd('az vmware vm update -g {rg} -n {name} --set tags.foo=boo', checks=[
+        self.cmd('az csvmware vm update -g {rg} -n {name} --set tags.foo=boo', checks=[
             self.check('tags.foo', 'boo')
         ])
 
         # Deleting a VM.
-        self.cmd('az vmware vm delete -g {rg} -n {name}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name}')
 
         # Checking that the number of VM in our rg is 0 now.
-        count = len(self.cmd('az vmware vm list -g {rg}').get_output_in_json())
+        count = len(self.cmd('az csvmware vm list -g {rg}').get_output_in_json())
         self.assertEqual(count, 0)
 
     def test_vmware_cs_vm_create(self):
@@ -174,7 +174,7 @@ class VmwareCsScenarioTest(ScenarioTest):
         })
 
         # Creating a VM with default parameters from the vm template
-        self.cmd('az vmware vm create -g {rg} -n {name1} -p {pc} --template {vm_template} -r {rp}',
+        self.cmd('az csvmware vm create -g {rg} -n {name1} -p {pc} --template {vm_template} -r {rp}',
                  checks=[
                      self.check('provisioningState', 'Succeeded'),
                      self.check('resourceGroup', '{rg}'),
@@ -189,7 +189,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Creating a VM with default parameters from the vm template and adding a nic
-        self.cmd('az vmware vm create -g {rg} -n {name2} \
+        self.cmd('az csvmware vm create -g {rg} -n {name2} \
                  -p {pc} --template {vm_template} -r {rp} \
                  --nic name=NicNameWouldBeReassigned virtual-network={vnet} \
                  adapter=VMXNET3 power-on-boot=True',
@@ -212,7 +212,7 @@ class VmwareCsScenarioTest(ScenarioTest):
 
         # Customizing specific properties of a VM. Changing the number of cores to 2 and adapter of
         # "Network adapter 1" nic to E1000E, from that specified in the template.
-        self.cmd('az vmware vm create -n {name3} -g {rg} -p {pc} -r {rp} --template {vm_template} \
+        self.cmd('az csvmware vm create -n {name3} -g {rg} -p {pc} -r {rp} --template {vm_template} \
                  --cores 2 --nic name="Network adapter 1" adapter=E1000E',
                  checks=[
                      self.check('provisioningState', 'Succeeded'),
@@ -232,7 +232,7 @@ class VmwareCsScenarioTest(ScenarioTest):
         # "Network adapter 1" nic to E1000E, from that specified in the
         # template, and also adding another nic with virtual network
         # MyVirtualNetwork, adapter VMXNET3, that power ups on boot.
-        self.cmd('az vmware vm create -g {rg} -n {name4} \
+        self.cmd('az csvmware vm create -g {rg} -n {name4} \
                  -p {pc} --template {vm_template} -r {rp} \
                  --nic name="Network adapter 1" adapter=E1000E --nic \
                  name=NicNameWouldBeReassigned virtual-network={vnet} \
@@ -258,7 +258,7 @@ class VmwareCsScenarioTest(ScenarioTest):
         # Creating a virtual machine and adding an extra disk
         # to the VM with SCSI controller 0, persistent
         # mode, and 41943040 KB size.
-        self.cmd('az vmware vm create -n {name5} -g {rg} -p {pc} -r {rp} --template {vm_template} \
+        self.cmd('az csvmware vm create -n {name5} -g {rg} -p {pc} -r {rp} --template {vm_template} \
                  --disk name=DiskNameWouldBeReassigned controller=1000 \
                  mode=persistent size=41943040',
                  checks=[
@@ -282,7 +282,7 @@ class VmwareCsScenarioTest(ScenarioTest):
         # from that specified in the template, and also adding
         # another disk with SCSI controller 0,
         # persistent mode, and 41943040 KB size.
-        self.cmd('az vmware vm create -g {rg} -n {name6} \
+        self.cmd('az csvmware vm create -g {rg} -n {name6} \
                  -p {pc} --template {vm_template} -r {rp} \
                  --disk name="Hard disk 1" size=21943040 --disk \
                  name=DiskNameWouldBeReassigned controller=1000 \
@@ -305,12 +305,12 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Deleting the VMs.
-        self.cmd('az vmware vm delete -g {rg} -n {name1}')
-        self.cmd('az vmware vm delete -g {rg} -n {name2}')
-        self.cmd('az vmware vm delete -g {rg} -n {name3}')
-        self.cmd('az vmware vm delete -g {rg} -n {name4}')
-        self.cmd('az vmware vm delete -g {rg} -n {name5}')
-        self.cmd('az vmware vm delete -g {rg} -n {name6}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name1}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name2}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name3}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name4}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name5}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name6}')
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_cs_vm_start_stop(self, resource_group):
@@ -329,58 +329,58 @@ class VmwareCsScenarioTest(ScenarioTest):
         })
 
         # Creating a VM.
-        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
+        self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} --ram {ram} \
                  --cores {cores}  --private-cloud {pc} --template {vm_template} \
                  --resource-pool {rp}')
 
         # Testing that VM is in running state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'running')])
 
         # Power off the VM
-        self.cmd('az vmware vm stop -g {rg} -n {name} --mode poweroff')
+        self.cmd('az csvmware vm stop -g {rg} -n {name} --mode poweroff')
 
         # Testing that VM is in powered off state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'poweredoff')])
 
         # Start the VM
-        self.cmd('az vmware vm start -g {rg} -n {name}')
+        self.cmd('az csvmware vm start -g {rg} -n {name}')
 
         # Testing that VM is in running state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'running')])
 
         # Shut down the VM
-        self.cmd('az vmware vm stop -g {rg} -n {name} --mode shutdown')
+        self.cmd('az csvmware vm stop -g {rg} -n {name} --mode shutdown')
 
         # Testing that VM is in powered off state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'poweredoff')])
 
         # Start the VM
-        self.cmd('az vmware vm start -g {rg} -n {name}')
+        self.cmd('az csvmware vm start -g {rg} -n {name}')
 
         # Testing that VM is in running state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'running')])
 
         # Reboot the VM
-        self.cmd('az vmware vm stop -g {rg} -n {name} --mode reboot')
+        self.cmd('az csvmware vm stop -g {rg} -n {name} --mode reboot')
 
         # Testing that VM is in running state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'running')])
 
         # Suspend the VM
-        self.cmd('az vmware vm stop -g {rg} -n {name} --mode suspend')
+        self.cmd('az csvmware vm stop -g {rg} -n {name} --mode suspend')
 
         # Testing that VM is in suspended state
-        self.cmd('az vmware vm show -g {rg} -n {name}',
+        self.cmd('az csvmware vm show -g {rg} -n {name}',
                  checks=[self.check('status', 'suspended')])
 
         # Deleting the VM.
-        self.cmd('az vmware vm delete -g {rg} -n {name}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name}')
 
     @ResourceGroupPreparer(name_prefix='cli_test_vmware_cs', parameter_name_for_location='eastus')
     def test_vmware_vm_template_list_and_show(self, resource_group):
@@ -394,9 +394,9 @@ class VmwareCsScenarioTest(ScenarioTest):
             'loc': 'eastus'
         })
 
-        self.cmd('az vmware vm-template list -p {pc} -r {rp} --location {loc}')
+        self.cmd('az csvmware vm-template list -p {pc} -r {rp} --location {loc}')
 
-        self.cmd('az vmware vm-template show -p {pc} -n {vmtemplate} --location {loc}',
+        self.cmd('az csvmware vm-template show -p {pc} -n {vmtemplate} --location {loc}',
                  checks=[
                      self.check('guestOsType', 'linux'),
                      self.check('guestOs', 'Ubuntu Linux (64-bit)'),
@@ -415,9 +415,9 @@ class VmwareCsScenarioTest(ScenarioTest):
             'loc': 'eastus'
         })
 
-        self.cmd('az vmware virtual-network list -p {pc} -r {rp} --location {loc}')
+        self.cmd('az csvmware virtual-network list -p {pc} -r {rp} --location {loc}')
 
-        self.cmd('az vmware virtual-network show -p {pc} -n {vnet} --location {loc}',
+        self.cmd('az csvmware virtual-network show -p {pc} -n {vnet} --location {loc}',
                  checks=[
                      self.check('name', 'Datacenter/Workload01'),
                      self.check('type', 'Microsoft.VMwareCloudSimple/virtualNetworks')
@@ -434,9 +434,9 @@ class VmwareCsScenarioTest(ScenarioTest):
             'loc': 'eastus'
         })
 
-        self.cmd('az vmware resource-pool list -p {pc} --location {loc}')
+        self.cmd('az csvmware resource-pool list -p {pc} --location {loc}')
 
-        self.cmd('az vmware resource-pool show -p {pc} -n {rp} --location {loc}',
+        self.cmd('az csvmware resource-pool show -p {pc} -n {rp} --location {loc}',
                  checks=[
                      self.check('location', 'eastus'),
                      self.check('name', 'AzCLITest'),
@@ -452,9 +452,9 @@ class VmwareCsScenarioTest(ScenarioTest):
             'pc': 'avs-test-eastus',
             'loc': 'eastus'
         })
-        self.cmd('az vmware private-cloud list --location {loc}')
+        self.cmd('az csvmware private-cloud list --location {loc}')
 
-        self.cmd('az vmware private-cloud show -n {pc} --location {loc}',
+        self.cmd('az csvmware private-cloud show -n {pc} --location {loc}',
                  checks=[
                      self.check('location', 'eastus'),
                      self.check('name', '{pc}')
@@ -472,11 +472,11 @@ class VmwareCsScenarioTest(ScenarioTest):
         })
 
         # Creating a VM.
-        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \
+        self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} \
                  --private-cloud {pc} --template {vm_template} --resource-pool {rp}')
 
         # Add a disk with the default values
-        self.cmd('az vmware vm disk add -g {rg} --vm-name {name}',
+        self.cmd('az csvmware vm disk add -g {rg} --vm-name {name}',
                  checks=[
                      self.check('disks | [1].controllerId', '1000'),
                      self.check('disks | [1].independenceMode', "persistent"),
@@ -484,7 +484,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Add a custom disk
-        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
+        self.cmd('az csvmware vm disk add -g {rg} --vm-name {name} \
                  --mode independent_nonpersistent --size 8388608',
                  checks=[
                      self.check('disks | [2].controllerId', '1000'),
@@ -493,7 +493,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Show a disk
-        self.cmd('az vmware vm disk show -g {rg} --vm-name {name} -n "Hard disk 1"',
+        self.cmd('az csvmware vm disk show -g {rg} --vm-name {name} -n "Hard disk 1"',
                  checks=[
                      self.check('controllerId', '1000'),
                      self.check('independenceMode', "persistent"),
@@ -502,24 +502,24 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Checking that the number of disk in the VM is 3 now.
-        count = len(self.cmd('az vmware vm disk list -g {rg} \
+        count = len(self.cmd('az csvmware vm disk list -g {rg} \
                              --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 3)
 
         # Delete disks. Among the given disks, two disk are present in VM and one disk is absent.
         # The present disk should be deleted, and an error for the absent disk should be displayed.
         with self.assertRaisesRegexp(CLIError, "Hard disk 4 not present in the given virtual machine."):
-            self.cmd('az vmware vm disk delete -g {rg} --vm-name {name} \
+            self.cmd('az csvmware vm disk delete -g {rg} --vm-name {name} \
                      --disks "Hard disk 1" "Hard disk 2" "Hard disk 4"')
 
         # Polling till update operation is complete
-        vm_status = self.cmd('az vmware vm show -g {rg} -n \
+        vm_status = self.cmd('az csvmware vm show -g {rg} -n \
                              {name}').get_output_in_json()["status"]
         while vm_status == "updating":
-            vm_status = self.cmd('az vmware vm show -g {rg} -n \
+            vm_status = self.cmd('az csvmware vm show -g {rg} -n \
                                  {name}').get_output_in_json()["status"]
 
-        self.cmd('az vmware vm disk add -g {rg} --vm-name {name} \
+        self.cmd('az csvmware vm disk add -g {rg} --vm-name {name} \
                  --mode independent_nonpersistent --size 8388608',
                  checks=[
                      self.check('disks | [1].controllerId', '1000'),
@@ -528,12 +528,12 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Checking that the number of disk in the VM is 2 now.
-        count = len(self.cmd('az vmware vm disk list -g {rg} \
+        count = len(self.cmd('az csvmware vm disk list -g {rg} \
                              --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 2)
 
         # Deleting the VM.
-        self.cmd('az vmware vm delete -g {rg} -n {name}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name}')
 
     def test_vmware_cs_vm_nic_apis(self):
 
@@ -548,11 +548,11 @@ class VmwareCsScenarioTest(ScenarioTest):
         })
 
         # Creating a VM.
-        self.cmd('az vmware vm create -g {rg} -n {name} --location {loc} \
+        self.cmd('az csvmware vm create -g {rg} -n {name} --location {loc} \
                  --private-cloud {pc} --template {vm_template} --resource-pool {rp}')
 
         # Add a nic with the default values
-        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
+        self.cmd('az csvmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
                  checks=[
                      self.check('nics | [1].nicType', 'VMXNET3'),
                      self.check('nics | [1].powerOnBoot', None),
@@ -560,7 +560,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Add a custom nic
-        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} \
+        self.cmd('az csvmware vm nic add -g {rg} --vm-name {name} \
                  --virtual-network {vnet} --adapter E1000 --power-on-boot false',
                  checks=[
                      self.check('nics | [2].nicType', 'E1000'),
@@ -569,7 +569,7 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Show a nic
-        self.cmd('az vmware vm nic show -g {rg} --vm-name {name} -n "Network adapter 1"',
+        self.cmd('az csvmware vm nic show -g {rg} --vm-name {name} -n "Network adapter 1"',
                  checks=[
                      self.check('nicType', 'VMXNET3'),
                      self.check('powerOnBoot', True),
@@ -578,24 +578,24 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Checking that the number of nics in the VM is 3 now.
-        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
+        count = len(self.cmd('az csvmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 3)
 
         # Delete nics. Among the given nics, two nics are present in VM and one nic is absent.
         # The present nics should be deleted, and an error for the absent nic should be displayed.
         with self.assertRaisesRegexp(CLIError, 'Network adapter 4 not present in the given virtual machine.'):
-            self.cmd('az vmware vm nic delete -g {rg} --vm-name {name} \
+            self.cmd('az csvmware vm nic delete -g {rg} --vm-name {name} \
                      --nics "Network adapter 1" "Network adapter 2" "Network adapter 4"')
 
         # Polling till update operation is complete
-        vm_status = self.cmd('az vmware vm show -g {rg} -n \
+        vm_status = self.cmd('az csvmware vm show -g {rg} -n \
                              {name}').get_output_in_json()["status"]
         while vm_status == "updating":
-            vm_status = self.cmd('az vmware vm show -g {rg} -n \
+            vm_status = self.cmd('az csvmware vm show -g {rg} -n \
                                  {name}').get_output_in_json()["status"]
 
         # Add a nic with the default values
-        self.cmd('az vmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
+        self.cmd('az csvmware vm nic add -g {rg} --vm-name {name} --virtual-network {vnet}',
                  checks=[
                      self.check('nics | [1].nicType', 'VMXNET3'),
                      self.check('nics | [1].powerOnBoot', None),
@@ -603,8 +603,8 @@ class VmwareCsScenarioTest(ScenarioTest):
                  ])
 
         # Checking that the number of nics in the VM is 2 now.
-        count = len(self.cmd('az vmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
+        count = len(self.cmd('az csvmware vm nic list -g {rg} --vm-name {name}').get_output_in_json())
         self.assertEqual(count, 2)
 
         # Deleting the VM.
-        self.cmd('az vmware vm delete -g {rg} -n {name}')
+        self.cmd('az csvmware vm delete -g {rg} -n {name}')

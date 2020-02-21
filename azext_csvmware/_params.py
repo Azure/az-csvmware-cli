@@ -13,7 +13,7 @@ from azure.cli.core.commands.parameters import (resource_group_name_type,
                                                 tags_type,
                                                 get_enum_type,
                                                 get_three_state_flag)
-from azext_vmware_cs.vendored_sdks.models import (StopMode,
+from azext_csvmware.vendored_sdks.models import (StopMode,
                                                   NICType,
                                                   DiskIndependenceMode)
 from ._validators import (private_cloud_name_or_id_validator,
@@ -35,13 +35,13 @@ def load_arguments(self, _):
     Load argument method of command loader.
     """
 
-    with self.argument_context('cs-vmware') as c:
+    with self.argument_context('csvmware') as c:
         c.argument('resource_group_name', arg_type=resource_group_name_type)
         c.argument('tags', arg_type=tags_type)
         c.argument('location', get_location_type(self.cli_ctx), validator=location_validator,
                    help="Region in which the private cloud is present. If default location is not configured, will default to the resource group\'s location.")
 
-    with self.argument_context('cs-vmware vm') as c:
+    with self.argument_context('csvmware vm') as c:
         c.argument('vm_name', options_list=['--name', '-n'],
                    help="Name of the virtual machine.",
                    validator=vm_name_validator,
@@ -74,7 +74,7 @@ def load_arguments(self, _):
 
         c.argument('disks', options_list=['--disk'], action=AddDiskAction, arg_group='Storage', nargs='+')
 
-    with self.argument_context('cs-vmware vm nic') as c:
+    with self.argument_context('csvmware vm nic') as c:
         c.argument('vm_name', options_list=['--vm-name'],
                    help="Name of the virtual machine.",
                    validator=vm_name_validator,
@@ -92,7 +92,7 @@ def load_arguments(self, _):
         c.argument('nic_names', options_list=['--nics'], nargs='+', arg_group='Network',
                    help="Names of NICs.")
 
-    with self.argument_context('cs-vmware vm disk') as c:
+    with self.argument_context('csvmware vm disk') as c:
         c.argument('vm_name', options_list=['--vm-name'],
                    help="Name of the virtual machine.",
                    validator=vm_name_validator,
@@ -110,7 +110,7 @@ def load_arguments(self, _):
         c.argument('disk_names', options_list=['--disks'], nargs='+', arg_group='Storage',
                    help="Names of disks.")
 
-    with self.argument_context('cs-vmware vm-template') as c:
+    with self.argument_context('csvmware vm-template') as c:
         c.argument('private_cloud', options_list=['--private-cloud', '-p'],
                    validator=private_cloud_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
@@ -126,7 +126,7 @@ def load_arguments(self, _):
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 
-    with self.argument_context('cs-vmware virtual-network') as c:
+    with self.argument_context('csvmware virtual-network') as c:
         c.argument('private_cloud', options_list=['--private-cloud', '-p'],
                    validator=private_cloud_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
@@ -141,7 +141,7 @@ def load_arguments(self, _):
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 
-    with self.argument_context('cs-vmware resource-pool') as c:
+    with self.argument_context('csvmware resource-pool') as c:
         c.argument('private_cloud', options_list=['--private-cloud', '-p'],
                    validator=private_cloud_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
@@ -153,7 +153,7 @@ def load_arguments(self, _):
         c.argument('location', get_location_type(self.cli_ctx),
                    help="Region in which the private cloud is present.")
 
-    with self.argument_context('cs-vmware private-cloud') as c:
+    with self.argument_context('csvmware private-cloud') as c:
         c.argument('private_cloud', options_list=['--name', '-n'],
                    validator=private_cloud_only_name_validator,
                    completer=get_resource_name_completion_list('Microsoft.VMwareCloudSimple/privateClouds'),
