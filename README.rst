@@ -10,7 +10,7 @@ You can also use the extension from Azure Cloud Shell.
 [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 
 
-## Installing vmware-cs extension
+## Installing csvmware extension
 
 Download the [whl file](https://github.com/Azure/az-vmware-cli/blob/no_provider_apis/azext_vmware_cs/vmware_cs-0.1.0-py2.py3-none-any.whl) for the extension.
 Install by the CLI command:
@@ -50,10 +50,10 @@ az [group] [subgroup] [command] {parameters}
 For usage and help content for any command, pass in the -h parameter, for example:
 
 ```
-az vmware -h
+az csvmware -h
 
 Group
-    az vmware : Manage Azure VMware Solution.
+    az csvmware : Manage Azure VMware Solution.
         This command group is in preview. It may be changed/removed in a future release.
 Subgroups:
     private-cloud   : Manage VMware private clouds.
@@ -73,7 +73,7 @@ This extension provides CLI commands to:
 Extension can be removed using the following CLI command:
 
 ```
-az extension remove -n vmware-cs
+az extension remove -n csvmware
 ```
 
 

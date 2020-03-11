@@ -12,7 +12,7 @@ except ImportError:
     from distutils import log as logger
     logger.warn("Wheel is not available, disabling bdist_wheel hook")
 
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -38,9 +38,9 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
     HISTORY = f.read()
 
 setup(
-    name='vmware-cs',
+    name='csvmware',
     version=VERSION,
-    description='Manage Azure VMware Solution.',
+    description='Manage Azure VMware Solution by CloudSimple.',
     author='Shivam Mittal',
     author_email='shimitta@microsoft.com',
     url='https://github.com/Azure/az-vmware-cli',
@@ -49,5 +49,5 @@ setup(
     classifiers=CLASSIFIERS,
     packages=find_packages(),
     install_requires=DEPENDENCIES,
-    package_data={'azext_vmware_cs': ['azext_metadata.json']},
+    package_data={'azext_csvmware': ['azext_metadata.json']},
 )

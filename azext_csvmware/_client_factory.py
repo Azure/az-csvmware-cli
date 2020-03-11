@@ -16,7 +16,7 @@ def cf_vmware_cs(cli_ctx, *_):
 
     # This vendored_sdk import is temporary. Import should be from published SDK
     # TODO: Change when production SDK published.
-    from azext_vmware_cs.vendored_sdks import VMwareCloudSimpleClient
+    from azext_csvmware.vendored_sdks import VMwareCloudSimpleClient
 
     from ._config import REFERER
     return get_mgmt_service_client(cli_ctx,
