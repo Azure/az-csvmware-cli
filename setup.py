@@ -43,7 +43,7 @@ setup(
     description='Manage Azure VMware Solution by CloudSimple.',
     author='Shivam Mittal',
     author_email='shimitta@microsoft.com',
-    url='https://github.com/Azure/az-vmware-cli',
+    url='https://github.com/Azure/az-csvmware-cli',
     long_description=README + '\n\n' + HISTORY,
     license='MIT',
     classifiers=CLASSIFIERS,
